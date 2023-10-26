@@ -16,19 +16,29 @@ body {
 
 .top-left {
     background: linear-gradient(#B70811, #890209);
-    width: 16rem;
-    height: 40%;
+    width: 23rem;
+    height: 50%;
     position: absolute;
     top: 0;
     left: 0;
     border-bottom-right-radius: 50%;
 }
 
+.right-bottom {
+    background: linear-gradient(#B70811, #890209);
+    width: 18rem;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 50%;
+}
+
 .chart-log {
     width: 85%;
     height: 80vh;
     background-color: white;
-    box-shadow: 15px 15px 10px rgb(117, 117, 117);
+    box-shadow: 22px 15px 15px rgb(38, 38, 38);
     z-index: 1;
     border-radius: 20px;
     border: none;
@@ -61,7 +71,7 @@ body {
     font-size: 30px;
     font-family: 'Montserrat';
     color: #B70811;
-    
+
 }
 
 form {
@@ -69,7 +79,7 @@ form {
     height: 80%;
 }
 
-form input{
+form input {
     background-color: #D9D9D9;
     width: 85%;
     height: 45px;
@@ -80,7 +90,7 @@ form input{
 }
 
 
-form input::placeholder{
+form input::placeholder {
     font-family: 'Montserrat';
     color: #A5A7A7;
     font-weight: 600;
@@ -88,7 +98,7 @@ form input::placeholder{
 }
 
 
-.register{
+.register {
     width: 85%;
     height: 45px;
     border-radius: 5px;
@@ -102,14 +112,14 @@ form input::placeholder{
     margin-top: 10px;
 }
 
-.account{
+.account {
     margin-top: 18px;
     display: flex;
     width: 85%;
     align-items: center;
 }
 
-.account p{
+.account p {
     font-size: 15px;
     font-family: 'Montserrat';
     color: #A5A7A7;
@@ -118,13 +128,13 @@ form input::placeholder{
     justify-content: center;
 }
 
-.account div{
+.account div {
     height: 2px;
-    background-color: #D9D9D9;
+    background-color: #A5A7A7;
     width: 40%;
 }
 
-.login{
+.login {
     width: 85%;
     height: 45px;
     margin-top: 13px;
@@ -137,14 +147,9 @@ form input::placeholder{
     border: 1px solid #B70811;
 }
 
-.login:hover{
+.login:hover {
     background-color: #B70811;
     border: none;
     color: white;
     transition: 1s;
-}
-
-input:focus{
-transition: 1s;
-border: none;
 }
