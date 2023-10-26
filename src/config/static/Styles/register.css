@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin-bottom: auto;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff; 
+    background-image: url("fondo1.png");
+    background-repeat: no-repeat; 
+    background-size:  1200px 300px;;
+}
+
+
+
+#registro-box {
+    border-radius: 10px;
+    background-color: #fff;
+    width: 850px; 
+    height: 450px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: -10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+#registro-box img {
+    height: 80px;
+    max-width: 100%;
+    margin-left: 70px;
+    margin-right: 100px;
+    margin-bottom: 80px;
+}
+
+#registro-box h2 {
+    color: #B70811;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#registro-box .input-container {
+    background-color: #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#registro-box input {
+    width: 300px; 
+    border: none;
+    outline: none;
+    background-color: #ccc; 
+}
+
+#registro-box button {
+    background-color: #B70811;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 350px;
+}
+
+#registro-box p {
+    margin: 20px 0;
+}
+
+#iniciar-sesion {
+    margin-top: 10px;
+}
+
+#iniciar-sesion button {
+    background-color: #fff;
+    color: #ff0000;
+    border: 2px solid #ff0000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.relleno{
+padding-left: 90px;
+}
+
+.top-left{
+
+background-color: #B70811;
+width: 20rem;
+height: 50%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: -1;
+border-bottom-right-radius: 50%;
+
+}
