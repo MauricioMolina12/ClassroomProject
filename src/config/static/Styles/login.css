@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login{
+    background-color: white;
+    width: 80%;
+    min-height: 80vh;
+    z-index: 1;
+    border-radius: 3rem;
+    border: none;
+    box-shadow: 1.9rem 1.9rem 3rem rgb(62, 62, 62)
+}
+
+.right-bottom{
+    background: linear-gradient(#960B0B,#D44545);
+    width: 22%;
+    height: 250px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 50%;
+    z-index: -1;
+}
+
