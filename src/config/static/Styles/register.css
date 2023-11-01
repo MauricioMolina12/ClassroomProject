@@ -16,7 +16,7 @@ body {
 
 .top-left {
     background: linear-gradient(#B70811, #890209);
-    width: 23rem;
+    width: 30rem;
     height: 50%;
     position: absolute;
     top: 0;
@@ -26,7 +26,7 @@ body {
 
 .right-bottom {
     background: linear-gradient(#B70811, #890209);
-    width: 18rem;
+    width: 20rem;
     height: 40%;
     position: absolute;
     bottom: 0;
@@ -56,7 +56,7 @@ body {
 }
 
 .chart-log>div:first-child img {
-    width: 22rem;
+    width: 25rem;
 }
 
 .chart-log>div:last-child {
@@ -68,9 +68,11 @@ body {
 }
 
 .chart-log>div:last-child h2 {
-    font-size: 30px;
+    font-size: 28px;
     font-family: 'Montserrat';
     color: #B70811;
+    top: 10px;
+    position: relative;
 
 }
 
@@ -107,7 +109,7 @@ form input::placeholder {
     cursor: pointer;
     color: white;
     font-family: 'Montserrat';
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-top: 10px;
 }
@@ -120,10 +122,11 @@ form input::placeholder {
 }
 
 .account p {
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Montserrat';
     color: #A5A7A7;
     width: 60%;
+    padding: 0 5px;
     display: flex;
     justify-content: center;
 }
@@ -137,7 +140,7 @@ form input::placeholder {
 .login {
     width: 85%;
     height: 45px;
-    margin-top: 13px;
+    margin-top: 20px;
     font-family: 'Montserrat';
     font-weight: 600;
     color: #B70811;
