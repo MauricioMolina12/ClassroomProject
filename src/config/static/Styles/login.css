@@ -1,35 +1,159 @@
-*{
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500&family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Modak&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:wght@500&family=Poppins:wght@500&family=Righteous&family=Roboto+Mono:wght@300&family=Work+Sans:wght@100;300;400;600;800&display=swap');
+
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
 }
 
-
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login{
-    background-color: white;
-    width: 80%;
-    min-height: 80vh;
-    z-index: 1;
-    border-radius: 3rem;
-    border: none;
-    box-shadow: 1.9rem 1.9rem 3rem rgb(62, 62, 62)
-}
-
-.right-bottom{
-    background: linear-gradient(#960B0B,#D44545);
-    width: 22%;
-    height: 250px;
+.top-left {
+    background: linear-gradient(#B70811, #890209);
+    width: 30rem;
+    height: 50%;
     position: absolute;
-    right: 0;
-    bottom: 0;
-    border-top-left-radius: 50%;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 50%;
 }
 
+.right-bottom {
+    background: linear-gradient(#B70811, #890209);
+    width: 20rem;
+    height: 40%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 50%;
+}
+
+.chart-log {
+    width: 85%;
+    height: 80vh;
+    background-color: white;
+    box-shadow: 22px 15px 15px rgb(38, 38, 38);
+    z-index: 1;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+}
+
+.chart-log>div {
+    width: 50%;
+}
+
+.chart-log>div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-log>div:first-child img {
+    width: 25rem;
+}
+
+.chart-log>div:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    gap: 20px;
+}
+
+.chart-log>div:last-child h2 {
+    font-size: 28px;
+    color: #B70811;
+    top: 10px;
+    position: relative;
+
+}
+
+form {
+    width: 100%;
+    height: 80%;
+}
+
+form input {
+    background-color: #D9D9D9;
+    width: 85%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+}
+
+
+form input::placeholder {
+    color: #A5A7A7;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.account {
+    margin-top: 18px;
+    display: flex;
+    width: 85%;
+    align-items: center;
+}
+
+.account p {
+    font-size: 17px;
+    color: #A5A7A7;
+    width: 60%;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.account div {
+    height: 2px;
+    background-color: #A5A7A7;
+    width: 20%;
+}
+
+.login {
+    width: 85%;
+    height: 45px;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #B70811;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #B70811;
+}
+
+.login:hover {
+    background-color: #B70811;
+    border: none;
+    color: white;
+    transition: 1s;
+}
+
+.Contra_regis{
+    display: flex;
+    text-align: center;
+    padding-top:30px;
+}
+
+.Contra_regis a {
+    color: rgb(126, 4, 4);
+    text-decoration: none;
+    font-size: 15px;
+    margin: 50px;
+}
+
+.Contra_regis a:hover {
+    border: none;
+    color: rgb(0, 0, 0);
+    transition: 1s;
+}
