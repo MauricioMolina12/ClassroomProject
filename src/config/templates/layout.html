@@ -6,7 +6,20 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block header %}{% endblock%}
+    {% block header %}
+    <header class="header">
+        <img src="../static/multimedia/logo.png">
+        <nav>
+         <ul>
+             <li><a class="link" href="homepage.html" class="link">Inicio</a></li>
+             <li><a class="link" href="docentes.html" class="link">Docentes</a></li>
+             <li><a class="link" href="#" class="link">Historial</a></li>
+             <div>|</div>
+             <li id="out"><a>Salir</a></li>
+         </ul>
+        </nav>
+</header>
+    {% endblock%}
     {% block body %}{% endblock %}
 </body>
 </html>

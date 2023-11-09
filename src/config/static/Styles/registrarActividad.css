@@ -114,19 +114,9 @@ main {
     width: 100%;
     display: flex;
     height: 80vh;
-}
-
-main div:last-child {
-    display: flex;
     justify-content: center;
     align-items: center;
-}
-
-main div:last-child img {
-    position: relative;
-    right: 30px;
-    width: 350px;
-    height: 350px;
+    padding: 20px;
 }
 
 .header img {
@@ -134,60 +124,131 @@ main div:last-child img {
     height: 90px;
 }
 
-main div {
-    width: 50%;
+h2 {
+    font-family: 'Montserrat';
+    margin-top: 14px;
 }
 
-main div:first-child {
-    padding: 20px;
+.recuadro {
+    background-color: white;
+    height: 68vh;
+    z-index: 1;
+    border-radius: 2rem;
+    border: none;
+    box-shadow: 1rem 1rem 3rem rgb(62, 62, 62);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recuadro form {
+    width: 90%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: end;
 }
 
-main div:first-child section {
-    max-width: 70%;
-    height: 60%;
+.input-container{
+    width: 100%;
+    height: 30%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;
 }
 
-main div:first-child section h1 {
-    font-size: 23px;
+.input-container div{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.style-label{
     font-family: 'Montserrat';
-    font-weight: 800;
     color: #B70811;
+    font-weight: 400;
+    font-size: 15px;
 }
 
-main div:first-child section hr {
+.style-input{
+    border-radius: 5px;
     background-color: #D9D9D9;
-    height: 4px;
+    color: #5e5e5e;
     border: none;
-}
-
-main div:first-child section p {
-    color: #4A4E4D;
+    height: 3em;
+    padding: 0 4px;
     font-family: 'Montserrat';
 }
 
-main div:first-child section a {
-    text-decoration: none;
-    background-color: #B70811;
-    width: 80%;
-    padding: 13px;
-    border-radius: 10px;
-    color: white;
-    font-family: 'Montserrat';
-    font-size: 21px;
-    font-weight: 600;
+.on-inputs{
+    border: 2px solid #D9D9D9;
+    margin-top: 5px;
+    height: 80%;
+    width: 90%;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+.style-input-w-100{
+    width: 100%;
+}
+
+.style-input-w-70{
+    width: 70%;
+}
+
+form .recuadro-child:last-of-type .style-input:last-of-type{
+    width: 50%;
+}
+
+.recuadro:first-of-type {
+    width: 40%;
+}
+
+.recuadro:last-of-type {
+    width: 60%;
+    margin-left: 20px;
+}
+
+
+.input-container:last-of-type > div{
+    display: flex;
+    justify-content: center;
+}
+
+.input-container:last-of-type > div > button{
     cursor: pointer;
 }
 
-main div:first-child section a:hover {
-    background-color: #a1070f;
+.input-container:last-of-type div:first-of-type button{
+    background-color: #B70811;
+    border: none;
+    height: 50%;
+    width: 80%;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    font-size: 1em;
 }
+
+.input-container:last-of-type div:last-of-type button{
+    border: 1px solid #B70811;
+    height: 50%;
+    width: 80%;
+    color: #B70811;
+    border-radius: 5px;
+    font-family: 'Montserrat';
+    font-size: 1em;
+    background-color: transparent;
+}
+
+
+.input-container:last-of-type div:first-of-type button:hover{
+    background-color: #c90a13;
+}
+
+
+
 
 
 @media only screen and (max-width: 768px) {
@@ -205,38 +266,10 @@ main div:first-child section a:hover {
         height: 60px;
     }
 
-    main div:last-child img {
-        position: relative;
-        right: 30px;
-        width: 250px;
-        height: 250px;
-    }
 
-    main div:first-child section h1 {
-        font-size: 16px;
-        font-family: 'Montserrat';
-        font-weight: 800;
-        color: #B70811;
-    }
-
-    main div:first-child section p {
-        color: #4A4E4D;
-        font-family: 'Montserrat';
-        font-size: 10px;
-    }
-
-    main div:first-child section a {
-        font-size: 12px;
-    }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 992px) {
-    main div:last-child img {
-        position: relative;
-        right: 30px;
-        width: 245px;
-        height: 245px;
-    }
 
     nav ul li {
         font-size: 13px;
@@ -247,17 +280,6 @@ main div:first-child section a:hover {
         align-items: center;
     }
 
-    main div:first-child section h1 {
-        font-size: 16px;
-    }
-
-    main div:first-child section p {
-        font-size: 12px;
-    }
-
-    main div:first-child section a {
-        font-size: 12px;
-    }
 }
 
 @media only screen and (max-width: 550px) {
@@ -269,18 +291,6 @@ main div:first-child section a:hover {
     nav ul li {
         font-size: 10px;
         padding-left: 10px
-    }
-
-    main div:first-child section h1 {
-        font-size: 16px;
-    }
-
-    main div:first-child section p {
-        font-size: 9px;
-    }
-
-    main div:first-child section a {
-        font-size: 10px;
     }
 
     nav {
