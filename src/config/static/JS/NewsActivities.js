@@ -1,3 +1,5 @@
+
+
 document.getElementById("cantidad").addEventListener("input", function() {
     var cantidad = parseInt(this.value);
     
