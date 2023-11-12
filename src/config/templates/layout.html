@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/registrarActividad.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='multimedia/logoo.png') }}">
+    <script src="{{ url_for('static', filename='JS/NewsActivities.js') }}"></script>
+
 </head>
 <body>
     {% block header %}
     <header class="header">
-        <img src="../static/multimedia/logo.png">
+        <a href="/"><img src="{{ url_for('static', filename='multimedia/logo.png') }}"></a>
         <nav>
          <ul>
-             <li><a class="link" href="homepage.html" class="link">Inicio</a></li>
-             <li><a class="link" href="docentes.html" class="link">Docentes</a></li>
+             <li><a class="link" href="/" class="link">Inicio</a></li>
+             <li><a class="link" href="/docentes" class="link">Docentes</a></li>
              <li><a class="link" href="#" class="link">Historial</a></li>
              <div>|</div>
              <li id="out"><a>Salir</a></li>
          </ul>
         </nav>
-</header>
+    </header>
     {% endblock%}
     {% block body %}{% endblock %}
 </body>

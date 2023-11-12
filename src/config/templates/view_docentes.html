@@ -1,146 +1,131 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unilibre</title>
-    <link href="../static/multimedia/logoo.png" rel="icon" />  
-    <link href="../static/Styles/view_docentes.css" rel="stylesheet" />
-</head>
-<body>
-    <header class="header">
-        <img src="../static/multimedia/logo.png" width="320px" height="90px">
-        <nav>
-            <ul>
-                <li><a href="#" class="link">Inicio</a></li>
-                <li><a href="#" class="link">Docentes</a></li>
-                <li><a href="#" class="link">Historial</a></li>
-                <div>|</div>
-                <li><a>Salir</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-
-        <div class="header">
-            <h1 class="profesor-name">Adalberto Alvarez</h1>
-            
+{% extends './layout.html' %}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/view_docentes.css') }}">
+<main>
+    <section class="title">
+        <h1>Adalberto Alvarez</h1>
+        <a href="/docentes" class="back">Regresar</a>
+    </section>
+    <section>
+        <div class="container-50">
+            <div class="info-dc">
+                <h3>Identificación</h3>
+                <span>1043584533</span>
+            </div>
+            <div class="info-dc">
+                <h3>Cargo</h3>
+                <span>Jornada completa</span>
+            </div>
+            <div class="info-dc">
+                <h3>Titulos</h3>
+                <span><a href="">Ver titulos</a></span>
+            </div>
+            <div class="info-dc">
+                <h3>Titulo más alto</h3>
+                <span>Maestría</span>
+            </div>
+            <div class="info-dc">
+                <h3>Universidad</h3>
+                <span>Simón Bolivar</span>
+            </div>
+            <div class="info-dc">
+                <h3>Ciudad</h3>
+                <span>Barranquilla, Átlantico.</span>
+            </div>
+            <div class="info-dc">
+                <h3>Fecha de expedición</h3>
+                <span>10/12/2000</span>
+            </div>
         </div>
-        <div class="profesor-info">
-            <p>ID: 12345</p>
-            <p>Dedicación: jornada completa</p>
-            <p>Título más alto: maestria</p>
-            <p>Títulos: Ingeniero en Sistemas</p>
-            <p>Universidad: Universidad libre</p>
-            <p>Ciudad: Barranquilla</p>
-            <p>Fecha: 10/12/2000</p>
+        <div class="container-50 second">
+            <div class="chart-asignaturas ">
+                <div>
+                    <h4>Área</h4>
+                    <span>Ingeniería</span>
+                </div>
+                <div>
+                    <h4>Asignatura</h4>
+                    <span>Redes de computadores</span>
+                </div>
+                <div>
+                    <h4>Grupo</h4>
+                    <span>SA</span>
+                </div>
+                <div>
+                    <h4>Semestre</h4>
+                    <span>6</span>
+                </div>
+                <div>
+                    <h4>Jornada</h4>
+                    <span>Diurna</span>
+                </div>
+                <div>
+                    <h4>Horas</h4>
+                    <span>5</span>
+                </div>
+            </div>
+            <div class="chart-asignaturas">
+                <div>
+                    <h4>Área</h4>
+                    <span>Ingeniería</span>
+                </div>
+                <div>
+                    <h4>Asignatura</h4>
+                    <span>Redes de computadores</span>
+                </div>
+                <div>
+                    <h4>Grupo</h4>
+                    <span>SA</span>
+                </div>
+                <div>
+                    <h4>Semestre</h4>
+                    <span>6</span>
+                </div>
+                <div>
+                    <h4>Jornada</h4>
+                    <span>Diurna</span>
+                </div>
+                <div>
+                    <h4>Horas</h4>
+                    <span>5</span>
+                </div>
+            </div>
+            <div class="chart-asignaturas">
+                <div>
+                    <h4>Área</h4>
+                    <span>Ingeniería</span>
+                </div>
+                <div>
+                    <h4>Asignatura</h4>
+                    <span>Redes de computadores</span>
+                </div>
+                <div>
+                    <h4>Grupo</h4>
+                    <span>SA</span>
+                </div>
+                <div>
+                    <h4>Semestre</h4>
+                    <span>6</span>
+                </div>
+                <div>
+                    <h4>Jornada</h4>
+                    <span>Diurna</span>
+                </div>
+                <div>
+                    <h4>Horas</h4>
+                    <span>5</span>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
+    </section>
+</main>
+{% endblock%}
 
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-
-            <div class="box">
-                <p>Área: Otra área</p>
-                <p>Asignatura: Otra asignatura</p>
-                <p>Cursos: 3</p>
-                <p>Jornada: Nocturna</p>
-                <p>Horas: 8</p>
-            </div>
-
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-            <div class="box">
-                <p>Área: Básica de Ingeniería</p>
-                <p>Asignatura: Sistemas Operativos</p>
-                <p>Cursos: 2</p>
-                <p>Jornada: Diurna</p>
-                <p>Horas: 5</p>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-    </main>
-</body>
-</html>
 
     
 

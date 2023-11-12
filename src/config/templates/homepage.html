@@ -1,32 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unilibre</title>
-    <link href="../static/multimedia/logoo.png" rel="icon" />  
-    <link href="../static/Styles/home.css" rel="stylesheet" />
-</head>
-<body>
-   <header class="header">
-           <img src="../static/multimedia/logo.png">
-           <nav>
-            <ul>
-                <li><a href="homepage.html" class="link">Inicio</a></li>
-                <li><a href="docentes.html" class="link">Docentes</a></li>
-                <li><a href="#" class="link">Historial</a></li>
-                <div>|</div>
-                <li id="out"><a>Salir</a></li>
-            </ul>
-           </nav>
-   </header>
+{% extends './layout.html' %}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
    <main>
     <div>
         <section>
             <h1>BIENVENIDOS AL SISTEMA DE GESTIÓN DE PLAN DE TRABAJO</h1>
             <hr>
             <p>Acá podrás organizar y gestionar la nómina de nuestros docentes </p>
-            <a href="choose.html">Gestionar plan de trabajo</a>
+            <a href="">Gestionar plan de trabajo</a>
         </section>
     </div>
     <div>
@@ -34,6 +18,5 @@
     </div>
     
    </main>
-</body>
-</html>
+{% endblock%}
 

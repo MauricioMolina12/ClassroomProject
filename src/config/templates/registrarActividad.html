@@ -1,69 +1,54 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unilibre</title>
-    <link href="../static/multimedia/logoo.png" rel="icon" />  
-    <link href="../static/Styles/registrarActividad.css" rel="stylesheet" />
-</head>
-<body>
-   <header class="header">
-           <img src="../static/multimedia/logo.png">
-           <nav>
-            <ul>
-                <li><a href="homepage.html" class="link">Inicio</a></li>
-                <li><a href="docentes.html" class="link">Docentes</a></li>
-                <li><a href="#" class="link">Historial</a></li>
-                <div>|</div>
-                <li id="out"><a>Salir</a></li>
-            </ul>
-           </nav>
-   </header>
-   <main>
-        <div class="recuadro">
-            <h2>Registrar actividad</h2>
-            <form action="">
-                <div class="input-container">
-                    <div class="label">
-                        <label for="actividad" class="style-label">Registrar actividad</label>
-                    </div>
-                    <div class="input">
-                        <input type="text" id="actividad" name="actividad" class="style-input style-input-w-100">
-                    </div>
+{% extends './layout.html' %}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
 
+<main>
+    <section class="child-recuadro">
+        <form action="">
+            <div class="row">
+                <div>
+                    <label for="activities" class="style-label">Nombre actividad</labe>
                 </div>
-                <div class="input-container">
-                    <div class="label">
-                        <label for="cantidad" class="style-label">Cantidad items</label>
-                    </div>
-
-                    <div class="input">
-                        <input type="number" id="cantidad" name="cantidad-items" class="style-input style-input-w-70">
-                    </div>
-
+                <div>
+                    <input type="text" name="activities" class="activities style-input" id="activities">
                 </div>
-                <div class="input-container">
-                    <div class="button-firts">
-                        <button id="new-activitie">Registrar actividad</button>
-                    </div>
-
-                    <div class="button-second">
-                        <button class="clear">Limpiar</button>
-                    </div>
-
+            </div>
+            <div class="row row-2">
+                <div>
+                    <label for="cantidad" class="style-label">Cantidad de items</labe>
                 </div>
-            </form>
+                <div class="container-cant">
+                    <input type="number" name="cantidad" class="cantidad style-input" id="cantidad">
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <button>Registrar Asignatura</button>
+                </div>
+                <div>
+                    <button>Limpiar</button>
+                </div>
+            </div>
             
-            
-        </div>
-        <div class="recuadro inputs-generate">
-            <h2>Items de la actividad</h2>
-            <div class="on-inputs">
-                
+
+        </form>
+    </section>
+    <section class="child-recuadro">
+        <div class="container-items">
+            <div class="input-item">
+                <input type="text" class="input-new" placeholder="Ingresa nombre item" name="item-name">
+            </div>
+            <div class="check">
+                <input type="checkbox" name="check">
+            </div>
+            <div class="hrs">
             </div>
         </div>
-   </main>
-   <script src="../config/static/JS/NewsActivities.js"></script>
-</body>
-</html>
+    </section>
+</main>
+{% endblock%}
+
