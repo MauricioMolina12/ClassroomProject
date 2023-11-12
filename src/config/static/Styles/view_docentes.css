@@ -137,6 +137,7 @@ section:first-of-type h1 {
     align-items: center;
     justify-content: center;
     width: 80%;
+    color: #B70811;
 }
 
 section:first-of-type a {
@@ -189,8 +190,13 @@ section:last-of-type .container-50 {
     color: #B70811;
 }
 
-h3 {
+h3,h4 {
     font-weight: 700;
+    color: #B70811;
+}
+
+span{
+    color: #B70811;
 }
 
 .chart-asignaturas {
