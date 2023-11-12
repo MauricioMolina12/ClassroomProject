@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request,json, redirect, url_for, session
 from config.db import db, app, ma
 from models.Asignatura import Asignatura, AsignaturaSchema
+from api.Area import Area, areas_schema
 
 ruta_asig = Blueprint("ruta_asig",__name__)
 
@@ -18,16 +19,26 @@ def saveasignatura():
     name = request.json['name'].title()
     hours = request.json['hours']
     credits = request.json['credits']
-    area = request.json['area'].title()
+    area = request.json['area']
 
     subject = db.session.query(Asignatura.codigo).filter(Asignatura.nombre == name).all()
     result = asigs_schema.dump(subject)
 
-    if len(result)==0:
-        new_subject = Asignatura(name, hours, credits, area)
-        db.session.add(new_subject)
-        db.session.commit()
-        return jsonify({'mensaje': 'Registro exitoso'}) 
+    if len(result)== 0:
+
+        result = db.session.query(Area.codigo, Area.nombre).filter(Area.nombre == area.title()).all()
+        area = areas_schema.dump(result)
+
+        if len(area) > 0:
+            ex_area = area[0]
+            id_area = ex_area['codigo']
+            new_subject = Asignatura(name, hours, credits, id_area)
+            db.session.add(new_subject)
+            db.session.commit()
+            return jsonify({'mensaje': 'Registro exitoso'})
+        else:
+            return jsonify({'error': 'Opss... nombre de area no encontrado'}), 401 
+         
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401 
         

@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for #para importar la clase
 from config.db import app, db
 
+from api.Area import ruta_area
 from api.Asignatura import ruta_asig
 
+
 app.register_blueprint(ruta_asig, url_prefix="/api")
+app.register_blueprint(ruta_area, url_prefix="/api")
 
 @app.route('/')
 def index():
