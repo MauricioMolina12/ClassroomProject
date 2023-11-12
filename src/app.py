@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for #para importar la clase
+from config.db import app, db
 
-#Cuando se cree la Base de Datos en un archivo llamado db.py 
-#en la carpeta config, pasar el app.py a un nivel mas arriba
+from api.Asignatura import ruta_asig
 
-app = Flask(__name__) 
+app.register_blueprint(ruta_asig, url_prefix="/api")
 
 @app.route('/')
 def index():
