@@ -1,5 +1,4 @@
 from config.db import app, db, ma
-from datetime import date
 
 class Asignatura(db.Model):
     __tablename__ = "Asignatura"
@@ -8,13 +7,13 @@ class Asignatura(db.Model):
     nombre = db.Column(db.String(100), unique= True)
     horas = db.Column(db.Integer)
     creditos = db.Column(db.Integer)
-    area = db.Column(db.String(100))
+    id_area = db.Column(db.Integer, db.ForeignKey('Area.codigo'))
 
-    def __init__(self, name, hours, credits, area):
+    def __init__(self, name, hours, credits, id_area):
         self.nombre = name
         self.horas = hours
         self.creditos = credits
-        self.area = area
+        self.id_area = id_area
 
 with app.app_context():
     db.create_all()
@@ -22,4 +21,4 @@ with app.app_context():
 
 class AsignaturaSchema(ma.Schema):
     class Meta:
-        fields = ('codigo', 'nombre', 'horas', 'creditos', 'area')
+        fields = ('codigo', 'nombre', 'horas', 'creditos', 'id_area')
