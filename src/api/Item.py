@@ -17,10 +17,10 @@ def Item():
 def saveItem():
     
     name = request.json['name']
-    id_TipoAct = name = request.json['id_TipodeActividad']
+    id_TipoAct = request.json['id_TipodeActividad']
     
-    subject = db.session.query(Item.Id).filter(Item.nombre == name).all()
-    result = items_Schema.dump(subject)
+    ite = db.session.query(Item.Id).filter(Item.nombre == name).all()
+    result = items_Schema.dump(ite)
 
     if len(result)==0:
         new_subject = Item(name, id_TipoAct)
