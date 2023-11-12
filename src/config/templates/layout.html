@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Styles/layout.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/home.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/registrarActividad.css') }}">
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='multimedia/logoo.png') }}">
-    <script src="{{ url_for('static', filename='JS/NewsActivities.js') }}"></script>
-
+    
 </head>
 <body>
     {% block header %}
@@ -26,6 +23,10 @@
         </nav>
     </header>
     {% endblock%}
-    {% block body %}{% endblock %}
+    {% block body %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ url_for('static', filename='JS/NewsActivities.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/modalWindow.js') }}"></script>
 </body>
 </html>

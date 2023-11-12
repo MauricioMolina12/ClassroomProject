@@ -1,0 +1,46 @@
+{% extends './layout.html'%}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/asignaturas.css') }}">
+<main>
+    <section class="container-input">
+        <form action="">
+            <div class="container-inputs">
+                <div><label class="style-label" for="area">Área</label></div>
+                <div><input type="text" class="style-input" id="area"></div>
+            </div>
+            <div class="container-inputs">
+                <div><label class="style-label" for="area">Asignatura</label></div>
+                <div>
+                    <select id="area">
+                        <option>Lenguaje de programación</option>
+                        <option>Redes de computadores</option>
+                        <option>Redes de computadores</option>
+                        <option>Redes de computadores</option>
+                    </select>
+                </div>
+            </div>
+            <div class="container-inputs">
+                <div><label class="style-label" for="grupo">Grupo</label></div>
+                <div><input type="text" class="style-input" id="grupo"></div>
+            </div>
+            <div class="container-inputs">
+                <div><label class="style-label" for="semestre">Semestre</label></div>
+                <div><input type="number" class="style-input" id="semestre"></div>
+            </div>
+            <div class="container-inputs">
+                <div><label class="style-label" for="jornada">Jornada</label></div>
+                <div><input type="text" class="style-input" id="jornada"></div>
+            </div>
+            <div class="container-inputs">
+                <div><label class="style-label" for="hrs">Horas</label></div>
+                <div><input type="number" class="style-input" id="hrs"></div>
+            </div>
+            
+        </form>
+    </section>
+</main>
+{% endblock%}

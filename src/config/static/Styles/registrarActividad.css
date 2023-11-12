@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     transition: width 0.3s ease;
+    font-family: 'Montserrat';
 
 }
 
@@ -133,9 +134,9 @@ h2 {
     background-color: white;
     height: 68vh;
     z-index: 1;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: none;
-    box-shadow: .6rem .6rem 3rem rgb(62, 62, 62);
+    box-shadow: .6rem .6rem 1rem rgb(62, 62, 62);
     width: 85%;
     display: flex;
 }
@@ -143,6 +144,48 @@ h2 {
 .child-recuadro {
     width: 50%;
     height: 100%;
+}
+
+.child-recuadro:first-of-type .recuadro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.child-recuadro:first-of-type .input-f,
+.input-s,
+.input-b {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.child-recuadro:first-of-type .input-b {
+    justify-content: space-evenly;
+}
+
+.child-recuadro:first-of-type .input-b button {
+    cursor: pointer;
+    width: 50%;
+}
+
+.child-recuadro:first-of-type .input-b button:first-of-type {
+    background-color: #B70811;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.child-recuadro:first-of-type .input-b button:last-of-type {
+    background-color: transparent;
+    color: #B70811;
+    border: 1px solid #B70811;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
 main .child-recuadro:first-of-type form {
@@ -162,37 +205,19 @@ main .child-recuadro:first-of-type form {
     height: 3em;
     padding: 0 4px;
     font-family: 'Montserrat';
-    width: 100%;
+    width: 70%;
 }
 
-.style-input-2{
+
+.style-input-3 {
     border-radius: 5px;
     background-color: #D9D9D9;
     color: #5e5e5e;
     border: none;
-    height: 3em;
+    min-height: 60px;
     padding: 0 4px;
     font-family: 'Montserrat';
-    width: 60%;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-    height: 33.3%;
-}
-
-
-.container-cant {
-    position: relative;
-}
-
-input[type="number"] {
-    width: 50%;
-    position: absolute;
-    left: 0;
+    width: 70%;
 }
 
 .style-label {
@@ -201,63 +226,51 @@ input[type="number"] {
     font-weight: 400;
     font-size: 15px;
     text-align: center;
-}
-
-.container-items{
-    width: 100%;
-    border: 1px solid black;
     display: flex;
+    align-items: center;
 }
 
-
-.row:last-of-type div button {
-    height: 4rem;
-}
-
-
-.row:last-of-type div:first-of-type button {
-    background-color: #B70811;
-    border: none;
-    width: 80%;
-    color: white;
-    border-radius: 5px;
-    font-family: 'Montserrat';
-    font-size: 1em;
-    cursor: pointer;
-    outline: none;
-}
-
-.row:last-of-type div:last-of-type button {
-    border: 1px solid #B70811;
-    outline: none;
-    width: 80%;
-    color: #B70811;
-    border-radius: 5px;
-    font-family: 'Montserrat';
-    font-size: 1em;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.child-recuadro:last-of-type{
-    overflow: auto;
-    border: 1px solid black;
-}
-
-
-.container-input{
-    border: 1px solid black;
-    width: 100%;
+.child-recuadro:last-of-type {
+    margin-left: 20px;
+    border-radius: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.child-recuadro:last-of-type div {
+    display: flex;
+    width: 90%;
+    min-height: 30%;
+}
+
+.child-recuadro:last-of-type div>* {
+    width: 50%;
+    display: flex;
     justify-content: space-around;
 }
 
-.container-input div{
-    border: 1px solid black;
+.style-input-check {
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    color: #5e5e5e;
+    border: none;
+    height: 3em;
+    padding: 0 4px;
+    font-family: 'Montserrat';
+    width: 20%;
 }
 
-
+#generate {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 80%;
+    padding-top: 10px;
+}
 
 /* .recuadro form {
     width: 90%;

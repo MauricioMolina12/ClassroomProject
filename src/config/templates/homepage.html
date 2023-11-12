@@ -1,9 +1,12 @@
 {% extends './layout.html' %}
 {% block title %}Unilibre{% endblock %}
+
 {% block header %}
     {{ super() }}
 {% endblock%}
+
 {% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/home.css') }}">
    <main>
     <div>
         <section>

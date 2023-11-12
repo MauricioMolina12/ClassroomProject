@@ -4,50 +4,25 @@
     {{ super() }}
 {% endblock%}
 {% block body %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/registrarActividad.css') }}">
 <main>
     <section class="child-recuadro">
-        <form action="">
-            <div class="row">
-                <div>
-                    <label for="activities" class="style-label">Nombre actividad</labe>
-                </div>
-                <div>
-                    <input type="text" name="activities" class="activities style-input" id="activities">
-                </div>
+        <form action="" class="recuadro">
+            <div class="input-f">
+                <label class="style-label" for="actividad">Nombre actividad</label>
+                <input type="text" name="actividad" class="style-input" id="actividad">
             </div>
-            <div class="row row-2">
-                <div>
-                    <label for="cantidad" class="style-label">Cantidad de items</labe>
-                </div>
-                <div class="container-cant">
-                    <input type="number" name="cantidad" class="cantidad style-input" id="cantidad">
-                </div>
+            <div class="input-s">
+                <label class="style-label" for="cantidad">Cantidad actividad</label>
+                <input type="number" name="cantidad" class="style-input" id="cantidad" step="1">
             </div>
-
-            <div class="row">
-                <div>
-                    <button>Registrar Asignatura</button>
-                </div>
-                <div>
-                    <button>Limpiar</button>
-                </div>
+            <div class="input-b">
+                <button>Registrar actividad</button>
+                <button>Limpiar</button>
             </div>
-            
-
         </form>
     </section>
-    <section class="child-recuadro">
-        <div class="container-items">
-            <div class="input-item">
-                <input type="text" class="input-new" placeholder="Ingresa nombre item" name="item-name">
-            </div>
-            <div class="check">
-                <input type="checkbox" name="check">
-            </div>
-            <div class="hrs">
-            </div>
-        </div>
+    <section class="child-recuadro" id="generate">        
     </section>
 </main>
 {% endblock%}

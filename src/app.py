@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for #para importar la clase
 from config.db import app, db
 
-from api.Asignatura import ruta_asig
+from API.Asignatura import ruta_asig
 
 app.register_blueprint(ruta_asig, url_prefix="/api")
 
@@ -28,6 +28,14 @@ def docentes():
 @app.route('/actividades')
 def activity():
     return render_template('registrarActividad.html')
+
+@app.route('/asignaturas')
+def asignaturas():
+    return render_template('asignaturas.html')
+
+@app.route('/choose')
+def choose():
+    return render_template('choose.html')
 
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)#el debug es para que cuando se haga un cambio no toque dejar de correr y volver a correr el programa para poder ver el cambio

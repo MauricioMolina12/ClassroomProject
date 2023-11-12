@@ -1,16 +1,16 @@
 
-
 document.getElementById("cantidad").addEventListener("input", function() {
     var cantidad = parseInt(this.value);
     
-    var contenedorInputs = document.getElementById("inputs-generate");
+    var contenedorInputs = document.getElementById("generate");
     contenedorInputs.innerHTML = "";
     
     for (var i = 0; i < cantidad; i++) {
         var nuevoInput = document.createElement("input"); 
         nuevoInput.type = "text";
-        nuevoInput.className = "style-input";
-        nuevoInput.placeholder = "Input " + (i + 1); 
+        nuevoInput.className = "style-input-3";
+        nuevoInput.style.marginBottom = "10px";
+        nuevoInput.placeholder = "Item " + (i + 1); 
         contenedorInputs.appendChild(nuevoInput);
     }
 });
