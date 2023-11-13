@@ -3,7 +3,7 @@ from config.db import app, db
 
 from api.Jornada import ruta_jornada
 from api.Usuario import ruta_user
-from api.Plan_de_Trabajo import ruta_PlanT
+from api.Plan_de_Trabajo import ruta_plant
 from api.Tipo_de_Actividad import ruta_TipoA
 from api.Item import ruta_Item
 #importar planT_Item
@@ -14,7 +14,7 @@ from api.Asig_Usu import ruta_Asig_Usu
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
 app.register_blueprint(ruta_user, url_prefix="/api")
-app.register_blueprint(ruta_PlanT, url_prefix="/api")
+app.register_blueprint(ruta_plant, url_prefix="/api")
 app.register_blueprint(ruta_TipoA, url_prefix="/api")
 app.register_blueprint(ruta_Item, url_prefix="/api")
 #aqui va PlanT_Item

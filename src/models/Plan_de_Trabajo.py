@@ -2,17 +2,17 @@ from config.db import app, db, ma
 
 
 class Plan_de_Trabajo(db.Model):
-    __tablename__= "Plan_de_Trabajo"
+    __tablename__= "Planes_de_Trabajos"
     
-    Id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     semestre = db.Column(db.String(100))
     horas_totales = db.Column(db.Integer)
     año = db.Column(db.Integer)
-    docente = db.Column(db.Integer, db.ForeignKey('Usuario.id'))
+    docente = db.Column(db.Integer, db.ForeignKey('Usuarios.id'))
     
-    def __init__(self, semester, Total_hours, year, teacher):
+    def __init__(self, semester, total_hours, year, teacher):
         self.semestre = semester
-        self.horas_totales = Total_hours
+        self.horas_totales = total_hours
         self.año = year
         self.docente = teacher
         
@@ -23,4 +23,4 @@ with app.app_context():
 
 class PlanTrabajoSchema(ma.Schema):
     class Meta:
-        fields = ('Id','semestre', 'horas_totales','año', 'docente')
+        fields = ('id','semestre', 'horas_totales','año', 'docente')

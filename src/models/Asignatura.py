@@ -1,13 +1,13 @@
 from config.db import app, db, ma
 
 class Asignatura(db.Model):
-    __tablename__ = "Asignatura"
+    __tablename__ = "Asignaturas"
 
     codigo = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(100), unique= True)
     horas = db.Column(db.Integer)
     creditos = db.Column(db.Integer)
-    id_area = db.Column(db.Integer, db.ForeignKey('Area.codigo'))
+    id_area = db.Column(db.Integer, db.ForeignKey('Areas.codigo'))
 
     def __init__(self, name, hours, credits, id_area):
         self.nombre = name

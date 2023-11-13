@@ -4,8 +4,8 @@ class Asig_Usu(db.Model):
     __tablename__ = "Asig_Usu"
 
     id = db.Column(db.Integer, primary_key = True)
-    codigousu = db.Column(db.Integer, db.ForeignKey('Usuario.id'))
-    codigoasig = db.Column(db.Integer, db.ForeignKey('Asignatura.codigo'))
+    codigousu = db.Column(db.Integer, db.ForeignKey('Usuarios.id'))
+    codigoasig = db.Column(db.Integer, db.ForeignKey('Asignaturas.codigo'))
     grupo = db.Column(db.Integer, db.ForeignKey('Grupos.id'))
     semestre = db.Column(db.String(100))
 

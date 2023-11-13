@@ -20,28 +20,35 @@ def saveuser():
     name = request.json['name']
     user = request.json['user']
     password = request.json['password']
-    rol = request.json['rol']
-    form = request.json['form']
-    other_form = request.json['other_form']
-    jor = request.json['jor']
-
-    use = db.session.query(Usuario.id).filter(Usuario.nombre == name).all()
+    rol = request.json['rol'].title()
+    
+    use = db.session.query(Usuario.id).filter(Usuario.usuario == user).all()
     result = users_schema.dump(use)
 
     if len(result)== 0:
 
-        result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == jor.title()).all()
-        jorn = jornadas_schema.dump(result)
-
-        if len(jorn) > 0:
-            ex_area = jorn[0]
-            jor = ex_area['id']
-            new_subject = Usuario(name, user, password, rol, form, other_form, jor)
+        if rol == "Administrador":
+            new_subject = Usuario(name, user, password, rol)
             db.session.add(new_subject)
             db.session.commit()
             return jsonify({'mensaje': 'Registro exitoso'})
         else:
-            return jsonify({'error': 'Opss... nombre de jornada no encontrado'}), 401 
+            form = request.json['form']
+            other_form = request.json['other_form']
+            jor = request.json['jor']
+
+            result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == jor.title()).all()
+            jorn = jornadas_schema.dump(result)
+
+            if len(jorn) > 0:
+                ex_area = jorn[0]
+                jor = ex_area['id']
+                new_subject = Usuario(name, user, password, rol, form, other_form, jor)
+                db.session.add(new_subject)
+                db.session.commit()
+                return jsonify({'mensaje': 'Registro exitoso'})
+            else:
+                return jsonify({'error': 'Opss... nombre de jornada no encontrado'}), 401 
          
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401 
