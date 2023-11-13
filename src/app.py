@@ -10,13 +10,14 @@ from api.Jornada import ruta_jornada
 from api.Usuario import ruta_user
 from api.Grupo import ruta_Grupo
 
-app.register_blueprint(ruta_asig, url_prefix="/api")
-app.register_blueprint(ruta_area, url_prefix="/api")
-app.register_blueprint(ruta_TipoA, url_prefix="/api")
-app.register_blueprint(ruta_Item, url_prefix="/api")
-app.register_blueprint(ruta_PlanT, url_prefix="/api")
 app.register_blueprint(ruta_jornada, url_prefix="/api")
 app.register_blueprint(ruta_user, url_prefix="/api")
+app.register_blueprint(ruta_PlanT, url_prefix="/api")
+app.register_blueprint(ruta_TipoA, url_prefix="/api")
+app.register_blueprint(ruta_Item, url_prefix="/api")
+#aqui va PlanT_Item
+app.register_blueprint(ruta_area, url_prefix="/api")
+app.register_blueprint(ruta_asig, url_prefix="/api")
 app.register_blueprint(ruta_Grupo, url_prefix="/api")
 
 @app.route('/')
