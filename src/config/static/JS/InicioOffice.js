@@ -3,7 +3,7 @@
 function iniciarSesion() {
     // Credenciales de la aplicación registrada en Azure Portal
     const clientId = 'TU_CLIENT_ID';
-    const redirectUri = 'TU_URL_DE_REDIRECCION';
+    const redirectUri = '';
   
     // URL de autorización de Microsoft
     const authorizationEndpoint = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';

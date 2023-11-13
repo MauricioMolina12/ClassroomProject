@@ -109,7 +109,7 @@ form input::placeholder {
 
 .account p {
     font-size: 17px;
-    color: #A5A7A7;
+    color: rgb(167, 165, 165);
     width: 60%;
     padding: 5px 5px;
     display: flex;
@@ -127,7 +127,8 @@ form input::placeholder {
     height: 45px;
     margin-top: 20px;
     font-weight: 600;
-    color: #B70811;
+    color: #ffffff;
+    background-color: #B70811;
     font-size: 20px;
     border-radius: 10px;
     cursor: pointer;
@@ -135,9 +136,9 @@ form input::placeholder {
 }
 
 .login:hover {
-    background-color: #B70811;
+    background-color: #890209;
     border: none;
-    color: white;
+    color: rgb(255, 255, 255);
     transition: 1s;
 }
 
@@ -148,7 +149,7 @@ form input::placeholder {
 }
 
 .Contra_regis a {
-    color: rgb(126, 4, 4);
+    color: #B70811;
     text-decoration: none;
     font-size: 15px;
     margin: 50px;
@@ -177,3 +178,10 @@ form input::placeholder {
     cursor: pointer;
     border: 1px solid #B70811;
 }   
+
+.buttons:hover {
+    background-color: #890209;
+    border: none;
+    color: rgb(255, 255, 255);
+    transition: 1s;
+}
