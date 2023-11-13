@@ -1,14 +1,14 @@
 from config.db import app, db, ma
 
 
-class Grupo(db.Model):
-    __tablename__= "Grupo"
+class Grupos(db.Model):
+    __tablename__= "Grupos"
     
-    Id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(100), unique= True)
     
-    def __init__(self, name):
-        self.nombre = name
+    def __init__(self, nombre):
+        self.nombre = nombre
         
 with app.app_context():
     db.create_all()
@@ -16,4 +16,4 @@ with app.app_context():
 
 class GrupoSchema(ma.Schema):
     class Meta:
-        fields = ('Id','nombre')
+        fields = ('id','nombre')

@@ -1,45 +1,45 @@
 from flask import Blueprint, jsonify, request
 from config.db import db
-from models.Grupo import Grupo, GrupoSchema
+from models.Grupo import Grupos, GrupoSchema
 
-ruta_Grupo = Blueprint("ruta_Grupo",__name__)
+ruta_grupos = Blueprint("ruta_grupos",__name__)
 
-Grupo_Schema = GrupoSchema()
-Grupos_Schema = GrupoSchema(many=True)
+grupo_Schema = GrupoSchema()
+grupos_Schema = GrupoSchema(many=True)
 
-@ruta_Grupo.route("/Grupos", methods=["GET"])
+@ruta_grupos.route("/grupos", methods=["GET"])
 def grupos():
-    resultall = Grupo.query.all()
-    result = Grupos_Schema.dump(resultall)
+    resultall = Grupos.query.all()
+    result = grupos_Schema.dump(resultall)
     return jsonify(result)
 
-@ruta_Grupo.route("/saveGrupo", methods = ["POST"])
+@ruta_grupos.route("/saveGrupo", methods = ["POST"])
 def saveGrupo():
     
     name = request.json['name']
     
-    group = db.session.query(Grupo.Id).filter(Grupo.nombre == name).all()
-    result = Grupos_Schema.dump(group)
+    group = db.session.query(Grupos.Id).filter(Grupos.nombre == name).all()
+    result = grupos_Schema.dump(group)
 
     if len(result)==0:
-        new_group = Grupo(name)
+        new_group = Grupos(name)
         db.session.add(new_group)
         db.session.commit()
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401
 
-@ruta_Grupo.route("/updateGrupo", methods = ["PUT"])
+@ruta_grupos.route("/updateGrupo", methods = ["PUT"])
 def updateGrupo():
     Id = request.json['Id']
-    ngroup = Grupo.query.get(Id)
+    ngroup = Grupos.query.get(Id)
     ngroup.nombre = request.json['name']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_Grupo.route("/deleteTipodeActividad/<Id>", methods = ["DELETE"])
+@ruta_grupos.route("/deleteGrupo/<Id>", methods = ["DELETE"])
 def deleteTipodeActividad(Id):
-    group = Grupo.query.get(Id)
+    group = Grupos.query.get(Id)
     db.session.delete(group)
     db.session.commit()
-    return jsonify(Grupo_Schema.dump(group))
+    return jsonify(grupo_Schema.dump(group))

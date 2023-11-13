@@ -9,7 +9,7 @@ from api.Item import ruta_Item
 #importar planT_Item
 from api.Area import ruta_area
 from api.Asignatura import ruta_asig
-from api.Grupo import ruta_Grupo
+from api.Grupo import ruta_grupos
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
 app.register_blueprint(ruta_user, url_prefix="/api")
@@ -19,7 +19,7 @@ app.register_blueprint(ruta_Item, url_prefix="/api")
 #aqui va PlanT_Item
 app.register_blueprint(ruta_area, url_prefix="/api")
 app.register_blueprint(ruta_asig, url_prefix="/api")
-app.register_blueprint(ruta_Grupo, url_prefix="/api")
+app.register_blueprint(ruta_grupos, url_prefix="/api")
 
 @app.route('/')
 def index():
