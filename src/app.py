@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for #para impor
 from config.db import app, db
 
 from api.Jornada import ruta_jornada
+from api.Rol import ruta_rol
 from api.Usuario import ruta_user
 from api.Plan_de_Trabajo import ruta_plant
 from api.Tipo_de_Actividad import ruta_TipoA
@@ -13,6 +14,7 @@ from api.Grupo import ruta_grupos
 from api.Asig_Usu import ruta_Asig_Usu
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
+app.register_blueprint(ruta_rol, url_prefix="/api")
 app.register_blueprint(ruta_user, url_prefix="/api")
 app.register_blueprint(ruta_plant, url_prefix="/api")
 app.register_blueprint(ruta_TipoA, url_prefix="/api")

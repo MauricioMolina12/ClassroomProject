@@ -3,22 +3,21 @@ from config.db import app, db, ma
 class Usuario(db.Model):
     __tablename__ = "Usuarios"
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True, autoincrement=False)
     nombre = usuario = db.Column(db.String(100))
     usuario = db.Column(db.String(100), unique= True)
     contrasena = db.Column(db.String(100))
-    rol = db.Column(db.String(100))
-    formacion_masAlta = db.Column(db.String(100))
-    otras_formaciones = db.Column(db.String(500))
+    rol = db.Column(db.Integer, db.ForeignKey('Roles.id'))
+    nivel_formacion = db.Column(db.String(100))
     jornada = db.Column(db.Integer, db.ForeignKey('Jornadas.id'))
 
-    def __init__(self, name, user, password, rol, form=None, other_form=None, jor=None):
+    def __init__(self, id,  name, user, password, rol, form=None, jor=None):
+        self.id = id
         self.nombre = name
         self.usuario = user
         self.contrasena = password
         self.rol = rol
-        self.formacion_masAlta = form
-        self.otras_formaciones = other_form
+        self.nivel_formacion = form
         self.jornada = jor
 
 with app.app_context():
@@ -27,4 +26,4 @@ with app.app_context():
 
 class UsuarioSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'nombre', 'usuario', 'contrasena', 'rol', 'formacion_masAlta', 'otras_formaciones', 'jornada')
+        fields = ('id', 'nombre', 'usuario', 'contrasena', 'rol', 'nivel_formacion','jornada')

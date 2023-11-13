@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request,json, redirect, url_for, session
 from config.db import db, app, ma
 from models.Plan_de_Trabajo import Plan_de_Trabajo, PlanTrabajoSchema
 from api.Usuario import Usuario, users_schema
+from api.Rol import Rol, roles_schema
 
 ruta_plant = Blueprint("ruta_plant",__name__)
 
@@ -21,7 +22,12 @@ def savePlanTrabajo():
     semester = request.json['semester']
     teacher = request.json['teacher']
 
-    user = db.session.query(Usuario.id).filter(Usuario.nombre == teacher, Usuario.rol == "Docente").all()
+    rol = db.session.query(Rol.id).filter(Rol.nombre == "Administrador").all()
+    rol_result = roles_schema.dump(rol)
+    plantr = rol_result[0]
+    id_rol = plantr['id']
+
+    user = db.session.query(Usuario.id).filter(Usuario.nombre == teacher, Usuario.rol != id_rol).all()
     result = users_schema.dump(user)
 
     if len(result) > 0:
