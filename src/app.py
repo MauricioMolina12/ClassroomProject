@@ -1,13 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for #para importar la clase
 from config.db import app, db
 
-from api.Asignatura import ruta_asig
 from api.Area import ruta_area
 from api.Asignatura import ruta_asig
+from api.Tipo_de_Actividad import ruta_TipoA
+from api.Item import ruta_Item
+from api.Plan_de_Trabajo import ruta_PlanT
+from api.Jornada import ruta_jornada
+from api.Usuario import ruta_user
+from api.Grupo import ruta_Grupo
 
-
-app.register_blueprint(ruta_asig, url_prefix="/api")
+app.register_blueprint(ruta_jornada, url_prefix="/api")
+app.register_blueprint(ruta_user, url_prefix="/api")
+app.register_blueprint(ruta_PlanT, url_prefix="/api")
+app.register_blueprint(ruta_TipoA, url_prefix="/api")
+app.register_blueprint(ruta_Item, url_prefix="/api")
+#aqui va PlanT_Item
 app.register_blueprint(ruta_area, url_prefix="/api")
+app.register_blueprint(ruta_asig, url_prefix="/api")
+app.register_blueprint(ruta_Grupo, url_prefix="/api")
 
 @app.route('/')
 def index():

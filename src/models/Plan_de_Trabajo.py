@@ -8,11 +8,13 @@ class Plan_de_Trabajo(db.Model):
     semestre = db.Column(db.String(100))
     horas_totales = db.Column(db.Integer)
     año = db.Column(db.Integer)
+    docente = db.Column(db.Integer, db.ForeignKey('Usuario.id'))
     
-    def __init__(self, semester, Total_hours, year):
+    def __init__(self, semester, Total_hours, year, teacher):
         self.semestre = semester
         self.horas_totales = Total_hours
         self.año = year
+        self.docente = teacher
         
         
 with app.app_context():
@@ -21,4 +23,4 @@ with app.app_context():
 
 class PlanTrabajoSchema(ma.Schema):
     class Meta:
-        fields = ('Id','semestre', 'horas_totales','año')
+        fields = ('Id','semestre', 'horas_totales','año', 'docente')
