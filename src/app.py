@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for #para importar la clase
 from config.db import app, db
 
-from api.Area import ruta_area
-from api.Asignatura import ruta_asig
-from api.Tipo_de_Actividad import ruta_TipoA
-from api.Item import ruta_Item
-from api.Plan_de_Trabajo import ruta_PlanT
 from api.Jornada import ruta_jornada
 from api.Usuario import ruta_user
+from api.Plan_de_Trabajo import ruta_PlanT
+from api.Tipo_de_Actividad import ruta_TipoA
+from api.Item import ruta_Item
+#importar planT_Item
+from api.Area import ruta_area
+from api.Asignatura import ruta_asig
 from api.Grupo import ruta_Grupo
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
