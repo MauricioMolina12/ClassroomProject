@@ -16,13 +16,13 @@ def grupos():
 @ruta_grupos.route("/saveGrupo", methods = ["POST"])
 def saveGrupo():
     
-    name = request.json['name']
+    nombre = request.json['nombre']
     
-    group = db.session.query(Grupos.Id).filter(Grupos.nombre == name).all()
+    group = db.session.query(Grupos.id).filter(Grupos.nombre == nombre).all()
     result = grupos_Schema.dump(group)
 
     if len(result)==0:
-        new_group = Grupos(name)
+        new_group = Grupos(nombre)
         db.session.add(new_group)
         db.session.commit()
         return jsonify({'mensaje': 'Registro exitoso'}) 
@@ -31,15 +31,15 @@ def saveGrupo():
 
 @ruta_grupos.route("/updateGrupo", methods = ["PUT"])
 def updateGrupo():
-    Id = request.json['Id']
-    ngroup = Grupos.query.get(Id)
-    ngroup.nombre = request.json['name']
+    id = request.json['id']
+    ngroup = Grupos.query.get(id)
+    ngroup.nombre = request.json['nombre']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_grupos.route("/deleteGrupo/<Id>", methods = ["DELETE"])
-def deleteTipodeActividad(Id):
-    group = Grupos.query.get(Id)
+@ruta_grupos.route("/deleteGrupo/<id>", methods = ["DELETE"])
+def deleteTipodeActividad(id):
+    group = Grupos.query.get(id)
     db.session.delete(group)
     db.session.commit()
     return jsonify(grupo_Schema.dump(group))
