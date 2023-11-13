@@ -143,7 +143,7 @@ form input::placeholder {
 }
 
 .Contra_regis{
-    display: flex;
+    margin-left: -90px;
     text-align: center;
     padding-top:30px;
 }
