@@ -1,38 +1,80 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unilibre</title>
-    <link href="../static/multimedia/logoo.png" rel="icon" />  
-    <link href="../static/Styles/docentes.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-   <header class="header">
-           <img src="../static/multimedia/logo.png">
-           <nav>
-            <ul>
-                <li><a class="link" href="/" class="link">Inicio</a></li>
-                <li><a class="link" href="/docentes" class="link">Docentes</a></li>
-                <li><a class="link" href="#" class="link">Historial</a></li>
-                <div>|</div>
-                <li id="out"><a>Salir</a></li>
-            </ul>
-           </nav>
-   </header>
-   <main>
-       <div class="items">
+{% extends './layout.html'%}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body%}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/docentes.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main>
+    <section class="items">
+        <div class="filtro">
+            <span>Filtrar como</span>
+            <div class="container-filter">
+                <i class="fa-solid fa-filter"></i>
+                <span>A-Z</span>
+                <input type="radio" name="filter">
+                <span>Z-A</span>
+                <input type="radio" name="filter">
+            </div>
+        </div>
+        <div class="search">
+            <div class="container-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Ingresa el nombre del docente" class="style-input">
+            </div>
+        </div>
+        <div class="docentes">
+            <div class="view-docentes">
+                <span>William Insignares</span>
+                <span>1043523421</span>
+            </div>
+            <div class="view-docentes">
+                <span>William Insignares</span>
+                <span>1043523421</span>
+            </div>
+            <div class="view-docentes">
+                <span>William Insignares</span>
+                <span>1043523421</span>
+            </div>
+            <div class="view-docentes">
+                <span>William Insignares</span>
+                <span>1043523421</span>
+            </div>
+            
+            
+        </div>
 
-       </div>
-       <div class="items">
-        <a class="btn">Hola</a>
-        <a class="btn">Hola</a>
-        <a class="btn">Hola</a>
-        <a class="btn">Hola</a>
-       </div>
-   </main>
-</body>
-</html>
+        <div class="btns">
+            <button>
+                <div class="btn">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  <span>Editar docente</span>
+               </div>
+            </button>
+            <button>
+              <div class="btn">
+                 <i class="fa-regular fa-eye"></i>
+                 <span>Ver docentes</span>
+              </div>
+            </button>
+            <button>
+                <div class="btn">
+                   <i class="fa-solid fa-users-between-lines"></i>
+                   <span>Agregar docentes</span>
+                </div>
+            </button>
+            <button>
+                <div class="btn">
+                  <i class="fa-solid fa-book-bookmark"></i>
+                  <span>Agregar asignatura</span>
+                </div>
+            </button>
+        </div>
+
+
+    </section>
+</main>
+{% endblock%}
