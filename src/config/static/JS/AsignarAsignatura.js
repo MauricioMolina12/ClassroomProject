@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     btnPlus.addEventListener('click', function() {
         event.preventDefault();
         Swal.fire({
-            title: 'Agregar nueva grupo',
+            title: 'Agregar nuevo grupo',
             input: 'text',
             showCancelButton: true,
             confirmButtonText: 'Agregar',

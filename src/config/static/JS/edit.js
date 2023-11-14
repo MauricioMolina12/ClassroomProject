@@ -9,7 +9,12 @@ function editarValor(elementId, valorCambiar) {
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById(valorCambiar).innerText = result.value;
-            Swal.fire('¡Edición exitosa!', '', 'success');
+            Swal.fire({
+                title: 'Éxito',
+                icon: "success",
+                text: `${elementId} actualizado correctamente`,
+                timer: 10000
+            });
         }
     });
 }
