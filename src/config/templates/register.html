@@ -1,43 +1,53 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link href="../static/Styles/register.css" rel="stylesheet" />
-</head>
+{% extends './layout.html' %}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/register.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main>
+    <section class="container-input">
+        <form action="">
+            <h1>Registrar nuevo usuario</h1>
+            <div class="items">
+                <label class="style-label" for="rol">Rol</label>
+                <select id="rol" name="rol">
+                </select>
+                <button id="btn-plus-rol"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="items">
+                <label class="style-label" for="jornada">Jornada</label>
+                <select id="jornada" name="jornada">
+                </select>
+                <button id="btn-plus-jornada"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="items">
+                <label class="style-label" for="id">Identificación</label>
+                <input type="number" id="id" class="style-input" name="id">
+            </div>
+            <div class="items">
+                <label class="style-label" for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="style-input" name="name">
+            </div>
+            <div class="items">
+                <label class="style-label" for="user">Usuario</label>
+                <input type="text" id="user" class="style-input" name="user">
+            </div>
+            <div class="items">
+                <label class="style-label" for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" class="style-input" name="contrasena">
+            </div>
+            <div class="items">
+                <button >Registrar usuario</button>
+            </div>
+            
+        </form>
+    </section>
+</main>
+{% endblock%}
 
-<body>
-    <div class="top-left"></div>
-    <div class="chart-log">
-        <div>
-            <img src="../static/multimedia/logo.png">
-        </div>
-        <div>
-            <h2>Registrarse</h2>
-            <form action="">
-                <div class="input-container">
-                    <input type="Email" placeholder="Email" id="Email" />
-                </div>
-                <div class="input-container">
-                    <input type="text" placeholder="Usuario" id="Usuario">
-                </div>
-                <div class="input-container">
-                    <input type="password" placeholder="Contraseña" id="Password"/>
-                </div>
-                <button class="register">Registrarse</button>
-                <div class="account">
-                    <div></div>
-                    <p>Tienes una cuenta?</p>
-                    <div></div>
-                </div>
-                <div id="iniciar-sesion">
-                    <button class="login">Iniciar Sesión</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="right-bottom"></div>
-</body>
-</html>
+
 

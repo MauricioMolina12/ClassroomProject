@@ -131,6 +131,14 @@ section:first-of-type {
     align-items: center;
 }
 
+.docente-container{
+    border: 1px solid black;
+    min-height: 60%;
+    max-height: 60%;
+    width: 60%;
+    margin: 10px;
+}
+
 section:first-of-type h1 {
     height: 100%;
     display: flex;
@@ -171,6 +179,7 @@ section:last-of-type {
     justify-content: space-around;
     align-items: center;
     border: 1px solid black;
+    padding: 10px;
 }
 
 section:last-of-type .container-50 {
@@ -202,13 +211,54 @@ section:last-of-type .container-50 {
     background-color: #B70811;
 }
 
+.info-dc h3,span{
+    width: 40.3%;
+}
+
+.info-dc span input{
+    border: none;
+    font-family: 'Montserrat';
+    color: #B70811;
+    font-size: 25px;
+    width: fit-content;
+    text-align: center;
+}
+
+.info-dc button{
+    background-color: #B70811;
+    color: white;
+    width: fit-content;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.title{
+    position: relative;
+}
+
+.title a{
+    position: absolute;
+    right: 10px;
+}
+
+.first-container .info-dc:first-of-type span{
+    font-weight: 600;
+}
+
 h3,
 h4 {
     font-weight: 700;
     color: #B70811;
 }
 
+.first-container h3{
+    font-size: 1.7vw;
+}
+
 span {
+    font-size: 1.4vw;
     color: #890209;
 }
 

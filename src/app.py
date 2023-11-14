@@ -57,5 +57,13 @@ def asignaturas():
 def choose():
     return render_template('choose.html')
 
+@app.route('/asignacion')
+def asignacion():
+    return render_template('asignarAsignatura.html')
+
+@app.route('/PlanDeTrabajo')
+def plan():
+    return render_template('plandeTrabajo.html')
+
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)#el debug es para que cuando se haga un cambio no toque dejar de correr y volver a correr el programa para poder ver el cambio

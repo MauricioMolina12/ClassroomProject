@@ -1,0 +1,42 @@
+{% extends './layout.html'%}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body%}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/asignacion.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main>
+    <section class="container-input">
+        <h1>Asignar asignaturas</h1>
+        <form action="">
+            <div class="items">
+                <label class="style-label" for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="style-input" disabled name="name-doc">
+            </div>
+            <div class="items">
+                <label class="style-label" for="asignatura">Asignaturas</label>
+                <select id="asignatura">
+                </select>
+                <a href="/asignaturas" id="btn-plus-asignaturas"><i class="fa-solid fa-diamond-turn-right"></i></a>
+            </div>
+            <div class="items">
+                <label class="style-label" for="grupo">Grupo</label>
+                <select id="grupo" name="grupo-doc">
+                </select>
+                <a id="btn-plus"><i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="items">
+                <label class="style-label" for="semestre">Semestre</label>
+                <input type="number" step="1" id="semestre" class="style-input" name="semestre-doc">
+            </div>
+            <div class="items">
+                <button >Crear usuario</button>
+            </div>
+            
+        </form>
+    </section>
+</main>
+{% endblock%}
