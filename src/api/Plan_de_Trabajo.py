@@ -10,7 +10,7 @@ plant_schema = PlanTrabajoSchema()
 plants_schema = PlanTrabajoSchema(many=True)
 
 @ruta_plant.route("/Plan_de_Trabajo", methods=["GET"])
-def Plan_de_Trabajoas():
+def Plan_de_Trabajos():
     resultall =  Plan_de_Trabajo.query.all()
     result = plants_schema.dump(resultall)
     return jsonify(result)

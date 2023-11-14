@@ -4,13 +4,13 @@ from models.Tipo_de_Actividad import Tipo_de_Actividad, TipodeActividadSchema
 
 ruta_TipoA = Blueprint("ruta_Tipo_de_Actividad",__name__)
 
-TipodeA_Schema = TipodeActividadSchema()
-TipodeAs_Schema = TipodeActividadSchema(many=True)
+tipodea_schema = TipodeActividadSchema()
+tipodeas_Schema = TipodeActividadSchema(many=True)
 
 @ruta_TipoA.route("/Tipo_de_Actividades", methods=["GET"])
 def tipo_de_actividades():
     resultall = Tipo_de_Actividad.query.all()
-    result = TipodeAs_Schema.dump(resultall)
+    result = tipodeas_Schema.dump(resultall)
     return jsonify(result)
 
 @ruta_TipoA.route("/saveTipodeActividad", methods = ["POST"])
@@ -18,8 +18,8 @@ def saveTipodeActividad():
     
     name = request.json['name']
     
-    activi = db.session.query(Tipo_de_Actividad.Id).filter(Tipo_de_Actividad.nombre == name).all()
-    result = TipodeAs_Schema.dump(activi)
+    activi = db.session.query(Tipo_de_Actividad.id).filter(Tipo_de_Actividad.nombre == name).all()
+    result = tipodeas_Schema.dump(activi)
 
     if len(result)==0:
         new_activi = Tipo_de_Actividad(name)
@@ -31,15 +31,15 @@ def saveTipodeActividad():
 
 @ruta_TipoA.route("/updateTipodeActividad", methods = ["PUT"])
 def updateTipodeActividad():
-    Id = request.json['Id']
-    nactivi = Tipo_de_Actividad.query.get(Id)
+    id = request.json['id']
+    nactivi = Tipo_de_Actividad.query.get(id)
     nactivi.nombre = request.json['name']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_TipoA.route("/deleteTipodeActividad/<Id>", methods = ["GET"])
-def deleteTipodeActividad(Id):
-    activi = Tipo_de_Actividad.query.get(Id)
+@ruta_TipoA.route("/deleteTipodeActividad/<id>", methods = ["GET"])
+def deleteTipodeActividad(id):
+    activi = Tipo_de_Actividad.query.get(id)
     db.session.delete(activi)
     db.session.commit()
-    return jsonify(TipodeA_Schema.dump(activi))
+    return jsonify(tipodea_schema.dump(activi))

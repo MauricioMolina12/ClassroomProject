@@ -4,7 +4,7 @@ from config.db import app, db, ma
 class Tipo_de_Actividad(db.Model):
     __tablename__= "Tipos_de_Actividades"
     
-    Id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(100), unique= True)
     
     def __init__(self, name):
@@ -16,4 +16,4 @@ with app.app_context():
 
 class TipodeActividadSchema(ma.Schema):
     class Meta:
-        fields = ('Id','nombre')
+        fields = ('id','nombre')
