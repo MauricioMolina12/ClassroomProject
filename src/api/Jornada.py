@@ -11,7 +11,8 @@ jornadas_schema = JornadaSchema(many=True)
 def jornadas():
     resultall =  Jornada.query.all()
     result = jornadas_schema.dump(resultall)
-    return jsonify(result)
+    session['jornadas'] = result
+    return redirect(url_for("register"))
 
 @ruta_jornada.route("/savejornada", methods=["POST"])
 def savejornada():
@@ -23,6 +24,9 @@ def savejornada():
         new_jorn = Jornada(name)
         db.session.add(new_jorn)
         db.session.commit()
+        resultall =  Jornada.query.all()
+        result = jornadas_schema.dump(resultall)
+        session['jornadas'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401 

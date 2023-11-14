@@ -10,8 +10,9 @@ roles_schema = RolSchema(many=True)
 @ruta_rol.route("/roles", methods=["GET"])
 def roles():
     resultall = Rol.query.all()
-    result = roles_schema.dump(resultall)
-    return jsonify(result)
+    result = roles_schema.dump(resultall)    
+    session['roles'] = result
+    return redirect(url_for("ruta_jornada.jornadas"))
 
 @ruta_rol.route("/saverol", methods=["POST"])
 def saverol():
@@ -23,6 +24,9 @@ def saverol():
         new_rol = Rol(name)
         db.session.add(new_rol)
         db.session.commit()
+        resultall = Rol.query.all()
+        result = roles_schema.dump(resultall)    
+        session['roles'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401 

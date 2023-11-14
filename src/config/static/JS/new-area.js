@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 var nuevoValor = result.value;
                 var option = document.createElement('option');
                 option.text = nuevoValor;
+                option.value = nuevoValor
                 dropdown.add(option, dropdown.options[0]);
                 option.selected = true;
-
             }
         });
     });

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for #para importar la clase
+from flask import Flask, render_template, request, redirect, url_for, session #para importar la clase
 from config.db import app, db
 
 from api.Jornada import ruta_jornada
@@ -35,7 +35,11 @@ def log_in():
     
 @app.route('/sign_up')
 def register():
-    return render_template('register.html')
+
+    if "roles" in session or "jornadas" in session:
+        return render_template('register.html', rols= session['roles'], jornads= session['jornadas'])
+    else:
+        return redirect(url_for("ruta_rol.roles"))
 
 @app.route('/info_docentes')
 def info():

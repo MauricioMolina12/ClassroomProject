@@ -17,6 +17,7 @@ def users():
 
 @ruta_user.route("/saveuser", methods=["POST"])
 def saveuser():
+    print("llego")
     id = request.json['id']
     name = request.json['name']
     user = request.json['user']
@@ -33,8 +34,7 @@ def saveuser():
         rol_result = roles_schema.dump(ro)        
 
         if len(rol_result) > 0:
-            plantr = rol_result[0]
-            id_rol = plantr['id']
+            id_rol = rol_result[0]['id']
 
             if rol == "Administrador":
                 new_subject = Usuario(id, name, user, password, id_rol)
@@ -45,12 +45,11 @@ def saveuser():
                 form = request.json['level_form']
                 jor = request.json['jor']
 
-                result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == jor.title()).all()
+                result = db.session.query(Jornada.id).filter(Jornada.nombre == jor.title()).all()
                 jorn = jornadas_schema.dump(result)
 
                 if len(jorn) > 0:
-                    ex_area = jorn[0]
-                    jor = ex_area['id']
+                    jor = jorn[0]['id']
                     new_subject = Usuario(id, name, user, password, id_rol, form, jor)
                     db.session.add(new_subject)
                     db.session.commit()
