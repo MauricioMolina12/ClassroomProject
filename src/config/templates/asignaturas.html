@@ -5,39 +5,37 @@
 {% endblock%}
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/asignaturas.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main>
     <section class="container-input">
+        <h1>Crear asignaturas</h1>
         <form action="">
-            <div class="container-inputs">
-                <div><label class="style-label" for="area">Área</label></div>
-                <div><input type="text" class="style-input" id="area"></div>
+            <div class="items">
+                <label class="style-label" for="area">Área</label>
+                <select id="dropdown" name="area">
+                </select>
+                <button id="btn-plus"><i class="fa-solid fa-plus"></i></button>
             </div>
-            <div class="container-inputs">
-                <div><label class="style-label" for="area">Asignatura</label></div>
-                <div>
-                    <select id="area">
-                        <option>Lenguaje de programación</option>
-                        <option>Redes de computadores</option>
-                        <option>Redes de computadores</option>
-                        <option>Redes de computadores</option>
-                    </select>
-                </div>
+            <div class="items">
+                <label class="style-label" for="codigo">Código</label>
+                <input type="number" id="codigo" class="style-input" name="codigo">
             </div>
-            <div class="container-inputs">
-                <div><label class="style-label" for="grupo">Grupo</label></div>
-                <div><input type="text" class="style-input" id="grupo"></div>
+            <div class="items">
+                <label class="style-label" for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="style-input" name="name">
             </div>
-            <div class="container-inputs">
-                <div><label class="style-label" for="semestre">Semestre</label></div>
-                <div><input type="number" class="style-input" id="semestre"></div>
+            <div class="items">
+                <label class="style-label" for="hrs">Horas</label>
+                <input type="number" step="1" id="hrs" class="style-input" name="horas">
             </div>
-            <div class="container-inputs">
-                <div><label class="style-label" for="jornada">Jornada</label></div>
-                <div><input type="text" class="style-input" id="jornada"></div>
+            <div class="items">
+                <label class="style-label" for="credito">Créditos</label>
+                <input type="number" step="1" id="credito" class="style-input" name="creditos">
             </div>
-            <div class="container-inputs">
-                <div><label class="style-label" for="hrs">Horas</label></div>
-                <div><input type="number" class="style-input" id="hrs"></div>
+            <div class="items">
+                <button >Crear asignatura</button>
             </div>
             
         </form>

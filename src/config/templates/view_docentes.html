@@ -5,76 +5,73 @@
 {% endblock%}
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/view_docentes.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main>
     <section class="title">
-        <h1>Adalberto Alvarez</h1>
+        <h1>Información docente</h1>
         <a href="/docentes" class="back">Regresar</a>
     </section>
     <section>
         <div class="container-50 first-container">
             <div class="info-dc">
+                <h3 id="nombre">Nombre</h3>
+                <span id="valorn">Adalberto Alvarez</span>
+                <button onclick="editarValor('nombre', 'valorn')"><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+            <div class="info-dc">
                 <h3>Identificación</h3>
                 <span>1043584533</span>
             </div>
             <div class="info-dc">
-                <h3>Cargo</h3>
-                <span>Jornada completa</span>
+                <h3 id="jornada">Jornada</h3>
+                <span id="valorj">Tiempo completo</span>
+                <button onclick="editarValor('jornada', 'valorj')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
-                <h3>Titulos</h3>
-                <span><a href="" id="titles">Ver titulos</a></span>
+                <h3 id="formacion">Formación</h3>
+                <span id="valorf">Maestría</span>
+                <button onclick="editarValor('formacion', 'valorf')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
-                <h3>Titulo más alto</h3>
-                <span>Maestría</span>
+                <h3 id="rol">Rol</h3>
+                <span id="valord">Docente</span>
+                <button onclick="editarValor('rol','valord')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
-                <h3>Universidad</h3>
-                <span>Simón Bolivar</span>
+                <h3 id="usuario">Usuario</h3>
+                <span id="valoru">AdalbertoA12</span>
+                <button onclick="editarValor('usuario','valoru')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
-                <h3>Ciudad</h3>
-                <span>Barranquilla, Átlantico.</span>
-            </div>
-            <div class="info-dc">
-                <h3>Fecha de expedición</h3>
-                <span>10/12/2000</span>
+                <h3 id="contrasena">Contraseña</h3>
+                <span id="valorc"><input disabled type="password" value="12345678"></span>
+                <button onclick="editarValor('contrasena','valorc')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
         </div>
         <div class="container-50 second">
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
+                
             </div>
         
-            <!-- Container 2 -->
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
             </div>
 
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
             </div>
 
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
             </div>
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
             </div>
             <div class="docente-container">
-                <h3>Área</h3>
-                <span>Ingeniería</span>
-                <!-- Agrega otros datos aquí -->
+
             </div>
             
         </div>
