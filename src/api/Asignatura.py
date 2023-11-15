@@ -16,15 +16,16 @@ def asignaturas():
 
 @ruta_asig.route("/saveasignatura", methods=["POST"])
 def saveasignatura():
+    id = request.json['code']
     name = request.json['name'].title()
     hours = request.json['hours']
     credits = request.json['credits']
     area = request.json['area']
 
-    subject = db.session.query(Asignatura.codigo).filter(Asignatura.nombre == name).all()
+    subject = db.session.query(Asignatura.codigo).filter(Asignatura.nombre == name, Asignatura.codigo == id).all()
     result = asigs_schema.dump(subject)
 
-    if len(result)== 0:
+    if len(result) == 0:
 
         result = db.session.query(Area.codigo, Area.nombre).filter(Area.nombre == area.title()).all()
         area = areas_schema.dump(result)
@@ -32,7 +33,7 @@ def saveasignatura():
         if len(area) > 0:
             ex_area = area[0]
             id_area = ex_area['codigo']
-            new_subject = Asignatura(name, hours, credits, id_area)
+            new_subject = Asignatura(id, name, hours, credits, id_area)
             db.session.add(new_subject)
             db.session.commit()
             return jsonify({'mensaje': 'Registro exitoso'})
@@ -40,7 +41,7 @@ def saveasignatura():
             return jsonify({'error': 'Opss... nombre de area no encontrado'}), 401 
          
     else:
-        return jsonify({'error': 'Opss... nombre en uso'}), 401 
+        return jsonify({'error': 'Opss... nombre o codigo en uso'}), 401 
         
 
 @ruta_asig.route("/updateasignatura", methods=["PUT"])

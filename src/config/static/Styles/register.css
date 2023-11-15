@@ -5,154 +5,299 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: width 0.3s ease;
+    font-family: 'Montserrat';
 }
 
 body {
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.top-left {
-    background: linear-gradient(#B70811, #890209);
-    width: 30rem;
-    height: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-bottom-right-radius: 50%;
-}
-
-.right-bottom {
-    background: linear-gradient(#B70811, #890209);
-    width: 20rem;
-    height: 40%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    border-top-left-radius: 50%;
-}
-
-.chart-log {
-    width: 85%;
-    height: 80vh;
-    background-color: white;
-    box-shadow: 22px 15px 15px rgb(38, 38, 38);
-    z-index: 1;
-    border-radius: 20px;
-    border: none;
+header {
+    width: 100%;
+    height: 20vh;
     display: flex;
+    align-items: center;
+    padding: 0 30px;
+    justify-content: space-between;
+    position: relative;
 }
 
-.chart-log>div {
+header img {
+    position: relative;
+    left: 20px;
+}
+
+nav {
     width: 50%;
+    height: 70%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: linear-gradient(#B70811, #890209);
+    position: absolute;
+    right: 0;
+    box-shadow: 10px 15px 10px rgb(38, 38, 38);
 }
 
-.chart-log>div:first-child {
+nav ul li a:focus:not(#out),
+nav ul li a:active:not(#out) {
+    background-color: white;
+    padding: 6px 10px;
+    border-radius: 10px;
+    color: #B70811;
+}
+
+nav ul {
+    width: 100%;
+    list-style: none;
     display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    color: white;
+    font-size: 17px;
+    font-family: 'Montserrat';
+    font-weight: 500;
+}
+
+nav li .link {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    position: relative;
+}
+
+nav ul li .link::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+nav ul li .link:hover::before {
+    width: 100%;
+}
+
+nav ul li:last-of-type a {
+    color: #B70811;
+    cursor: pointer;
+}
+
+nav ul div {
+    color: white;
+    font-size: 20px;
+}
+
+
+
+nav ul li:last-child {
+    background-color: white;
+    color: #B70811;
+    padding: 0 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.chart-log>div:first-child img {
-    width: 25rem;
+
+.header img {
+    width: 320px;
+    height: 90px;
 }
 
-.chart-log>div:last-child {
+.input {
+    width: 100%;
+}
+
+.container-input {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-input form {
+    margin: 0 auto;
+    height: 90%;
+    max-width: 80%;
+    min-width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: start;
-    gap: 20px;
+    align-items: center;
+    background-color: white;
+    height: 68vh;
+    z-index: 1;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: .6rem .6rem 1rem rgb(62, 62, 62);
 }
 
-.chart-log>div:last-child h2 {
-    font-size: 28px;
+
+
+.container-input form .items {
+    display: flex;
+    width: 50%;
+    height: 20%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-input form .items>* {
+    width: 50%;
+}
+
+h1{
+    position: relative;
+    bottom: 40px;
+    color: #B70811;
+}
+
+
+
+form .items:first-of-type select, .items:nth-of-type(2) select {
+    width: 44%;
+    background-color: #B70811;
+    color: white;
+    border-radius: 4px;
+    height: 50%;
+    margin-left: 10px;
+}
+
+.items:last-of-type button {
+    color: white;
+    padding: 5px;
+    width: 40%;
+    height: 60%;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #B70811;
+    border: none;
+    outline: none;
+}
+
+button{
+    cursor: pointer;
+}
+
+form .items:first-of-type button, .items:nth-of-type(2) button {
+    width: 7%;
+    background-color: rgb(151, 183, 8);
+    color: white;
+    border-radius: 4px;
+    height: 40%;
+    margin-left: 5px;
+    border: none;
+}
+
+form .items input {
+    border-radius: 4px;
+    height: 50%;
+    width: 90%;
+    margin-left: 5px;
+}
+
+
+.style-input {
+    border-radius: 2px;
+    background-color: #D9D9D9;
+    color: #B70811;
+    border: none;
+    height: 20px;
+    font-weight: 600;
+    padding: 0 4px;
+    font-family: 'Montserrat';
+    width: 30%;
+}
+
+
+
+.style-label {
     font-family: 'Montserrat';
     color: #B70811;
-    top: 10px;
-    position: relative;
-
-}
-
-form {
-    width: 100%;
-    height: 80%;
-}
-
-form input {
-    background-color: #D9D9D9;
-    width: 85%;
-    height: 45px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 0 10px;
-}
-
-
-form input::placeholder {
-    font-family: 'Montserrat';
-    color: #A5A7A7;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-
-.register {
-    width: 85%;
-    height: 45px;
-    border-radius: 5px;
-    border: none;
-    background-color: #B70811;
-    cursor: pointer;
-    color: white;
-    font-family: 'Montserrat';
-    font-size: 18px;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-.account {
-    margin-top: 18px;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
     display: flex;
-    width: 85%;
     align-items: center;
 }
 
-.account p {
-    font-size: 16px;
-    font-family: 'Montserrat';
-    color: #A5A7A7;
-    width: 60%;
-    padding: 0 5px;
-    display: flex;
-    justify-content: center;
-}
-
-.account div {
-    height: 2px;
-    background-color: #A5A7A7;
-    width: 40%;
-}
-
-.login {
-    width: 85%;
-    height: 45px;
-    margin-top: 20px;
-    font-family: 'Montserrat';
-    font-weight: 600;
-    color: #B70811;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid #B70811;
-}
-
-.login:hover {
+.swal-confirm-btn {
     background-color: #B70811;
-    border: none;
-    color: white;
-    transition: 1s;
+    color: #fff;
+}
+
+.swal-cancel-btn {
+    border: 2px solid #B70811;
+    background-color: #fff;
+    color: #B70811;
+}
+
+@media only screen and (max-width: 768px) {
+    nav ul li {
+        font-size: 12px;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .header img {
+        width: 230px;
+        height: 60px;
+    }
+
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+
+    nav ul li {
+        font-size: 13px;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    .header img {
+        width: 175px;
+        height: 50px;
+    }
+
+    nav ul li {
+        font-size: 10px;
+        padding-left: 10px
+    }
+
+    nav {
+        height: 50%
+    }
 }

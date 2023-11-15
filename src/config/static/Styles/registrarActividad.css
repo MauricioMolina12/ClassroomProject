@@ -130,6 +130,10 @@ h2 {
     margin-top: 14px;
 }
 
+h1{
+    color: #B70811;
+}
+
 .recuadro {
     background-color: white;
     height: 68vh;
@@ -271,6 +275,60 @@ main .child-recuadro:first-of-type form {
     max-height: 80%;
     padding-top: 10px;
 }
+
+@media only screen and (max-width: 768px) {
+    nav ul li {
+        font-size: 12px;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .header img {
+        width: 230px;
+        height: 60px;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    main div:last-child img {
+        position: relative;
+        right: 30px;
+        width: 245px;
+        height: 245px;
+    }
+
+    nav ul li {
+        font-size: 13px;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+    }
+
+
+}
+
+@media only screen and (max-width: 550px) {
+    .header img {
+        width: 175px;
+        height: 50px;
+    }
+
+    nav ul li {
+        font-size: 10px;
+        padding-left: 10px
+    }
+
+    nav {
+        height: 50%
+    }
+}
+
+;
 
 /* .recuadro form {
     width: 90%;

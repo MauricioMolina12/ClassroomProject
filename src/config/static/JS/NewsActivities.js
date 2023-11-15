@@ -15,3 +15,13 @@ document.getElementById("cantidad").addEventListener("input", function() {
     }
 });
 
+document.getElementById("clear").addEventListener("click", function(){
+    event.preventDefault();
+    var activities = document.getElementById("actividad").value="";
+    var cantidadItems = document.getElementById("cantidad").value="";
+
+    var contenedorInputs = document.getElementById("generate");
+    contenedorInputs.innerHTML = "";
+
+})
+

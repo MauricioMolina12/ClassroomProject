@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     transition: width 0.3s ease;
+    font-family: 'Montserrat';
     /* border: 1px solid black; */
 }
 
@@ -115,26 +116,131 @@ main {
     width: 100%;
     display: flex;
     height: 80vh;
+
 }
 
+h1{
+    font-size: 20px;
+    text-align: center;
+}
 
-main .items {
-    width: 50%;
+.items{
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view-docentes{
     border: 1px solid black;
-}
-
-main .items:last-of-type .btn {
-    box-shadow: 4px 5px 10px rgb(38, 38, 38);
+    width: 70%;
+    height: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     border-radius: 10px;
-    width: 80px;
-    height: 80px;
-    background-color: white;
+    margin-bottom: 10px;
+    min-height: 90px;
 }
 
-main .items:last-of-type {
+.filtro{
+    display: flex;
+    justify-content: flex-start;
+    height: 10%;
+    width: 50%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.filtro span, .filtro i{
+    color: #B70811;
+}
+
+.btns i{
+    color: #B70811;
+}
+
+.container-filter{
+    border: 1px solid black;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.items .search{
+    height: 10%;
+    width: 50%;
+    margin-top: 20px;
+}
+
+
+.style-input {
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    color: #5e5e5e;
+    border: none;
+    height: 3em;
+    padding: 0 4px;
+    font-family: 'Montserrat';
+    width: 70%;
+    margin-left: 10px;
+    border-radius: 10pxs;
+
+}
+
+button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.docentes{
+    border-radius: 10px;
+    width: 50%;
+    height: 80%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.btns{
+    width: 50%;
+    height: 30%;
+    margin-top: 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #B70811;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+i{
+    font-size: 20px;
+}
+
+.btns a{
+    text-decoration: none;
+    color: #B70811;
 }
 
 

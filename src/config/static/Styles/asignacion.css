@@ -31,11 +31,6 @@ header img {
     left: 20px;
 }
 
-h1{
-    position: relative;
-    bottom: 15px;
-}
-
 nav {
     width: 50%;
     height: 70%;
@@ -130,6 +125,12 @@ main {
     height: 90px;
 }
 
+
+button{
+    cursor: pointer;
+}
+
+
 .input {
     width: 100%;
 }
@@ -160,6 +161,10 @@ main {
     box-shadow: .6rem .6rem 1rem rgb(62, 62, 62);
 }
 
+h1{
+    position: relative;
+    bottom: 15px;
+}
 
 
 .container-input form .items {
@@ -175,7 +180,7 @@ main {
 }
 
 
-form .items:first-of-type select {
+form .items:nth-of-type(2) select, .items:nth-of-type(3) select {
     width: 44%;
     background-color: #B70811;
     color: white;
@@ -183,6 +188,8 @@ form .items:first-of-type select {
     height: 50%;
     margin-left: 10px;
 }
+
+
 
 .items:last-of-type button {
     color: white;
@@ -198,7 +205,29 @@ button{
     cursor: pointer;
 }
 
-form .items:first-of-type button {
+form .items:nth-of-type(2) a, .items:nth-of-type(3) a {
+    width: 7%;
+    background-color: rgb(151, 183, 8);
+    color: white;
+    border-radius: 4px;
+    height: 40%;
+    margin-left: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+form .items input {
+    border-radius: 4px;
+    height: 50%;
+    width: 90%;
+    margin-left: 5px;
+}
+
+/* form .items:first-of-type button {
     width: 7%;
     background-color: rgb(151, 183, 8);
     color: white;
@@ -207,14 +236,7 @@ form .items:first-of-type button {
     margin-left: 5px;
     border: none;
 }
-
-form .items input {
-    color: white;
-    border-radius: 4px;
-    height: 50%;
-    width: 90%;
-    margin-left: 5px;
-}
+ */
 
 
 .style-input {
@@ -238,18 +260,6 @@ form .items input {
     display: flex;
     align-items: center;
 }
-
-.swal-confirm-btn {
-    background-color: #B70811;
-    color: #fff;
-}
-
-.swal-cancel-btn {
-    border: 2px solid #B70811;
-    background-color: #fff;
-    color: #B70811;
-}
-
 
 
 @media only screen and (max-width: 768px) {

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="../static/Styles/login.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/Login.css') }}">
 </head>
 
 <body>
@@ -20,18 +19,17 @@
             <h2>Iniciar Sesión</h2>
             <form action="">
                 <div class="input-container">
-                    <input type="Email" placeholder="Usuario" id="Email" />
+                    <input type="Email" placeholder="Usuario" id="Email" name="email">
                 </div>
 
                 <div class="input-container">
-                    <input type="password" placeholder="Contraseña" id="Password"/>
+                    <input type="password" placeholder="Contraseña" id="Password" name="password">
                 </div>
 
                 <button class="login">Iniciar sesión</button>
 
                <div class="Contra_regis">
                 <p><a href="#">¿Olvidaste tu Contraseña?</a></p>
-                <p><a href="#">Registrarme</a></p>
                </div>
 
                 <div class="account">

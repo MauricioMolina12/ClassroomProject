@@ -7,14 +7,17 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/choose.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
 integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-crossorigin="anonymous" referrerpolicy="no-referrer" /><main>
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main>
     <section>
         <h1>¿Que deseas realizar?</h1>
     </section>
     <section>
-        <a href="/docentes"><div><i class="fa-solid fa-chalkboard-user"></i><h3>Gestionar docente</h3></div></a>
-        <a><div><i class="fa-solid fa-book"></i><h3>Agregar asignatura<h3></div></a>
-        <a href="/actividades"><div><i class="fa-solid fa-chart-line"></i><h3>Agregar actividad<h3></div></a>
+        <a href="/docentes"><div><i class="fa-solid fa-users-between-lines"></i><h3>Gestionar docente</h3></div></a>
+        <a href="/asignaturas"><div><i class="fa-solid fa-book"></i><h3>Agregar asignatura<h3></div></a>
+        <a href="/actividades"><div><i class="fa-solid fa-chart-line"></i><h3>Crear categoría<h3></div></a>
+        <a href="/sign_up"><div><i class="fa-solid fa-user-plus"></i><h3>Crear usuario<h3></div></a>
+
     </section>
 </main>
 {% endblock%}

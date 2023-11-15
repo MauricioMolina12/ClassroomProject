@@ -1,9 +1,9 @@
 from config.db import app, db, ma
 
-class Area(db.Model):
-    __tablename__ = "Areas"
+class Jornada(db.Model):
+    __tablename__ = "Jornadas"
 
-    codigo = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(100), unique= True)
 
     def __init__(self, name):
@@ -13,6 +13,6 @@ with app.app_context():
     db.create_all()
     db.session.commit()
 
-class AreaSchema(ma.Schema):
+class JornadaSchema(ma.Schema):
     class Meta:
-        fields = ('codigo', 'nombre')
+        fields = ('id', 'nombre')

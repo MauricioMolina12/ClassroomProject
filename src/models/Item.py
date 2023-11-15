@@ -2,11 +2,11 @@ from config.db import app, db, ma
 
 
 class Item(db.Model):
-    __tablename__= "Item"
+    __tablename__= "Items"
     
-    Id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key = True)
     nombre = db.Column(db.String(100), unique= True)
-    TipodeAct = db.Column(db.Integer, db.ForeignKey('Tipo_de_Actividad.Id'))
+    TipodeAct = db.Column(db.Integer, db.ForeignKey('Tipos_de_Actividades.id'))
     
     def __init__(self, name, TypeAct):
         self.nombre = name
@@ -18,4 +18,4 @@ with app.app_context():
 
 class ItemSchema(ma.Schema):
     class Meta:
-        fields = ('Id','nombre','TipodeAct')
+        fields = ('id','nombre','TipodeAct')

@@ -1,51 +1,60 @@
 from flask import Blueprint, jsonify, request,json, redirect, url_for, session
 from config.db import db, app, ma
 from models.Plan_de_Trabajo import Plan_de_Trabajo, PlanTrabajoSchema
+from api.Usuario import Usuario, users_schema
+from api.Rol import Rol, roles_schema
 
-ruta_PlanT = Blueprint("ruta_PlanT",__name__)
+ruta_plant = Blueprint("ruta_plant",__name__)
 
-PlanT_schema = PlanTrabajoSchema()
-PlanTs_schema = PlanTrabajoSchema(many=True)
+plant_schema = PlanTrabajoSchema()
+plants_schema = PlanTrabajoSchema(many=True)
 
-@ruta_PlanT.route("/Plan_de_Trabajo", methods=["GET"])
-def Plan_de_Trabajoas():
+@ruta_plant.route("/Plan_de_Trabajo", methods=["GET"])
+def Plan_de_Trabajos():
     resultall =  Plan_de_Trabajo.query.all()
-    result = PlanTs_schema.dump(resultall)
+    result = plants_schema.dump(resultall)
     return jsonify(result)
 
-@ruta_PlanT.route("/savePlanTrabajo", methods=["POST"])
+@ruta_plant.route("/savePlanTrabajo", methods=["POST"])
 def savePlanTrabajo():
-    Total_hours = request.json['Total_hours']
+    total_hours = request.json['total_hours']
     year = request.json['year']
     semester = request.json['semester']
     teacher = request.json['teacher']
 
-    subject = db.session.query(Plan_de_Trabajo.Id).all()
-    result = PlanTs_schema.dump(subject)
+    rol = db.session.query(Rol.id).filter(Rol.nombre == "Administrador").all()
+    rol_result = roles_schema.dump(rol)
+    plantr = rol_result[0]
+    id_rol = plantr['id']
 
-    if len(result)==0:
-        new_subject = Plan_de_Trabajo(semester, Total_hours, year, teacher)
-        db.session.add(new_subject)
+    user = db.session.query(Usuario.id).filter(Usuario.nombre == teacher, Usuario.rol != id_rol).all()
+    result = users_schema.dump(user)
+
+    if len(result) > 0:
+        plantr = result[0]
+        id_teacher = plantr['id']
+        new_plant = Plan_de_Trabajo(semester, total_hours, year, id_teacher)
+        db.session.add(new_plant)
         db.session.commit()
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
-        return jsonify({'error': 'Opss... nombre en uso'}), 401 
+        return jsonify({'error': 'Opss... Docente no encontrado'}), 401 
         
 
-@ruta_PlanT.route("/updatePlanTrabajo", methods=["PUT"])
+@ruta_plant.route("/updatePlanTrabajo", methods=["PUT"])
 def updatePlanTrabajo():
-    Id = request.json['Id'] 
-    nsubject = Plan_de_Trabajo.query.get(Id)
-    nsubject.horas_totales = request.json['Total_hours']
+    id = request.json['id'] 
+    nsubject = Plan_de_Trabajo.query.get(id)
+    nsubject.horas_totales = request.json['total_hours']
     nsubject.año = request.json['year']
     nsubject.semestre = request.json['semester']
     nsubject.docente = request.json['teacher']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_PlanT.route("/deletePlanTrabajo/<id>", methods=["GET"])
-def deletePlanTrabajo(Id):
-    subject = Plan_de_Trabajo.query.get(Id)
+@ruta_plant.route("/deletePlanTrabajo/<id>", methods=["GET"])
+def deletePlanTrabajo(id):
+    subject = Plan_de_Trabajo.query.get(id)
     db.session.delete(subject)
     db.session.commit()
-    return jsonify(PlanT_schema.dump(subject))
+    return jsonify(plant_schema.dump(subject))

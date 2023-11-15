@@ -1,0 +1,274 @@
+{% extends './layout.html'%}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/plan.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<main>
+    <section class="container-input">
+        <h1>Asignar plan de trabajo</h1>
+        <form action="">
+            <article class="child-form">
+                <div class="container-w50">
+                    <div class="elements-input">
+                        <h3>Nombre</h3>
+                        <input disabled name="name-docente" type="text" class="style-input">
+                    </div>
+                    <div class="elements-input">
+                        <h3>Año</h3>
+                        <input name="ano" type="number" class="style-input">
+                    </div>
+                    <div class="elements-input">
+                        <h3>Semestre</h3>
+                        <input name="semestre" type="number" class="style-input">
+                    </div>
+                    <button class="button">
+                        Asignar plan de trabajo
+                    </button>
+                </div>
+                <div class="container-w50">
+                    <details class="details">
+                        <summary>Actividades de investigación</summary>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Solicitud de elementos de laboratorio, apoyos didácticos y software.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Realización de clases espejo, videoconferencias o invitados interdisciplinares.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-check" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Solicitud de elementos de laboratorio, apoyos didácticos y software.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Solicitud de elementos de laboratorio, apoyos didácticos y software.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Solicitud de elementos de laboratorio, apoyos didácticos y software.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Solicitud de elementos de laboratorio, apoyos didácticos y software.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                    </details>
+                    <details class="details">
+                        <summary>Proyección Social</summary>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Asistencia</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-check" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                    </details>
+                    <details class="details">
+                        <summary>Gestión institucional</summary>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        
+                    </details>
+                    <details class="details">
+                        <summary>Apoyo a la docencia</summary>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row-child">
+                                <span>Cursos, seminarios, diplomados, conferencias, congresos, consultorías, proyectos de inversión.</span>
+                            </div>
+                            <div class="row-child">
+                                 <input type="checkbox" class="style-input-3" name="boolean">
+                            </div>
+                            <div class="row-child">
+                                <input type="number" class="style-input-3 w-20" name="hrs">
+                            </div>
+                        </div>
+                        
+                    </details>
+                    
+                </div>
+            </article>
+        </form>
+    </section>
+</main>
+{% endblock%}
