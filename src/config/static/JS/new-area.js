@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var btnPlus = document.getElementById('btn-plus');
+    var btnPlus = document.getElementById('btn-plus-area');
     var dropdown = document.getElementById('dropdown');
 
     btnPlus.addEventListener('click', function() {

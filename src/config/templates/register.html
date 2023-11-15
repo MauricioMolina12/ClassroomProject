@@ -22,12 +22,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 </select>
                 <button id="btn-plus-rol"><i class="fa-solid fa-plus"></i></button>
             </div>
-            <div class="items">
+            <div class="items" id="jor">
                 <label class="style-label" for="jornada">Jornada</label>
                 <select id="jornada" name="jornada">
                     <option value="" selected disabled>Elige una opcion</option>
                     {% for jornad in jornads %}
-                    <option value="{{ jornad.nombre }}">{{ jornad.nombre }}</option>
+                    <option  value="{{ jornad.nombre }}">{{ jornad.nombre }}</option>
                     {% endfor %}
                 </select>
                 <button id="btn-plus-jornada"><i class="fa-solid fa-plus"></i></button>
@@ -48,7 +48,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <label class="style-label" for="contrasena">Contraseña</label>
                 <input type="password" id="contrasena" class="style-input" name="contrasena">
             </div>
-            <div class="items">
+            <div class="items" id="training">
                 <label class="style-label" for="formacion">Formación</label>
                 <input type="text" id="formacion" class="style-input" name="formacion">
             </div>

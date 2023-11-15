@@ -312,7 +312,11 @@ summary{
     align-items: center;
 }
 
-
+input{
+    color: #B70811;
+    font-weight: 500;
+    font-size: 17px;
+}
 
 
 

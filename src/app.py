@@ -3,6 +3,16 @@ from config.db import app, db
 
 from api.Area import ruta_area
 from api.Asignatura import ruta_asig
+from api.Asig_Usu import ruta_Asig_Usu
+from api.Grupo import ruta_grupos
+from api.Item import ruta_item
+from api.PlanT_Item import ruta_plant_item
+from api.Jornada import ruta_jornada
+from api.Plan_de_Trabajo import ruta_plant
+from api.Rol import ruta_rol
+from api.Tipo_de_Actividad import ruta_TipoA
+from api.Usuario import ruta_user
+
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
 app.register_blueprint(ruta_rol, url_prefix="/api")

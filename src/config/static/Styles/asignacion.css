@@ -182,11 +182,12 @@ h1{
 
 form .items:nth-of-type(2) select, .items:nth-of-type(3) select {
     width: 44%;
-    background-color: #B70811;
-    color: white;
+    background-color: transparent;
+    color: #B70811;
     border-radius: 4px;
     height: 50%;
     margin-left: 10px;
+    border: 1px solid #B70811;
 }
 
 
@@ -199,6 +200,8 @@ form .items:nth-of-type(2) select, .items:nth-of-type(3) select {
     cursor: pointer;
     border-radius: 5px;
     background-color: #B70811;
+    border: none;
+    outline: none;
 }
 
 button{
@@ -259,6 +262,12 @@ form .items input {
     text-align: center;
     display: flex;
     align-items: center;
+}
+
+input{
+    color: #B70811;
+    font-weight: 500;
+    font-size: 17px;
 }
 
 

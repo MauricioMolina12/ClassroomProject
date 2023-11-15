@@ -129,7 +129,6 @@ document.getElementById("signup").addEventListener("click", function (event) {
             er = true
         }
         else {
-            alert("Llego al else")
             er = false
         }
     }

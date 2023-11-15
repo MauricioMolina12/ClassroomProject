@@ -5,25 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     btnPlus.addEventListener('click', function() {
         event.preventDefault();
         Swal.fire({
-            title: 'Agregar nuevo grupo',
+            title: 'Agregar nuev grupo',
             input: 'text',
             showCancelButton: true,
             confirmButtonText: 'Agregar',
-            cancelButtonText: 'Cancelar',
-            confirmButtonColor: '#B70811',
-            cancelButtonTextColor: '#B70811',
-            cancelButtonColor: 'transparent',
-            cancelButtonBorder: '2px solid #B70811'
+            confirmButtonColor: '#B70811'
         }).then((result) => {
             if (result.isConfirmed && result.value) {
                 var nuevoValor = result.value;
                 var option = document.createElement('option');
                 option.text = nuevoValor;
-                dropdownG.add(option, dropdownG.options[0]);
+                dropdownG.add(option, dropdownG.options[1]);
                 option.selected = true;
-
             }
         });
     });
 });
-

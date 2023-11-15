@@ -177,11 +177,12 @@ main {
 
 form .items:first-of-type select {
     width: 44%;
-    background-color: #B70811;
-    color: white;
+    background-color: transparent;
+    color: #B70811;
     border-radius: 4px;
     height: 50%;
     margin-left: 10px;
+    border: 1px solid #B70811;
 }
 
 .items:last-of-type button {
@@ -192,6 +193,8 @@ form .items:first-of-type select {
     cursor: pointer;
     border-radius: 5px;
     background-color: #B70811;
+    border: none;
+    outline: none;
 }
 
 button{
@@ -209,7 +212,6 @@ form .items:first-of-type button {
 }
 
 form .items input {
-    color: white;
     border-radius: 4px;
     height: 50%;
     width: 90%;
@@ -239,18 +241,12 @@ form .items input {
     align-items: center;
 }
 
-.swal-confirm-btn {
-    background-color: #B70811;
-    color: #fff;
-}
 
-.swal-cancel-btn {
-    border: 2px solid #B70811;
-    background-color: #fff;
+input{
     color: #B70811;
+    font-weight: 500;
+    font-size: 17px;
 }
-
-
 
 @media only screen and (max-width: 768px) {
     nav ul li {

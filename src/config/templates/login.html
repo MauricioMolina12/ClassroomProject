@@ -14,33 +14,22 @@
         <div>
             <img src="../static/multimedia/logo.png">
         </div>
-
         <div>
             <h2>Iniciar Sesión</h2>
             <form action="">
                 <div class="input-container">
-                    <input type="Email" placeholder="Usuario" id="Email" name="email">
+                    <input type="email" id="Email" name="email" required placeholder="Usuario">
+                    <label for="Email">Usuario</label>
                 </div>
-
+            
                 <div class="input-container">
-                    <input type="password" placeholder="Contraseña" id="Password" name="password">
+                    <input type="password" id="Password" name="password" required placeholder="Contraseña">
+                    <label for="Password">Contraseña</label>
                 </div>
-
+            
                 <button class="login">Iniciar sesión</button>
-
-               <div class="Contra_regis">
-                <p><a href="#">¿Olvidaste tu Contraseña?</a></p>
-               </div>
-
-                <div class="account">
-                    <div></div>
-                    <p>O con tu cuenta unilibre.edu.co</p>
-                    <div></div>
-                </div>
-                                    <div class="office">
-                        <button class="buttons" onclick="iniciarSesion()" type="submit">Ingresar</button>
-                    </div>
             </form>
+            
 
         </div>
         

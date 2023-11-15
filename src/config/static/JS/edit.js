@@ -5,7 +5,7 @@ function editarValor(elementId, valorCambiar) {
         input: 'text',
         showCancelButton: true,
         confirmButtonText: 'Confirmar',
-        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#B70811'
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById(valorCambiar).innerText = result.value;
