@@ -50,7 +50,11 @@ def info():
 
 @app.route('/docentes')
 def docentes():
-    return render_template('docentes.html')
+    if "usuarios" in session:
+        return render_template('docentes.html', docentes= session['usuarios'])
+    else:
+        return redirect(url_for("ruta_user.users"))
+    
 
 @app.route('/actividades')
 def activity():

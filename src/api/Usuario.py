@@ -14,7 +14,8 @@ users_schema = UsuarioSchema(many=True)
 def users():
     resultall =  Usuario.query.all()
     result = users_schema.dump(resultall)
-    return jsonify(result)
+    session['usuarios'] = result
+    return redirect(url_for("docentes"))
 
 @ruta_user.route("/saveuser", methods=["POST"])
 def saveuser():
@@ -42,6 +43,9 @@ def saveuser():
                 new_subject = Usuario(id, name, user, password, id_rol)
                 db.session.add(new_subject)
                 db.session.commit()
+                resultall =  Usuario.query.all()
+                result = users_schema.dump(resultall)
+                session['usuarios'] = result
                 return jsonify({'mensaje': 'Registro exitoso'})
             else:
                 form = request.json['level_form']
@@ -55,6 +59,9 @@ def saveuser():
                     new_subject = Usuario(id, name, user, password, id_rol, form, jor)
                     db.session.add(new_subject)
                     db.session.commit()
+                    resultall =  Usuario.query.all()
+                    result = users_schema.dump(resultall)
+                    session['usuarios'] = result
                     return jsonify({'mensaje': 'Registro exitoso'})
                 else:
                     return jsonify({'error': 'Opss... nombre de jornada no encontrado'}), 401 

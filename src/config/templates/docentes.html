@@ -17,42 +17,15 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             </div>
         </div>
         <div class="docentes">
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>
-            <div class="view-docentes">
-                <span>William Insignares</span>
-                <span>1043523421</span>
-            </div>        
+
+            {% for docente in docentes %}
+                {% if docente.rol != 1 %}
+                <div class="view-docentes">
+                    <span>{{ docente.nombre }}</span>
+                    <span>{{ docente.id }}</span>
+                </div>
+                {% endif %}
+            {% endfor %}
         </div>
 
         <div class="btns">
