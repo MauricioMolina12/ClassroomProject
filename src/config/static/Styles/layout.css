@@ -34,7 +34,7 @@ header img {
 nav {
     border: 1px solid black;
     width: 50%;
-    height: 80%;
+    height: fit-content;
     display: flex;
     align-items: center;
     background: linear-gradient(#B70811, #890209);

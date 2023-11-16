@@ -34,6 +34,9 @@ document.getElementById("signin").addEventListener("click", function (event) {
             icon: 'success',
             backdrop: false,
             timer: 3500,
+            customClass: {
+              confirmButton: 'custom-confirm-button-class'
+            }
           }).then((result) => {
             window.location.href = "/";
           });           
