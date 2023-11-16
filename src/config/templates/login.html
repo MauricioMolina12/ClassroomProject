@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Styles/Login.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='multimedia/logoo.png') }}">
 </head>
 
 <body>
@@ -18,8 +19,8 @@
             <h2>Iniciar Sesión</h2>
             <form action="">
                 <div class="input-container">
-                    <input type="email" id="Email" name="email" required placeholder="Usuario">
-                    <label for="Email">Usuario</label>
+                    <input type="text" id="User" name="user" required placeholder="Usuario">
+                    <label for="User">Usuario</label>
                 </div>
             
                 <div class="input-container">
@@ -27,14 +28,15 @@
                     <label for="Password">Contraseña</label>
                 </div>
             
-                <button class="login">Iniciar sesión</button>
+                <button class="login" id="signin">Iniciar sesión</button>
             </form>
             
 
         </div>
         
     </div>
-    <script src="../static/JS/InicioOffice.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

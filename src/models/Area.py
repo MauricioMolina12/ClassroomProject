@@ -11,7 +11,6 @@ class Area(db.Model):
 
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class AreaSchema(ma.Schema):
     class Meta:

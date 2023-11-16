@@ -12,7 +12,6 @@ class Tipo_de_Actividad(db.Model):
         
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class TipodeActividadSchema(ma.Schema):
     class Meta:

@@ -14,7 +14,6 @@ class Item(db.Model):
         
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class ItemSchema(ma.Schema):
     class Meta:

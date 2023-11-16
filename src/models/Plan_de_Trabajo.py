@@ -19,7 +19,6 @@ class Plan_de_Trabajo(db.Model):
         
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class PlanTrabajoSchema(ma.Schema):
     class Meta:

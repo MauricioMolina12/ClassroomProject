@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session #para importar la clase
+from flask import Flask, render_template, request, redirect, url_for, session 
 from config.db import app, db
 
 from api.Area import ruta_area
@@ -25,9 +25,12 @@ app.register_blueprint(ruta_asig, url_prefix="/api")
 app.register_blueprint(ruta_grupos, url_prefix="/api")
 app.register_blueprint(ruta_Asig_Usu, url_prefix="/api")
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('homepage.html')
+    if "user" in session:
+        return render_template('homepage.html')
+    else:
+        return redirect(url_for("log_in"))    
     
 @app.route('/login')
 def log_in():
@@ -68,6 +71,11 @@ def asignacion():
 @app.route('/PlanDeTrabajo')
 def plan():
     return render_template('plandeTrabajo.html')
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("log_in"))   
 
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)#el debug es para que cuando se haga un cambio no toque dejar de correr y volver a correr el programa para poder ver el cambio

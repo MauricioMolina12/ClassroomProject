@@ -20,9 +20,17 @@ class Usuario(db.Model):
         self.nivel_formacion = form
         self.jornada = jor
 
+def agregar_producto(id_, name, user, password, rol):
+    usuario_existente = Usuario.query.filter_by(id= id_).first()
+    if usuario_existente is None:
+        nuevo_user = Usuario(id= id_, name= name, user= user, password= password, rol= rol)
+        db.session.add(nuevo_user)
+        db.session.commit()
+
 with app.app_context():
     db.create_all()
-    db.session.commit()
+    agregar_producto(0, 'admin', 'admin', '123456', 1)
+    
 
 class UsuarioSchema(ma.Schema):
     class Meta:

@@ -12,7 +12,6 @@ class Grupos(db.Model):
         
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class GrupoSchema(ma.Schema):
     class Meta:

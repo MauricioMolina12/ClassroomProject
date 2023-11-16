@@ -17,7 +17,6 @@ class Asig_Usu(db.Model):
 
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class Asig_UsuSchema(ma.Schema):
     class Meta:

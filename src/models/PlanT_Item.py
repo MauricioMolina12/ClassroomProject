@@ -20,7 +20,6 @@ class PlanT_Item(db.Model):
         
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class PlanT_ItemSchema(ma.Schema):
     class Meta:

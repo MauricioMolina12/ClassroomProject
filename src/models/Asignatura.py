@@ -18,7 +18,6 @@ class Asignatura(db.Model):
 
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class AsignaturaSchema(ma.Schema):
     class Meta:
