@@ -6,7 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     transition: width 0.3s ease;
-
+    font-family: 'Montserrat';
 }
 
 body {
@@ -32,6 +32,63 @@ header img {
 }
 
 nav {
+    border: 1px solid black;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(#B70811, #890209);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    position: absolute;
+    right: 0;
+    box-shadow: 10px 15px 10px rgb(38, 38, 38);
+}
+
+nav ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    list-style: none;
+    color: white;
+}
+
+nav ul li {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+#out {
+    background-color: white;
+    color: #B70811;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.link{
+    position: relative;
+}
+
+nav ul li .link::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: width 0.9s ease;
+}
+
+nav ul li .link:hover::before {
+    width: 100%;
+}
+
+
+
+/* nav {
     width: 50%;
     height: 70%;
     border-top-left-radius: 50px;
@@ -74,20 +131,7 @@ nav li .link {
     position: relative;
 }
 
-nav ul li .link::before {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #ffffff;
-    transition: width 0.3s ease;
-}
 
-nav ul li .link:hover::before {
-    width: 100%;
-}
 
 nav ul li:last-of-type a {
     color: #B70811;
@@ -108,7 +152,7 @@ nav ul li:last-child {
     border-radius: 10px;
     display: flex;
     align-items: center;
-}
+} */
 
 @media only screen and (max-width: 768px) {
     nav ul li {

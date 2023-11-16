@@ -15,10 +15,10 @@
         <nav>
          <ul>
              <li><a class="link" href="/" class="link">Inicio</a></li>
-             <li><a class="link" href="/docentes" class="link">Docentes</a></li>
+             <li><a class="link {% if active_page == 'docentes' %}activo{% endif %}" href="/docentes" class="link">Docentes</a></li>
              <li><a class="link" href="#" class="link">Historial</a></li>
              <div>|</div>
-             <li id="out"><a>Salir</a></li>
+             <a id="out"><li>Salir</li></a>
          </ul>
         </nav>
     </header>

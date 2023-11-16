@@ -34,84 +34,63 @@ header img {
 }
 
 nav {
+    border: 1px solid black;
     width: 50%;
-    height: 70%;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+    height: 80%;
     display: flex;
     align-items: center;
-    border: none;
     background: linear-gradient(#B70811, #890209);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     position: absolute;
     right: 0;
     box-shadow: 10px 15px 10px rgb(38, 38, 38);
 }
 
-nav ul li a:focus:not(#out),
-nav ul li a:active:not(#out) {
-    background-color: white;
-    padding: 6px 10px;
-    border-radius: 10px;
-    color: #B70811;
-}
-
 nav ul {
-    width: 100%;
-    list-style: none;
     display: flex;
+    width: 100%;
     justify-content: space-around;
-}
-
-nav li {
+    list-style: none;
     color: white;
-    font-size: 17px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-
 }
 
-nav li a {
-    text-decoration: none;
+nav ul li {
     cursor: pointer;
-    color: white;
-    position: relative;
+    text-decoration: none;
+    font-size: 18px;
 }
 
-.link::before {
+
+#out {
+    background-color: white;
+    color: #B70811;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.link{
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul li .link::before {
     content: "";
     position: absolute;
     bottom: -5px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background-color: #ffffff;
-    transition: width 0.3s ease;
+    transition: width 0.9s ease;
 }
 
-.link:hover::before {
+nav ul li .link:hover::before {
     width: 100%;
 }
 
 
-nav ul li:last-of-type a {
-    color: #B70811;
-}
-
-nav ul div {
-    color: white;
-    font-size: 20px;
-}
-
-
-
-nav ul li:last-child {
-    background-color: white;
-    color: #B70811;
-    padding: 0 18px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
 
 main {
     width: 100%;
