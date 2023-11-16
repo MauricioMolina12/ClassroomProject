@@ -215,11 +215,10 @@ input{
     transition: 1s;
 }
 
-@media screen and (min-width: 1920px) and (min-height: 1080px) {
-    /* Estilos específicos para pantallas de al menos 1920x1080 */
+@media screen and (min-width: 1912px) and (min-height: 1000px) {
     .chart-log div:first-of-type img{
-        width: 60%;
-        height: 17%;
+        width: 75%;
+        height: 20%;
     }
 
     .chart-log div:last-of-type h2{
@@ -228,6 +227,8 @@ input{
 
     form{
         height: 40%;
+        position: relative;
+        bottom: 20px;
     }
 
     .input-container {
