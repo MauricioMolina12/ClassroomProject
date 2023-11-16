@@ -79,7 +79,10 @@ def asignacion():
 
 @app.route('/PlanDeTrabajo')
 def plan():
-    return render_template('plandeTrabajo.html')
+    if "actividades" in session and "items" in session:
+        return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'])
+    else:
+        return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades"))
 
 @app.route("/logout")
 def logout():

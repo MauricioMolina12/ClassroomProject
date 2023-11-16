@@ -11,7 +11,8 @@ tipodeas_Schema = TipodeActividadSchema(many=True)
 def tipo_de_actividades():
     resultall = Tipo_de_Actividad.query.all()
     result = tipodeas_Schema.dump(resultall)
-    return jsonify(result)
+    session['actividades'] = result
+    return redirect(url_for("ruta_item.items"))
 
 @ruta_TipoA.route("/saveTipodeActividad", methods = ["POST"])
 def saveTipodeActividad():
@@ -25,6 +26,9 @@ def saveTipodeActividad():
         new_activi = Tipo_de_Actividad(name)
         db.session.add(new_activi)
         db.session.commit()
+        resultall = Tipo_de_Actividad.query.all()
+        result = tipodeas_Schema.dump(resultall)
+        session['actividades'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401

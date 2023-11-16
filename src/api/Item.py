@@ -10,10 +10,11 @@ item_schema = ItemSchema()
 items_schema = ItemSchema(many=True)
 
 @ruta_item.route("/Item", methods=["GET"])
-def Item():
+def items():
     resultall = Item.query.all()
     result = items_schema.dump(resultall)
-    return jsonify(result)
+    session['items'] = result
+    return redirect(url_for("plan"))
 
 @ruta_item.route("/saveItem", methods = ["POST"])
 def saveItem():
@@ -33,6 +34,9 @@ def saveItem():
             new_item = Item(name, id_TipoAct)
             db.session.add(new_item)
             db.session.commit()
+            resultall = Item.query.all()
+            result = items_schema.dump(resultall)
+            session['items'] = result
             return jsonify({'mensaje': 'Datos guardados con exitos'})
         else:
             return  jsonify({'mensaje': 'Opss... codigo de Tipo de actividad no encontrado'})

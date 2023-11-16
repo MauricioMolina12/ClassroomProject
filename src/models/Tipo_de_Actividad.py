@@ -10,8 +10,17 @@ class Tipo_de_Actividad(db.Model):
     def __init__(self, name):
         self.nombre = name
         
+def agregar_producto(name):
+    usuario_existente = Tipo_de_Actividad.query.filter_by(nombre= name).first()
+    if usuario_existente is None:
+        nuevo_user = Tipo_de_Actividad(name= name)
+        db.session.add(nuevo_user)
+        db.session.commit()
+
 with app.app_context():
     db.create_all()
+    agregar_producto("Actividades de Investigación")
+    
 
 class TipodeActividadSchema(ma.Schema):
     class Meta:
