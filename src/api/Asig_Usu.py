@@ -1,9 +1,9 @@
 from flask import Blueprint, jsonify, request,json
 from config.db import db, app, ma
 from models.Asig_Usu import Asig_Usu, Asig_UsuSchema
-from models.Usuario import Usuario
-from models.Asignatura import Asignatura
-from models.Grupo import Grupos
+from api.Usuario import Usuario, users_schema
+from api.Asignatura import Asignatura, asigs_schema
+from api.Grupo import Grupos, grupos_Schema
 
 ruta_Asig_Usu = Blueprint("ruta_Asig_Usu", __name__)
 
@@ -18,20 +18,26 @@ def Asig_usu():
 
 @ruta_Asig_Usu.route("/saveAsig_usu", methods=["POST"])
 def saveAsig_usu():
+    print("llego")
     result= request.get_json()
 
-    codigousu = Asig_Usus_schema.dump(db.session.query(Usuario.id).filter(Usuario.id == result["codigousu"]).all()) 
-    codigoasig = Asig_Usus_schema.dump(db.session.query(Asignatura.codigo).filter(Asignatura.codigo == result["codigoasig"]).all()) 
-    grupo = Asig_Usus_schema.dump(db.session.query(Grupos.id).filter(Grupos.id == result["grupo"]).all()) 
+    usu = users_schema.dump(db.session.query(Usuario.id).filter(Usuario.nombre == result["usu"], Usuario.rol == 2).all()) 
+    if len(usu) > 0:
+        codigousu = usu[0]['id']
 
-    existe = [len(codigousu),len(codigoasig),len(grupo)]
+        asig = asigs_schema.dump(db.session.query(Asignatura.codigo).filter(Asignatura.codigo == result["asig"]).all()) 
+        codigoasig = asig[0]['codigo']
 
-    if sum(existe) == 3:
-        db.session.add(Asig_Usu(**result))
+        grupo = grupos_Schema.dump(db.session.query(Grupos.id).filter(Grupos.nombre == result["grupo"]).all()) 
+        idgrupo =  grupo[0]['id']
+
+        semestre = result["semes"]
+
+        db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre))
         db.session.commit()
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
-        return jsonify({'error': 'Opss... atributo/s no existente'})
+        return jsonify({'error': 'Opss... Docente no existente'})
 
 
 

@@ -39,7 +39,7 @@ def log_in():
 @app.route('/sign_up')
 def register():
 
-    if "roles" in session or "jornadas" in session:
+    if "roles" in session and "jornadas" in session:
         return render_template('register.html', rols= session['roles'], jornads= session['jornadas'])
     else:
         return redirect(url_for("ruta_rol.roles"))
@@ -58,7 +58,12 @@ def activity():
 
 @app.route('/asignaturas')
 def asignaturas():
-    return render_template('asignaturas.html')
+
+    if "areas" in session:
+        return render_template('asignaturas.html', areas = session['areas'])
+    else:
+        return redirect(url_for("ruta_area.areas"))
+    
 
 @app.route('/choose')
 def choose():
@@ -66,7 +71,11 @@ def choose():
 
 @app.route('/asignacion')
 def asignacion():
-    return render_template('asignarAsignatura.html')
+    if "asignaturas" in session and "grupos" in session:
+        return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'])
+    else:
+        return redirect(url_for("ruta_asig.asignaturas"))
+    
 
 @app.route('/PlanDeTrabajo')
 def plan():

@@ -13,8 +13,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <h1>Crear asignaturas</h1>
         <form action="">
             <div class="items">
-                <label class="style-label" for="area">Área</label>
+                <label class="style-label" for="dropdown">Área</label>
                 <select id="dropdown" name="area">
+                    <option value="" selected disabled>Elige una opcion</option>
+                    {% for area in areas %}
+                    <option  value="{{ area.nombre }}">{{ area.nombre }}</option>
+                    {% endfor %}
                 </select>
                 <button id="btn-plus-area"><i class="fa-solid fa-plus"></i></button>
             </div>
@@ -35,7 +39,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <input type="number" step="1" id="credito" class="style-input" name="creditos">
             </div>
             <div class="items">
-                <button >Crear asignatura</button>
+                <button id="new_asig">Crear asignatura</button>
             </div>
             
         </form>

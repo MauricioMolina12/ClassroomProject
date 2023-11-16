@@ -14,18 +14,25 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <form action="">
             <div class="items">
                 <label class="style-label" for="nombre">Nombre</label>
-                <input type="text" id="nombre" class="style-input" disabled name="name-doc">
+                <input type="text" id="nombre" class="style-input" name="name-doc">
             </div>
             <div class="items">
                 <label class="style-label" for="asignatura">Asignaturas</label>
                 <select id="asignatura">
+                    <option value="" selected disabled>Elige una opcion</option>
+                    {% for subject in subjects %}
+                    <option  value="{{ subject.codigo }}">{{ subject.nombre }}</option>
+                    {% endfor %}
                 </select>
                 <a href="/asignaturas" id="btn-plus-asignaturas"><i class="fa-solid fa-diamond-turn-right"></i></a>
             </div>
             <div class="items">
                 <label class="style-label" for="grupo">Grupo</label>
                 <select id="grupo" name="grupo-doc">
-                    <option disabled>Elegir una opción</option>
+                    <option value="" selected disabled>Elegir una opción</option>
+                    {% for group in groups %}
+                    <option  value="{{ group.nombre }}">{{ group.nombre }}</option>
+                    {% endfor %}
                 </select>
                 <a id="btn-plus"><i class="fa-solid fa-plus"></i></a>
             </div>
@@ -34,7 +41,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <input type="number" step="1" id="semestre" class="style-input" name="semestre-doc">
             </div>
             <div class="items">
-                <button >Crear usuario</button>
+                <button id="asig_usu">Asignar</button>
             </div>
             
         </form>
