@@ -1,18 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for, session #para importar la clase
+from flask import Flask, render_template, request, redirect, url_for, session 
 from config.db import app, db
 
 from api.Area import ruta_area
 from api.Asignatura import ruta_asig
-from api.Asig_Usu import ruta_Asig_Usu
 from api.Grupo import ruta_grupos
-from api.Item import ruta_item
-from api.PlanT_Item import ruta_plant_item
-from api.Jornada import ruta_jornada
-from api.Plan_de_Trabajo import ruta_plant
 from api.Rol import ruta_rol
-from api.Tipo_de_Actividad import ruta_TipoA
+from api.Jornada import ruta_jornada
 from api.Usuario import ruta_user
-
+from api.Asig_Usu import ruta_Asig_Usu
+from api.Tipo_de_Actividad import ruta_TipoA
+from api.Item import ruta_item
+from api.Plan_de_Trabajo import ruta_plant
+from api.PlanT_Item import ruta_plant_item
 
 app.register_blueprint(ruta_jornada, url_prefix="/api")
 app.register_blueprint(ruta_rol, url_prefix="/api")
@@ -26,9 +25,12 @@ app.register_blueprint(ruta_asig, url_prefix="/api")
 app.register_blueprint(ruta_grupos, url_prefix="/api")
 app.register_blueprint(ruta_Asig_Usu, url_prefix="/api")
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('homepage.html')
+    if "user" in session:
+        return render_template('homepage.html')
+    else:
+        return redirect(url_for("log_in"))    
     
 @app.route('/login')
 def log_in():
@@ -69,6 +71,11 @@ def asignacion():
 @app.route('/PlanDeTrabajo')
 def plan():
     return render_template('plandeTrabajo.html')
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("log_in"))   
 
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)#el debug es para que cuando se haga un cambio no toque dejar de correr y volver a correr el programa para poder ver el cambio

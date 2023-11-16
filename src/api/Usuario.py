@@ -86,3 +86,32 @@ def deleteuser(id):
     db.session.delete(subject)
     db.session.commit()
     return jsonify(user_schema.dump(subject))
+
+@ruta_user.route("/signin", methods=["POST"])
+def signin():
+    user = request.json['user']
+    password = request.json['password']
+    user_ = db.session.query(Usuario.jornada, Usuario.id, Usuario.nombre, Usuario.nivel_formacion, Usuario.rol).filter(Usuario.usuario == user, Usuario.contrasena == password).all()
+    result = users_schema.dump(user_)
+
+    if len(result)>0:
+        usuario = result[0]
+
+        jornada = db.session.query(Jornada.nombre).filter(Jornada.id == usuario['jornada']).all()
+        jorn = jornadas_schema.dump(jornada)
+
+        ro = db.session.query(Rol.nombre ).filter(Rol.id == usuario['rol']).all()
+        rol_result = roles_schema.dump(ro) 
+
+        session['id_user'] = usuario['id']
+        session['user'] = user
+        session['nombre'] = usuario['nombre']
+        session['password'] = password   
+        session['rol'] = rol_result[0]['nombre']
+        if session['rol'] != 'Administrador':
+            session['formacion'] = usuario['nivel_formacion']
+            session['jornada'] = jorn[0]['nombre']
+            
+        return jsonify({'mensaje': 'Bienvenido'})
+    else:
+        return jsonify({'error': 'Opss...'}), 401

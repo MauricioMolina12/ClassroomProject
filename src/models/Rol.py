@@ -9,9 +9,16 @@ class Rol(db.Model):
     def __init__(self, name):
         self.nombre = name
 
+def agregar_rol(nombre):
+    rol_existente = Rol.query.filter_by(nombre= nombre).first()
+    if rol_existente is None:
+        nuevo_rol = Rol(name= nombre)
+        db.session.add(nuevo_rol)
+        db.session.commit()
+
 with app.app_context():
     db.create_all()
-    db.session.commit()
+    agregar_rol('Administrador')    
 
 class RolSchema(ma.Schema):
     class Meta:

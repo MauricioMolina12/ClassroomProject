@@ -11,7 +11,6 @@ class Jornada(db.Model):
 
 with app.app_context():
     db.create_all()
-    db.session.commit()
 
 class JornadaSchema(ma.Schema):
     class Meta:
