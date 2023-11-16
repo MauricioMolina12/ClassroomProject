@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request,json, redirect, url_for, session
+from sqlalchemy import or_
 from config.db import db, app, ma
 from models.Usuario import Usuario, UsuarioSchema
 from api.Jornada import Jornada, jornadas_schema
@@ -17,15 +18,16 @@ def users():
 
 @ruta_user.route("/saveuser", methods=["POST"])
 def saveuser():
-    print("llego")
     id = request.json['id']
-    name = request.json['name']
-    user = request.json['user']
+    name = request.json['name'].title()
+    user = request.json['user'].lower()
     password = request.json['password']
     
-    use = db.session.query(Usuario.id).filter(Usuario.usuario == user, Usuario.id == id).all()
+    use = db.session.query(Usuario.id).filter(or_(Usuario.usuario == user, Usuario.id == id)).all() #para un or - se importa de sqlalchemy
     result = users_schema.dump(use)
+    print(result)
 
+    
     if len(result)== 0:
 
         rol = request.json['rol'].title()
@@ -98,7 +100,7 @@ def signin():
         usuario = result[0]
 
         jornada = db.session.query(Jornada.nombre).filter(Jornada.id == usuario['jornada']).all()
-        jorn = jornadas_schema.dump(jornada)
+        jorn = jornadas_schema.dump(jornada) 
 
         ro = db.session.query(Rol.nombre ).filter(Rol.id == usuario['rol']).all()
         rol_result = roles_schema.dump(ro) 

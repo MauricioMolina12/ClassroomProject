@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session, redirect, url_for
 from config.db import db
 from models.Grupo import Grupos, GrupoSchema
 
@@ -11,9 +11,10 @@ grupos_Schema = GrupoSchema(many=True)
 def grupos():
     resultall = Grupos.query.all()
     result = grupos_Schema.dump(resultall)
-    return jsonify(result)
+    session['grupos'] = result
+    return redirect(url_for("asignacion"))
 
-@ruta_grupos.route("/saveGrupo", methods = ["POST"])
+@ruta_grupos.route("/savegrupo", methods = ["POST"])
 def saveGrupo():
     
     nombre = request.json['nombre']
@@ -25,11 +26,14 @@ def saveGrupo():
         new_group = Grupos(nombre)
         db.session.add(new_group)
         db.session.commit()
+        resultall = Grupos.query.all()
+        result = grupos_Schema.dump(resultall)
+        session['grupos'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401
 
-@ruta_grupos.route("/updateGrupo", methods = ["PUT"])
+@ruta_grupos.route("/updategrupo", methods = ["PUT"])
 def updateGrupo():
     id = request.json['id']
     ngroup = Grupos.query.get(id)
@@ -37,7 +41,7 @@ def updateGrupo():
     db.session.commit()
     return "Datos Actualizado con exitos"
 
-@ruta_grupos.route("/deleteGrupo/<id>", methods = ["DELETE"])
+@ruta_grupos.route("/deletegrupo/<id>", methods = ["DELETE"])
 def deleteTipodeActividad(id):
     group = Grupos.query.get(id)
     db.session.delete(group)

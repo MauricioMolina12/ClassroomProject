@@ -11,7 +11,8 @@ areas_schema = AreaSchema(many=True)
 def areas():
     resultall =  Area.query.all()
     result = areas_schema.dump(resultall)
-    return jsonify(result)
+    session['areas'] = result
+    return redirect(url_for("asignaturas"))
 
 @ruta_area.route("/savearea", methods=["POST"])
 def savearea():
@@ -23,6 +24,9 @@ def savearea():
         new_area = Area(name)
         db.session.add(new_area)
         db.session.commit()
+        resultall =  Area.query.all()
+        result = areas_schema.dump(resultall)
+        session['areas'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401 
