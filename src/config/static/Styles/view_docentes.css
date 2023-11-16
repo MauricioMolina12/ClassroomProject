@@ -89,10 +89,6 @@ nav ul li .link:hover::before {
     width: 100%;
 }
 
-nav ul li:last-of-type a {
-    color: #B70811;
-    cursor: pointer;
-}
 
 nav ul div {
     color: white;

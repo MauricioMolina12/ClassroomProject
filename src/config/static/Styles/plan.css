@@ -187,7 +187,6 @@ h3 {
 
 .container-w50 details {
     background-color: #D9D9D9;
-    padding: 15px;
     width: 80%;
     max-height: 200px;
     height: min-content;
@@ -232,14 +231,22 @@ button {
 summary {
     color: #B70811;
     font-weight: 600;
-    position: sticky;
-    top: 2px;
     background-color: #D9D9D9;
     border: none;
+    cursor: pointer;
+    position: sticky;
+    top: 3px;
+    border-radius: 10px;
 }
+
+
 
 .row div {
     width: 33.3%;
+}
+
+.row{
+    overflow: hidden;
 }
 
 .style-input-3 {
