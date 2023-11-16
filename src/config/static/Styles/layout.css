@@ -67,8 +67,16 @@ nav ul li {
     border-radius: 5px;
 }
 
-.link{
+.link {
     position: relative;
+}
+
+a{
+    text-decoration: none;
+}
+
+.line{
+    font-size: 18px;
 }
 
 nav ul li .link::before {
