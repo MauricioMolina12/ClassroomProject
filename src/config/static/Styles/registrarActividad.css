@@ -199,17 +199,7 @@ main .child-recuadro:first-of-type form {
     overflow-y: auto;
 }
 
-.child-recuadro:last-of-type div {
-    display: flex;
-    width: 90%;
-    min-height: 30%;
-}
 
-.child-recuadro:last-of-type div>* {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-}
 
 .style-input-check {
     border-radius: 5px;
@@ -230,7 +220,7 @@ main .child-recuadro:first-of-type form {
     box-shadow: .6rem .6rem 1rem rgb(62, 62, 62);
     position: relative;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: 16px;
     padding: 10px;
 }
 
@@ -259,6 +249,14 @@ input{
     color: #B70811;
     font-weight: 500;
     font-size: 17px;
+}
+
+.h-10-90 .title-activities{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 
