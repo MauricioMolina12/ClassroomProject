@@ -27,7 +27,7 @@ def saveItem():
 
     if len(result)==0:
         
-        result = db.session.query(Tipo_de_Actividad.id),filter(Tipo_de_Actividad.id == id_TipoAct).all()
+        result = db.session.query(Tipo_de_Actividad.id).filter(Tipo_de_Actividad.id == id_TipoAct).all()
         tipoa = tipodeas_Schema.dump(result)
         
         if len(tipoa) > 0:

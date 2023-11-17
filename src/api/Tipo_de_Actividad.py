@@ -29,7 +29,13 @@ def saveTipodeActividad():
         resultall = Tipo_de_Actividad.query.all()
         result = tipodeas_Schema.dump(resultall)
         session['actividades'] = result
-        return jsonify({'mensaje': 'Registro exitoso'}) 
+
+        activi = db.session.query(Tipo_de_Actividad.id).filter(Tipo_de_Actividad.nombre == name).all()
+        result = tipodeas_Schema.dump(activi)
+
+        act = result[0]['id']
+
+        return jsonify({'mensaje': act}) 
     else:
         return jsonify({'error': 'Opss... nombre en uso'}), 401
 
