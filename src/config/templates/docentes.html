@@ -17,12 +17,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             </div>
         </div>
         <div class="docentes">
-
+            
             {% for docente in docentes %}
                 {% if docente.rol != 1 %}
-                <div class="view-docentes">
+                <div class="view-docentes" data-nombre="{{ docente.nombre }}">
                     <span>{{ docente.nombre }}</span>
                     <span>{{ docente.id }}</span>
+                    <button><i class="fa-solid fa-trash-can"></i></button>
                 </div>
                 {% endif %}
             {% endfor %}

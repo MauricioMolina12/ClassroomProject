@@ -16,6 +16,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
 header {
     width: 100%;
     height: 20vh;
@@ -67,7 +68,7 @@ nav ul li {
     border-radius: 5px;
 }
 
-a:not([id="out"]){
+a:not([id="out"]) {
     color: white;
     text-decoration: none;
 }
@@ -79,12 +80,12 @@ main {
 
 }
 
-h1{
+h1 {
     font-size: 20px;
     text-align: center;
 }
 
-.items{
+.items {
     width: 100%;
     height: 100%;
     padding-top: 10px;
@@ -94,7 +95,7 @@ h1{
     align-items: center;
 }
 
-.view-docentes{
+.view-docentes {
     border: 1px solid black;
     width: 70%;
     height: 20%;
@@ -106,28 +107,21 @@ h1{
     min-height: 90px;
 }
 
-.filtro{
-    display: flex;
-    justify-content: flex-start;
-    height: 10%;
-    width: 50%;
-    align-items: center;
-    margin-top: 20px;
-}
-
-span{
+span {
     color: #000000;
+    user-select: none;
 }
 
-.filtro span, .filtro i{
+.filtro span,
+.filtro i {
     color: #B70811;
 }
 
-.btns i{
+.btns i {
     color: #B70811;
 }
 
-.container-filter{
+.container-filter {
     border: 1px solid black;
     height: 100%;
     width: 50%;
@@ -138,7 +132,7 @@ span{
     margin-left: 10px;
 }
 
-.items .search{
+.items .search {
     height: 10%;
     width: 50%;
     margin-top: 20px;
@@ -159,13 +153,13 @@ span{
 
 }
 
-button{
+button {
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.docentes{
+.docentes {
     border-radius: 10px;
     width: 50%;
     height: 80%;
@@ -176,7 +170,7 @@ button{
     padding: 10px;
 }
 
-.btns{
+.btns {
     width: 50%;
     height: 30%;
     margin-top: 10px;
@@ -185,7 +179,7 @@ button{
     align-items: center;
 }
 
-.btn{
+.btn {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -196,11 +190,11 @@ button{
     height: fit-content;
 }
 
-i{
+i {
     font-size: 20px;
 }
 
-.btns a{
+.btns a {
     text-decoration: none;
     color: #B70811;
 }
@@ -211,22 +205,44 @@ i{
     height: 90px;
 }
 
-.search{
+.search {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container-search{
+.container-search {
     width: 70%;
     display: flex;
     align-items: center;
 }
 
-.view-docentes{
+.view-docentes {
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid transparent;
+    transition: border 0.3s;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
+
+.view-docentes span:first-of-type {
+    width: 50%;
+}
+
+.view-docentes> span:last-of-type {
+    width: 40%;
+}
+
+.view-docentes:active,
+.view-docentes:focus-visible {
+    border: 5px solid red;
+}
+
+
+
 
 
 @media only screen and (max-width: 768px) {

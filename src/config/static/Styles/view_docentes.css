@@ -89,6 +89,10 @@ nav ul li .link:hover::before {
     width: 100%;
 }
 
+nav ul li:last-of-type a {
+    color: white;
+    cursor: pointer;
+}
 
 nav ul div {
     color: white;
@@ -167,7 +171,7 @@ section:last-of-type {
     width: 50%;
 }
 
-.docente-container{
+.docente-container {
     width: 90%;
     height: 60%;
     margin: 10px;
@@ -182,7 +186,7 @@ section:last-of-type .container-50 {
 }
 
 .info-dc {
-    width: 100%;
+    width: 70%;
     height: fit-content;
     display: flex;
     flex-direction: row;
@@ -205,11 +209,12 @@ section:last-of-type .container-50 {
     background-color: #B70811;
 }
 
-.info-dc h3,span{
+.info-dc h3,
+span {
     width: 40.3%;
 }
 
-.info-dc span input{
+.info-dc span input {
     border: none;
     font-family: 'Montserrat';
     color: #B70811;
@@ -218,26 +223,42 @@ section:last-of-type .container-50 {
     text-align: center;
 }
 
-.info-dc button{
-    background-color: #B70811;
+.info-dc button {
+    background-color: transparent;
     color: white;
     width: fit-content;
     padding: 10px;
     margin-right: 10px;
     border-radius: 50%;
     cursor: pointer;
+    border: none;
 }
 
-.title{
+.info-dc button i {
+    color: #B70811;
+    font-size: 20px;
+}
+
+.title {
     position: relative;
 }
 
-.title a{
+.first-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-dc {
+    margin: 4px;
+}
+
+.title a {
     position: absolute;
     right: 10px;
 }
 
-.first-container .info-dc:first-of-type span{
+.first-container .info-dc:first-of-type span {
     font-weight: 600;
 }
 
@@ -247,7 +268,7 @@ h4 {
     color: #B70811;
 }
 
-.first-container h3{
+.first-container h3 {
     font-size: 1.7vw;
 }
 
@@ -275,8 +296,35 @@ span {
     height: 90px;
 }
 
+.docente-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    position: relative;
+}
 
+.docente-container div {
+    width: 83%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+}
 
+.docente-container div>* {
+    width: 50%;
+}
+
+.docente-container button {
+    width: fit-content;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
 
 @media only screen and (max-width: 768px) {
     nav ul li {
