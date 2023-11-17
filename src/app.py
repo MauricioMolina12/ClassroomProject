@@ -38,56 +38,76 @@ def log_in():
     
 @app.route('/sign_up')
 def register():
-
-    if "roles" in session and "jornadas" in session:
-        return render_template('register.html', rols= session['roles'], jornads= session['jornadas'])
+    if "user" in session:
+        if "roles" in session and "jornadas" in session:
+            return render_template('register.html', rols= session['roles'], jornads= session['jornadas'])
+        else:
+            return redirect(url_for("ruta_rol.roles"))
     else:
-        return redirect(url_for("ruta_rol.roles"))
+        return redirect(url_for("log_in"))
 
 @app.route('/info_docentes')
 def info():
-    return render_template('view_docentes.html')
-
+    if "user" in session:
+        return render_template('view_docentes.html')
+    else:
+        return redirect(url_for("log_in"))  
+    
 @app.route('/docentes')
 def docentes():
-    if "usuarios" in session:
-        return render_template('docentes.html', docentes= session['usuarios'])
-    else:
-        return redirect(url_for("ruta_user.users"))
     
-
+    if "user" in session:
+        if "usuarios" in session:
+            return render_template('docentes.html', docentes= session['usuarios'])
+        else:
+            return redirect(url_for("ruta_user.users"))
+    else:
+        return redirect(url_for("log_in"))   
+    
 @app.route('/actividades')
-def activity():
-    return render_template('registrarActividad.html')
-
+def activity(): 
+    if "user" in session:
+        return render_template('registrarActividad.html')
+    else:
+        return redirect(url_for("log_in"))
+    
 @app.route('/asignaturas')
 def asignaturas():
-
-    if "areas" in session:
-        return render_template('asignaturas.html', areas = session['areas'])
+    if "user" in session:
+        if "areas" in session:
+            return render_template('asignaturas.html', areas = session['areas'])
+        else:
+            return redirect(url_for("ruta_area.areas"))
     else:
-        return redirect(url_for("ruta_area.areas"))
+        return redirect(url_for("log_in"))
     
-
 @app.route('/choose')
 def choose():
-    return render_template('choose.html')
-
+    if "user" in session:
+        return render_template('choose.html')
+    else:
+        return redirect(url_for("log_in"))
+    
 @app.route('/asignacion')
 def asignacion():
-    if "asignaturas" in session and "grupos" in session:
-        return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'])
+    if "user" in session:
+        if "asignaturas" in session and "grupos" in session:
+            return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'])
+        else:
+            return redirect(url_for("ruta_asig.asignaturas"))
     else:
-        return redirect(url_for("ruta_asig.asignaturas"))
-    
+        return redirect(url_for("log_in"))
 
 @app.route('/PlanDeTrabajo')
 def plan():
-    if "actividades" in session and "items" in session:
-        return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'])
+    if "user" in session:
+        if "actividades" in session and "items" in session:
+            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'])
+        else:
+            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades"))
     else:
-        return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades"))
-
+        return redirect(url_for("log_in"))
+    
 @app.route("/logout")
 def logout():
     session.clear()
