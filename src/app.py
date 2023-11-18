@@ -88,11 +88,11 @@ def choose():
     else:
         return redirect(url_for("log_in"))
     
-@app.route('/asignacion')
-def asignacion():
+@app.route('/asignacion/<int:id>')
+def asignacion(id):
     if "user" in session:
         if "asignaturas" in session and "grupos" in session:
-            return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'])
+            return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'], id_doc= id, docentes= session['usuarios'])
         else:
             return redirect(url_for("ruta_asig.asignaturas"))
     else:
