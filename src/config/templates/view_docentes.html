@@ -17,7 +17,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div class="container-50 first-container">
             <div class="info-dc">
                 <h3 id="nombre">Nombre</h3>
-                <span id="valorn">Adalberto Alvarez</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <span id="valorn">{{ docente.nombre }}</span>
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('nombre', 'valorn')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">

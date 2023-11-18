@@ -46,10 +46,10 @@ def register():
     else:
         return redirect(url_for("log_in"))
 
-@app.route('/info_docentes')
-def info():
+@app.route('/info_docentes/<int:id>')
+def info(id):
     if "user" in session:
-        return render_template('view_docentes.html')
+        return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'])
     else:
         return redirect(url_for("log_in"))  
     
@@ -98,13 +98,13 @@ def asignacion(id):
     else:
         return redirect(url_for("log_in"))
 
-@app.route('/PlanDeTrabajo')
-def plan():
+@app.route('/PlanDeTrabajo/<int:id>')
+def plan(id):
     if "user" in session:
         if "actividades" in session and "items" in session:
-            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'])
+            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'])
         else:
-            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades"))
+            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:
         return redirect(url_for("log_in"))
 

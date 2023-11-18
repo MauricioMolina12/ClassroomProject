@@ -16,7 +16,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <div class="container-w50">
                     <div class="elements-input">
                         <h3>Nombre</h3>
-                        <input disabled name="name-docente" type="text" class="style-input">
+                        {% for docente in docentes %}
+                        {% if docente.id == id_doc %}
+                        <input disabled name="name-docente" type="text" class="style-input" value="{{ docente.nombre }}">
+                        {% endif %}
+                        {% endfor %}
                     </div>
                     <div class="elements-input">
                         <h3>Año</h3>

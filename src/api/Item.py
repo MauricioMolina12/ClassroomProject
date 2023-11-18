@@ -9,12 +9,12 @@ ruta_item = Blueprint("ruta_item",__name__)
 item_schema = ItemSchema()
 items_schema = ItemSchema(many=True)
 
-@ruta_item.route("/Item", methods=["GET"])
-def items():
+@ruta_item.route("/Item/<int:id>", methods=["GET"])
+def items(id):
     resultall = Item.query.all()
     result = items_schema.dump(resultall)
     session['items'] = result
-    return redirect(url_for("plan"))
+    return redirect(url_for("plan", id= id))
 
 @ruta_item.route("/saveItem", methods = ["POST"])
 def saveItem():
