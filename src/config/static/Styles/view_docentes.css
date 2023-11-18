@@ -227,6 +227,12 @@ span {
     width: 40.3%;
 }
 
+.info-dc h3{
+    display: flex;
+    justify-content: flex-start;
+    user-select: none;
+}
+
 .info-dc span input {
     border: none;
     font-family: 'Montserrat';
@@ -286,8 +292,9 @@ h4 {
 }
 
 span {
-    font-size: 1.4vw;
+    font-size: 13px;
     color: #890209;
+    user-select: none;
 }
 
 .chart-asignaturas {
