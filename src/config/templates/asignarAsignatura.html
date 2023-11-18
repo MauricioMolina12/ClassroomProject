@@ -14,7 +14,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <form action="">
             <div class="items">
                 <label class="style-label" for="nombre">Nombre</label>
-                <input type="text" id="nombre" class="style-input" name="name-doc">
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <input type="text" id="nombre" class="style-input" name="name-doc" value="{{ docente.nombre }}">
+                {% endif %}
+                {% endfor %}
             </div>
             <div class="items">
                 <label class="style-label" for="asignatura">Asignaturas</label>

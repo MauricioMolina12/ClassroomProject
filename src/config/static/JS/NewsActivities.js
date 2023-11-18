@@ -97,7 +97,6 @@ document.getElementById("register_act").addEventListener("click", function (even
                         name: activi[data2],
                         id_TipodeActividad: data.mensaje
                     }
-                    alert(activi[data2])
                     return fetch('/api/saveItem', {
                         method: 'POST',
                         headers: {
