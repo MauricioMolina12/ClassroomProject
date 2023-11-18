@@ -17,8 +17,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 {% for docente in docentes %}
                 {% if docente.id == id_doc %}
                 <input disabled type="text" id="nombre" class="style-input" name="name-doc" value="{{ docente.nombre }}">
-                <input type="hidden" id="id_docente" name="id_docente" value="{{ id_doc }}">
-
                 {% endif %}
                 {% endfor %}
             </div>

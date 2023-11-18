@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = '/asignacion/' + docenteId;
         }else{
             Swal.fire({
-                title: 'Error',
-                text: 'Por favor, escoge un docente',
+                text: 'Por favor, escoge un docente.',
                 icon: 'error',
                 backdrop: false,
                 timer: 4500,

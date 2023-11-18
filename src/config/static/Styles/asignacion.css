@@ -228,6 +228,7 @@ form .items input {
     padding: 0 4px;
     font-family: 'Montserrat';
     width: 30%;
+    font-size: 10px !important;
 }
 
 
