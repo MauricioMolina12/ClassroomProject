@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
             docente.style.display = match ? "block" : "none";
         });
     }
-
-    // Evento input para buscar dinámicamente mientras el usuario escribe
     searchInput.addEventListener("input", function () {
         const query = this.value.trim();
         buscarDocentes(query);

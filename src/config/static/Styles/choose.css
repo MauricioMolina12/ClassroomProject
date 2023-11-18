@@ -16,7 +16,20 @@ body {
     align-items: center;
     flex-direction: column;
     transition: opacity 0.5s ease-in-out;
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
 header {
     width: 100%;
@@ -91,7 +104,6 @@ nav ul li .link:hover::before {
 }
 
 
-
 main {
     width: 100%;
     display: flex;
@@ -110,6 +122,8 @@ main section:first-of-type{
 }
 
 h1{
+    position: relative;
+    top: 30px;
     font-size: 3vw;
     color: #B70811;
 }

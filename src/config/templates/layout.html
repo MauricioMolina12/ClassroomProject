@@ -16,7 +16,7 @@
          <ul>
              <li><a class="link" href="/" class="link">Inicio</a></li>
              <li><a class="link {% if active_page == 'docentes' %}activo{% endif %}" href="/docentes" class="link">Docentes</a></li>
-             <li><a class="link" href="#" class="link">Historial</a></li>
+             <li><a class="link" href="/historial" class="link">Historial</a></li>
              <div class="line">|</div>
              <a id="out" href="/logout"><li>Salir</li></a>
          </ul>
@@ -33,6 +33,7 @@
     <script src="{{ url_for('static', filename='JS/new-area.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/AsignarAsignatura.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/search-teacher.js') }}"></script>
+
 
 </body>
 </html>

@@ -1,0 +1,40 @@
+{% extends './layout.html' %}
+{% block title %}Unilibre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/revisar.css') }}">
+<main>
+    <div class="container-fluid">
+        <h1>Adalberto Alvarez</h1>
+        <div class="accordion">
+            <details class="details">
+                <summary>Proyección social</summary>
+                <div class="row">
+                    <div class="row-child">
+                        <span>Actividad 1</span>
+                    </div>
+                    <div class="row-child">
+                        <input type="checkbox" class="style-input-3 w-20" name="check">
+                    </div>
+                    <div class="row-child">
+                        <input type="number" class="style-input-3 w-20" name="hrs">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row-child">
+                        <span>Actividad 1</span>
+                    </div>
+                    <div class="row-child">
+                        <input type="checkbox" class="style-input-3 w-20" name="check">
+                    </div>
+                    <div class="row-child">
+                        <input type="number" class="style-input-3 w-20" name="hrs">
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+</main>
+{% endblock%}

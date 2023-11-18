@@ -107,6 +107,16 @@ def plan():
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades"))
     else:
         return redirect(url_for("log_in"))
+
+
+@app.route("/historial")
+def history():
+    return render_template('historial.html')
+
+@app.route("/revision")
+def revisar():
+    return render_template('revisar.html')
+
     
 @app.route("/logout")
 def logout():
