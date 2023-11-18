@@ -7,12 +7,12 @@ ruta_grupos = Blueprint("ruta_grupos",__name__)
 grupo_Schema = GrupoSchema()
 grupos_Schema = GrupoSchema(many=True)
 
-@ruta_grupos.route("/grupos", methods=["GET"])
-def grupos():
+@ruta_grupos.route("/grupos/<int:id>", methods=["GET"])
+def grupos(id):
     resultall = Grupos.query.all()
     result = grupos_Schema.dump(resultall)
     session['grupos'] = result
-    return redirect(url_for("asignacion"))
+    return redirect(url_for("asignacion", id=id))
 
 @ruta_grupos.route("/savegrupo", methods = ["POST"])
 def saveGrupo():

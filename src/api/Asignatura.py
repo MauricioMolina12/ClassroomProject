@@ -9,12 +9,12 @@ ruta_asig = Blueprint("ruta_asig",__name__)
 asig_schema = AsignaturaSchema()
 asigs_schema = AsignaturaSchema(many=True)
 
-@ruta_asig.route("/asignaturas", methods=["GET"])
-def asignaturas():
+@ruta_asig.route("/asignaturas/<int:id>", methods=["GET"])
+def asignaturas(id):
     resultall =  Asignatura.query.all()
     result = asigs_schema.dump(resultall)
     session['asignaturas'] = result
-    return redirect(url_for("ruta_grupos.grupos"))
+    return redirect(url_for("ruta_grupos.grupos", id= id))
 
 @ruta_asig.route("/saveasignatura", methods=["POST"])
 def saveasignatura():
