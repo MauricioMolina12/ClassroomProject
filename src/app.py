@@ -94,7 +94,7 @@ def asignacion(id):
         if "asignaturas" in session and "grupos" in session:
             return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'], id_doc= id, docentes= session['usuarios'])
         else:
-            return redirect(url_for("ruta_asig.asignaturas"))
+            return redirect(url_for("ruta_asig.asignaturas", id= id))
     else:
         return redirect(url_for("log_in"))
 
