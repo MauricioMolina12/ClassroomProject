@@ -1,17 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const searchInput = document.getElementById("searchInput");
-    const viewDocentes = document.querySelectorAll(".view-docentes");
+document.addEventListener('DOMContentLoaded', function () {
+    var docentes = document.querySelectorAll('.view-docentes');
 
-    // Función para realizar la búsqueda y actualizar los resultados
-    function buscarDocentes(query) {
-        viewDocentes.forEach(docente => {
-            const nombreDocente = docente.dataset.nombre.toLowerCase();
-            const match = nombreDocente.includes(query.toLowerCase());
-            docente.style.display = match ? "block" : "none";
+    docentes.forEach(function (docente) {
+        docente.addEventListener('click', function () {
+            docentes.forEach(function (otherDocente) {
+                otherDocente.classList.remove('selected');
+            });
+            this.classList.add('selected');
         });
-    }
-    searchInput.addEventListener("input", function () {
-        const query = this.value.trim();
-        buscarDocentes(query);
+    });
+
+    document.getElementById('asig_subj').addEventListener('click', function() {
+        var selectedDocente = document.querySelector('.view-docentes.selected');
+        if (selectedDocente) {
+            var docenteId = selectedDocente.getAttribute('data-id');
+            window.location.href = '/asignacion/' + docenteId;
+        }else{
+            Swal.fire({
+                title: 'Error',
+                text: 'Por favor, escoge un docente',
+                icon: 'error',
+                backdrop: false,
+                timer: 4500,
+                timerProgressBar: true,
+            })
+        }
     });
 });

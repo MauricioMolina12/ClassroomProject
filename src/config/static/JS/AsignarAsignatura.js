@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
 document.getElementById("asig_usu").addEventListener("click", function (event) {
     const nombre_ = document.getElementById('nombre').value;
     const asig_ = document.getElementById('asignatura').value;

@@ -19,7 +19,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div class="docentes" id="docentes-container">
             {% for docente in docentes %}
                 {% if docente.rol != 1 %}
-                <div class="view-docentes" data-nombre="{{ docente.nombre }}">
+                <div class="view-docentes" data-nombre="{{ docente.nombre }}"  data-id="{{ docente.id }}">
                     <span>{{ docente.nombre }}</span>
                     <span>{{ docente.id }}</span>
                     <button><i class="fa-solid fa-trash-can"></i></button>
@@ -54,8 +54,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 </div>
             </button>
         </div>
-
-
     </section>
 </main>
 {% endblock%}

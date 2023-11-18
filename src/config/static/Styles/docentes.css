@@ -251,6 +251,10 @@ i {
     border: 5px solid red;
 }
 
+.view-docentes.selected {
+    border: 3px solid red;
+    transition: all .8s ease;
+}
 
 
 
