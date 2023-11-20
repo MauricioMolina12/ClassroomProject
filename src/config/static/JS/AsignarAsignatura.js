@@ -52,6 +52,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
     const asig_ = document.getElementById('asignatura').value;
     const grupo_ = document.getElementById('grupo').value;
     const semes_ = document.getElementById('semestre').value;
+    const id_doc = document.getElementById('id_docente').value;
 
     if (nombre_.trim() === '' || asig_.trim() === '' || grupo_.trim() === '' || semes_.trim() === '') {
         Swal.fire({
@@ -96,13 +97,11 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
                         backdrop: false,
                         timer: 2000,
                     }).then((result) => {
-                        window.location.href = "/asignacion";
+                        window.location.href = "/asignacion/" + id_doc;
                     });
                 }
-
             })
             .catch(error => console.error(error));
     }
-
     event.preventDefault();
 }); 
