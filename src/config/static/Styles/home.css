@@ -141,7 +141,7 @@ main div:first-child section h1 {
 }
 
 main div:first-child section hr {
-    background-color: #D9D9D9;
+    background-color: #A58A12;
     height: 4px;
     border: none;
     margin-bottom: 10px;
@@ -270,3 +270,4 @@ main div:first-child section a:hover {
         height: 50%
     }
 }
+

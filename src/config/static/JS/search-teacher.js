@@ -96,6 +96,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-    });    
+    }); 
+
+    var searchInput = document.getElementById('search');
+    var docentesContainer = document.getElementById('docentes-container');
+    var docentes = docentesContainer.querySelectorAll('.general');
+    
+    searchInput.addEventListener('input', function () {
+        var searchTerm = searchInput.value.toLowerCase();
+    
+        docentes.forEach(function (docente) {
+            var docenteNombre = docente.querySelector('.view-docentes').getAttribute('data-nombre').toLowerCase();
+    
+            if (docenteNombre.includes(searchTerm)) {
+                docente.style.display = 'flex';
+            } else {
+                docente.style.display = 'none';
+            }
+        });
+    });
+       
   
 });
