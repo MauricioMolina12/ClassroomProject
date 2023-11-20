@@ -32,8 +32,9 @@ header img {
 }
 
 nav {
-    border: 1px solid black;
     width: 50%;
+    outline: none;
+    border: none;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -72,11 +73,11 @@ nav ul li {
     position: relative;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.line{
+.line {
     font-size: 18px;
 }
 
@@ -95,6 +96,9 @@ nav ul li .link:hover::before {
     width: 100%;
 }
 
+i {
+    color: #B70811;
+}
 
 
 /* nav {

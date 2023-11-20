@@ -1,59 +1,71 @@
-{% extends './layout.html'%}
-{% block title %}Unilibre{% endblock %}
-{% block header %}
-    {{ super() }}
-{% endblock%}
-{% block body%}
-<link rel="stylesheet" href="{{ url_for('static', filename='Styles/docentes.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-crossorigin="anonymous" referrerpolicy="no-referrer" />
-<main>
-    <section class="items">
-        <div class="search">
-            <div class="container-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Ingresa el nombre del docente" class="style-input">
+    {% extends './layout.html'%}
+    {% block title %}Universidad Libre{% endblock %}
+    {% block header %}
+        {{ super() }}
+    {% endblock%}
+    {% block body%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='Styles/docentes.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <main>
+        <section class="items">
+            <div class="search">
+                <div class="container-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Ingresa el nombre del docente" class="style-input">
+                </div>
             </div>
-        </div>
-        <div class="docentes" id="docentes-container">
-            {% for docente in docentes %}
-                {% if docente.rol != 1 %}
-                <div class="view-docentes" data-nombre="{{ docente.nombre }}"  data-id="{{ docente.id }}">
-                    <span>{{ docente.nombre }}</span>
-                    <span>{{ docente.id }}</span>
-                    <button><i class="fa-solid fa-trash-can"></i></button>
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+            <div class="docentes" id="docentes-container">
+                {% for docente in docentes %}
+                    {% if docente.rol != 1 %}
+                    <div class="general">
+                        <div class="view-docentes" data-nombre="{{ docente.nombre }}" data-id="{{ docente.id }}">
+                            <span>{{ docente.nombre }}</span>
+                            <span>{{ docente.id }}</span>
+                        </div>
+                        <button class="trash">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                    
+                    {% endif %}
+                {% endfor %}
+            </div>
 
-        <div class="btns">
-            <button>
-                <div id="edit_doc" class="btn">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <span>Editar docente</span>
-               </div>
-            </button>
-            <button>
-                <a href="/sign_up" class="btn">
-                   <i class="fa-solid fa-users-between-lines"></i>
-                   <span>Agregar docentes</span>
-                </a>
-            </button>
-            <button>
-                <div id="asig_plan" class="btn">
-                  <i class="fa-solid fa-chart-line"></i>
-                  <span>Asignar plan de trabajo</span>
+            <div class="btns">
+                <button>
+                    <div id="edit_doc" class="btn">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Editar docente</span>
                 </div>
-            </button>
-            <button>
-                <div id="asig_subj" class="btn">
-                  <i class="fa-solid fa-book-bookmark"></i>
-                  <span>Asignar asignaturas</span>
-                </div>
-            </button>
-        </div>
-    </section>
-</main>
-{% endblock%}
+                </button>
+                <button>
+                    <a href="/sign_up" class="btn">
+                    <i class="fa-solid fa-users-between-lines"></i>
+                    <span>Agregar docentes</span>
+                    </a>
+                </button>
+                <button>
+                    <div id="asig_plan" class="btn">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Asignar plan de trabajo</span>
+                    </div>
+                </button>
+                <button>
+                    <div id="asig_subj" class="btn">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <span>Asignar asignaturas</span>
+                    </div>
+                </button>
+                <button>
+                    <div id="asig_subj" class="btn">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                    <span>Hacer revisión</span>
+                    </div>
+                </button>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='JS/search-teacher.js') }}"></script>
+    {% endblock%}
