@@ -22,14 +22,15 @@ body {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(-20px);
+        opacity: 0;
+        transform: translateY(-20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
 header {
     width: 100%;
@@ -47,7 +48,6 @@ header img {
 }
 
 nav {
-    border: 1px solid black;
     width: 50%;
     height: 80%;
     display: flex;
@@ -58,6 +58,8 @@ nav {
     position: absolute;
     right: 0;
     box-shadow: 10px 15px 10px rgb(38, 38, 38);
+    outline: none;
+    border: none;
 }
 
 nav ul {
@@ -82,7 +84,7 @@ nav ul li {
     border-radius: 5px;
 }
 
-.link{
+.link {
     position: relative;
     color: #ffffff;
     text-decoration: none;
@@ -113,7 +115,7 @@ main {
     align-items: center;
 }
 
-main section:first-of-type{
+main section:first-of-type {
     height: 20%;
     display: flex;
     justify-content: center;
@@ -121,21 +123,21 @@ main section:first-of-type{
 
 }
 
-h1{
+h1 {
     position: relative;
     top: 30px;
     font-size: 3vw;
     color: #B70811;
 }
 
-main section:last-of-type{
+main section:last-of-type {
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
 
-section a div{
+section a div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,7 +148,7 @@ section a {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius:20px;
     width: 20%;
     height: 40%;
     box-shadow: .3rem .3rem .6rem black;
@@ -155,18 +157,18 @@ section a {
     color: #B70811;
 }
 
-h3{
+h3 {
     font-weight: normal;
     font-size: 15px;
     position: relative;
     top: 10px;
 }
 
-section i{
+section i {
     font-size: 80px;
 }
 
-section{
+section {
     width: 100%;
 }
 

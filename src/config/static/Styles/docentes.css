@@ -46,7 +46,6 @@ header img {
 }
 
 nav {
-    border: 1px solid black;
     width: 50%;
     height: 80%;
     display: flex;
@@ -57,6 +56,8 @@ nav {
     position: absolute;
     right: 0;
     box-shadow: 10px 15px 10px rgb(38, 38, 38);
+    outline: none;
+    border: none;
 }
 
 nav ul {
@@ -121,14 +122,20 @@ h1 {
 }
 
 span {
-    color: #000000;
+    color: #B70811;
     user-select: none;
 }
 
-
-.btns i {
+.general i{
     color: #B70811;
 }
+
+
+i {
+    font-size: 25px;
+    color: #B70811;
+}
+
 
 .container-filter {
     border: 1px solid black;
@@ -158,8 +165,7 @@ span {
     font-family: 'Montserrat';
     width: 90%;
     margin-left: 10px;
-    border-radius: 10pxs;
-
+    border-radius: 10px;
 }
 
 button {
@@ -193,16 +199,17 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #B70811;
     width: fit-content;
     padding: 5px;
     border-radius: 10px;
     height: fit-content;
+    background-color: white;
+    box-shadow: .1rem .1rem .2rem black;
+    border: none;
+    outline: none;
 }
 
-i {
-    font-size: 20px;
-}
+
 
 .btns a {
     text-decoration: none;
@@ -238,22 +245,36 @@ i {
     border: 1px solid #ccc;
 }
 
-.view-docentes span:first-of-type {
-    width: 50%;
-}
-
-.view-docentes> span:last-of-type {
-    width: 40%;
-}
-
-.view-docentes:active,
-.view-docentes:focus-visible {
-    border: 5px solid red;
-}
-
 .view-docentes.selected {
     border: 3px solid red;
-    transition: all .8s ease;
+    transition: 0.1s;
+    transform: scale(.9);
+}
+
+
+.general{
+    display: flex;
+    width: 100%;
+}
+
+.trash{
+    margin-left: -2px;
+}
+
+
+.slide-out {
+    animation: slideOut 0.5s ease-in-out;
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
 }
 
 

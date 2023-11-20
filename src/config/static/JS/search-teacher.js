@@ -58,5 +58,44 @@ document.addEventListener('DOMContentLoaded', function () {
             })
         }
     });
+
+    document.querySelectorAll('.trash').addEventListener("click",function(){
+        var selectedDocente = document.querySelector('.view-docentes.selected');
+        var docenteId = selectedDocente.getAttribute('data-id');
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esto",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminarlo'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/deleteuser/${docenteId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        Swal.fire('Error', data.error, 'error');
+                    } else {
+                        docenteElement.classList.add('slide-out');
+                        docenteElement.addEventListener('animationend', function() {
+                            docenteElement.remove();
+                        });
+                        Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al eliminar el usuario:', error);
+                    Swal.fire('Error', 'Ocurrió un error al intentar eliminar el usuario', 'error');
+                });
+            }
+        });
+    });    
   
 });

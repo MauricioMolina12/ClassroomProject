@@ -1,5 +1,5 @@
 {% extends './layout.html' %}
-{% block title %}Unilibre{% endblock %}
+{% block title %}Universidad Libre{% endblock %}
 {% block header %}
     {{ super() }}
 {% endblock%}
@@ -9,31 +9,140 @@
     <div class="container-fluid">
         <h1>Adalberto Alvarez</h1>
         <div class="accordion">
-            <details class="details">
-                <summary>Proyección social</summary>
-                <div class="row">
-                    <div class="row-child">
-                        <span>Actividad 1</span>
+            <div class="categories">
+                <details class="details">
+                    <summary>Proyección social</summary>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Formación de recurso humano en investigación</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                    <div class="row-child">
-                        <input type="checkbox" class="style-input-3 w-20" name="check">
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Formación de recurso humano en investigación</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                    <div class="row-child">
-                        <input type="number" class="style-input-3 w-20" name="hrs">
+                </details>
+                <details class="details">
+                    <summary>Proyección social</summary>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="row-child">
-                        <span>Actividad 1</span>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                    <div class="row-child">
-                        <input type="checkbox" class="style-input-3 w-20" name="check">
+                </details>
+                <details class="details">
+                    <summary>Proyección social</summary>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                    <div class="row-child">
-                        <input type="number" class="style-input-3 w-20" name="hrs">
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
                     </div>
-                </div>
-            </details>
+                </details>
+                <details class="details">
+                    <summary>Proyección social</summary>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
+                    </div>
+                </details>
+                <details class="details">
+                    <summary>Proyección social</summary>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="row-child">
+                            <span>Actividad 1</span>
+                        </div>
+                        <div class="row-child">
+                            <input type="checkbox" class="style-input-3 w-20" name="check">
+                        </div>
+                        <div class="row-child">
+                            <input type="number" class="style-input-3 w-20" name="hrs">
+                        </div>
+                    </div>
+                </details>
+            </div>
+            <div class="calificacion">
+                <span>Califica al docente en este espacio!</span>
+                <input id="note" type="number" step="1" class="style-input"></input>
+                <button id="button-c">
+                    Calificar docente
+                </button>
+            </div>
         </div>
     </div>
 </main>

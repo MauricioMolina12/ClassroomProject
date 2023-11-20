@@ -28,9 +28,12 @@ main {
 }
 
 main .title{
-    height: 20%;
+    position: relative;
+    top: 28px;
+    height: fit-content;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .chart-scroll{
@@ -43,6 +46,8 @@ main .title{
     align-items: center;
     padding: 10px;
     overflow-x: hidden;
+    position: relative;
+    top: 20px;
 }
 
 .scroll-child{
@@ -102,6 +107,8 @@ nav {
     position: absolute;
     right: 0;
     box-shadow: 10px 15px 10px rgb(38, 38, 38);
+    outline: none;
+    border: none;
 }
 
 
@@ -173,12 +180,23 @@ a[id="out"]{
 }
 
 h1{
-    font-size: 24px;
+    font-size: 20px;
     color: #B70811;
 }
 
 h3{
     color: #B70811;
+}
+
+h2{
+    background-color: #B70811;
+    color: white;
+    padding: 0 5px;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: 18px;
+    position: relative;
+    top: 6px;
 }
 
 .scroll-child .info:last-of-type span{

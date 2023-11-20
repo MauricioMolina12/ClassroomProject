@@ -53,6 +53,7 @@ def info(id):
     else:
         return redirect(url_for("log_in"))  
     
+    
 @app.route('/docentes')
 def docentes():
     

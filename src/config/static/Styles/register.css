@@ -45,7 +45,6 @@ header img {
 }
 
 nav {
-    border: 1px solid black;
     width: 50%;
     height: 80%;
     display: flex;
@@ -56,6 +55,8 @@ nav {
     position: absolute;
     right: 0;
     box-shadow: 10px 15px 10px rgb(38, 38, 38);
+    outline: none;
+    border: none;
 }
 
 nav ul {
@@ -183,12 +184,16 @@ button{
 
 form .items:first-of-type button, .items:nth-of-type(2) button {
     width: 7%;
-    background-color: rgb(151, 183, 8);
-    color: white;
+    background-color: #B70811;
+    color: white !important;
     border-radius: 4px;
-    height: 40%;
+    height: 50%;
     margin-left: 5px;
     border: none;
+}
+
+.fa-solid{
+    color: white;
 }
 
 form .items input {
