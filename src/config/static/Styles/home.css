@@ -133,7 +133,7 @@ main div:first-child section {
 }
 
 main div:first-child section h1 {
-    font-size: 23px;
+    font-size: 28px;
     font-family: 'Montserrat';
     font-weight: 800;
     color: #B70811;
@@ -141,7 +141,7 @@ main div:first-child section h1 {
 }
 
 main div:first-child section hr {
-    background-color: #D9D9D9;
+    background-color: #B59814;
     height: 4px;
     border: none;
     margin-bottom: 10px;
@@ -268,5 +268,12 @@ main div:first-child section a:hover {
 
     nav {
         height: 50%
+    }
+}
+
+@media only screen and (min-width: 1360px) {
+    main div:last-child img {
+        width: 690px;
+        height: 480px;
     }
 }

@@ -96,6 +96,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         });
-    });    
+    });   
+    
+    const onSearch = () => {
+    const input = document.querySelector("#search");
+    const filter = input.value.toUpperCase();
+
+    const list = document.querySelectorAll("#general .view-docentes");
+
+    list.forEach((el) => {
+        const text = el.textContent.toUpperCase();
+
+        el.style.display = text.includes(filter) ? "" : "none";
+    });
+};
+
+// Asigna el evento a escuchar al input
+const searchInput = document.querySelector("#search");
+searchInput.addEventListener("input", onSearch);
+
   
 });
