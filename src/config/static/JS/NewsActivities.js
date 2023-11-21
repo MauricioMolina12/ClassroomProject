@@ -1,10 +1,11 @@
 var inputOptions = document.getElementById("activities-opcionales");
 
-document.getElementById("cantidad").addEventListener("input", function() {
-    var cantidadNormales = parseInt(this.value);
+function fun_acti(){
+    var cantidadInputsOpcion = parseInt(document.getElementById("activities-opcionales").value);
     var contenedorInputs = document.getElementById("generate");
+    var cantidadNormales = parseInt(document.getElementById("cantidad").value);
     contenedorInputs.innerHTML = "";
-
+    
     for (var i = 0; i < cantidadNormales; i++) {
         var nuevoInput = document.createElement("input");
         nuevoInput.type = "text";
@@ -14,11 +15,6 @@ document.getElementById("cantidad").addEventListener("input", function() {
         nuevoInput.id = "actividad" + (i + 1)
         contenedorInputs.appendChild(nuevoInput);
     }
-});
-
-inputOptions.addEventListener("input", function(){
-    var cantidadInputsOpcion = parseInt(this.value);
-    var contenedorInputs = document.getElementById("generate");
 
     for(var i = 0; i < cantidadInputsOpcion; i++){
         var InputOpcionNew = document.createElement("input");
@@ -29,13 +25,17 @@ inputOptions.addEventListener("input", function(){
         InputOpcionNew.id = "actividad opcional" + (i + 1)
         contenedorInputs.appendChild(InputOpcionNew);
     }
-});
+}
+
+document.getElementById("cantidad").addEventListener("input", fun_acti);
+
+inputOptions.addEventListener("input", fun_acti);
 
 
 document.getElementById("clear").addEventListener("click", function(){
     event.preventDefault();
-    var activities = document.getElementById("actividad").value="";
-    var cantidadItems = document.getElementById("cantidad").value="";
+    document.getElementById("actividad").value="";
+    document.getElementById("cantidad").value="";
 
     var contenedorInputs = document.getElementById("generate");
     contenedorInputs.innerHTML = "";
@@ -50,6 +50,7 @@ checkbox.addEventListener("change",function(){
 
     if(!checkbox.checked && inputOptions.value!==""){
         inputOptions.value="";
+        fun_acti()
     }
 });
 
