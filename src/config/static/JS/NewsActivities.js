@@ -1,10 +1,11 @@
+var inputOptions = document.getElementById("activities-opcionales");
 
 document.getElementById("cantidad").addEventListener("input", function() {
-    var cantidad = parseInt(this.value);
+    var cantidadNormales = parseInt(this.value);
     var contenedorInputs = document.getElementById("generate");
     contenedorInputs.innerHTML = "";
 
-    for (var i = 0; i < cantidad; i++) {
+    for (var i = 0; i < cantidadNormales; i++) {
         var nuevoInput = document.createElement("input");
         nuevoInput.type = "text";
         nuevoInput.className = "style-input-3";
@@ -15,6 +16,22 @@ document.getElementById("cantidad").addEventListener("input", function() {
     }
 });
 
+inputOptions.addEventListener("input", function(){
+    var cantidadInputsOpcion = parseInt(this.value);
+    var contenedorInputs = document.getElementById("generate");
+
+    for(var i = 0; i < cantidadInputsOpcion; i++){
+        var InputOpcionNew = document.createElement("input");
+        InputOpcionNew.type = "text";
+        InputOpcionNew.className = "style-input-3";
+        InputOpcionNew.style.marginBottom = "10px";
+        InputOpcionNew.placeholder = "Actividad opcional " + (i + 1);
+        InputOpcionNew.id = "actividad opcional" + (i + 1)
+        contenedorInputs.appendChild(InputOpcionNew);
+    }
+});
+
+
 document.getElementById("clear").addEventListener("click", function(){
     event.preventDefault();
     var activities = document.getElementById("actividad").value="";
@@ -23,7 +40,18 @@ document.getElementById("clear").addEventListener("click", function(){
     var contenedorInputs = document.getElementById("generate");
     contenedorInputs.innerHTML = "";
 
-})
+});
+
+var checkbox = document.getElementById("check-option");
+var inputOptions = document.getElementById("activities-opcionales");
+
+checkbox.addEventListener("change",function(){
+    inputOptions.disabled = !checkbox.checked;
+
+    if(!checkbox.checked && inputOptions.value!==""){
+        inputOptions.value="";
+    }
+});
 
 document.getElementById("register_act").addEventListener("click", function (event) {
 
@@ -86,10 +114,9 @@ document.getElementById("register_act").addEventListener("click", function (even
                     timerProgressBar: true,
                 });
             } else {
-                // Generar datos para el array usando un bucle
                 const arrayOfDataToSend2 = [];
-                for (let i = 0; i < cant_; i++) { // Por ejemplo, se generan 5 valores diferentes
-                    arrayOfDataToSend2.push(i); // Ajusta aquí cómo quieres generar los valores
+                for (let i = 0; i < cant_; i++) { 
+                    arrayOfDataToSend2.push(i);
                 }
         
                 const promises = arrayOfDataToSend2.map(data2 => {
