@@ -39,7 +39,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <details class="details">
                         <summary>{{ actividad.nombre }}</summary>
                         {% for item in items %}
-                            {% if item.TipodeAct == actividad.id %}
+                            {% if item.TipodeAct == actividad.id and not item.one_select %}
                             <div class="row">
                                 <div class="row-child">
                                     <span id="{{ item.id }}">{{ item.nombre }}</span>
@@ -49,7 +49,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                 </div>
                             </div>
                             {% endif %}
-                        {% endfor %}   
+                        {% endfor %}
+                        <p>Evaluar al menos una de las siguientes actividades:</p>
+                        {% for item in items %}
+                            {% if item.TipodeAct == actividad.id and item.one_select %}
+                            <div class="row">
+                                <div class="row-child opc">
+                                    <span id="{{ item.id }}">{{ item.nombre }}</span>
+                                </div>
+                                <div class="row-child opc">
+                                    <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}  
                     </details>
                     {% endfor %}
                 </div>

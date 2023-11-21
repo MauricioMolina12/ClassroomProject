@@ -103,7 +103,7 @@ def asignacion(id):
 def plan(id):
     if "user" in session:
         if "actividades" in session and "items" in session:
-            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'])
+            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], exist_opc= True)
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:
@@ -117,10 +117,10 @@ def history():
     else:
         return redirect(url_for("log_in"))
     
-@app.route("/revision")
-def revisar():
+@app.route("/revision/<int:id>")
+def revisar(id):
     if "user" in session:
-        return render_template('revisar.html', rol= session["rol"])
+        return render_template('revisar.html', rol= session["rol"], id_doc= id)
     else:
         return redirect(url_for("log_in"))
     
