@@ -15,6 +15,14 @@ def users():
     resultall =  Usuario.query.all()
     result = users_schema.dump(resultall)
     session['usuarios'] = result
+
+    resultall = Rol.query.all()
+    result = roles_schema.dump(resultall)    
+    session['roles'] = result
+
+    resultall =  Jornada.query.all()
+    result = jornadas_schema.dump(resultall)
+    session['jornadas'] = result
     return redirect(url_for("docentes"))
 
 @ruta_user.route("/saveuser", methods=["POST"])

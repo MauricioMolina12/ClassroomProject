@@ -22,6 +22,8 @@ def saveItem():
     name = request.json['name']
     id_TipoAct = request.json['id_TipodeActividad']
     
+
+    
     ite = db.session.query(Item.id).filter(Item.nombre == name).all()
     result = items_schema.dump(ite)
 
@@ -31,7 +33,11 @@ def saveItem():
         tipoa = tipodeas_Schema.dump(result)
         
         if len(tipoa) > 0:
-            new_item = Item(name, id_TipoAct)
+            if "one_select" in request.json:
+                opcio = request.json["one_select"]
+                new_item = Item(name, id_TipoAct, opcio)
+            else:
+                new_item = Item(name, id_TipoAct)
             db.session.add(new_item)
             db.session.commit()
             resultall = Item.query.all()
