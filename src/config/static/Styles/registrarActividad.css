@@ -21,14 +21,15 @@ body {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(-20px);
+        opacity: 0;
+        transform: translateY(-20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
 header {
     width: 100%;
@@ -82,7 +83,7 @@ nav ul li {
     border-radius: 5px;
 }
 
-a:not([id="out"]){
+a:not([id="out"]) {
     color: white;
     text-decoration: none;
 }
@@ -105,9 +106,10 @@ main {
 h2 {
     font-family: 'Montserrat';
     margin-top: 14px;
+    color: #B70811;
 }
 
-h1{
+h1 {
     color: #B70811;
 }
 
@@ -136,13 +138,14 @@ h1{
 
 .child-recuadro:first-of-type .input-f,
 .input-s,
-.input-b, .input-c {
+.input-b,
+.input-c {
     display: flex;
     width: 90%;
     justify-content: space-between;
 }
 
-.inputs-final{
+.inputs-final {
     display: flex;
     justify-content: space-between;
     width: 70%;
@@ -151,6 +154,7 @@ h1{
 
 .child-recuadro:first-of-type .input-b {
     justify-content: space-evenly;
+    width: 70%;
 }
 
 .child-recuadro:first-of-type .input-b button {
@@ -167,6 +171,7 @@ h1{
     margin-right: 20px;
     border: none;
     outline: none;
+    width: 35%;
 }
 
 .child-recuadro:first-of-type .input-b button:last-of-type {
@@ -176,6 +181,8 @@ h1{
     padding: 10px;
     border-radius: 5px;
     font-size: 12px;
+    width: 35%;
+
 }
 
 main .child-recuadro:first-of-type form {
@@ -235,6 +242,7 @@ main .child-recuadro:first-of-type form {
     width: 30%;
 }
 
+
 #generate {
     overflow-y: auto;
     height: 100%;
@@ -247,7 +255,7 @@ main .child-recuadro:first-of-type form {
     padding: 10px;
 }
 
-.title-activities{
+.title-activities {
     height: fit-content;
     display: flex;
     justify-content: center;
@@ -268,13 +276,13 @@ main .child-recuadro:first-of-type form {
 }
 
 
-input{
+input {
     color: #B70811;
     font-weight: 500;
     font-size: 17px;
 }
 
-.h-10-90 .title-activities{
+.h-10-90 .title-activities {
     height: 10%;
     display: flex;
     justify-content: center;
@@ -336,5 +344,3 @@ input{
         height: 50%
     }
 }
-
-

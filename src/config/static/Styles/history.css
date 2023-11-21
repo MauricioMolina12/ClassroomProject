@@ -27,47 +27,6 @@ main {
     align-items: center;
 }
 
-main .title{
-    position: relative;
-    top: 28px;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.chart-scroll{
-    border-radius: 10px;
-    width: 50%;
-    height: 80%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    overflow-x: hidden;
-    position: relative;
-    top: 20px;
-}
-
-.scroll-child{
-    width: 100%;
-    padding: 10px;
-    margin: 10px;
-    border: 2px solid transparent;
-    transition: border 0.3s;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: space-around;
-    border-radius: 10px;
-}
-
-.scroll-child .info{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 @keyframes fadeIn {
     from {
@@ -123,7 +82,6 @@ nav li {
     color: white;
     font-size: 17px;
     font-family: 'Montserrat';
-    font-weight: 500;
 }
 
 nav li .link {
@@ -153,6 +111,45 @@ nav ul li:last-of-type a {
     cursor: pointer;
 }
 
+main .title{
+    position: relative;
+    top: 28px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.chart-scroll{
+    border-radius: 10px;
+    width: 50%;
+    height: 60%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.scroll-child{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.scroll-child .info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 nav ul div {
     color: white;
     font-size: 20px;
@@ -167,16 +164,20 @@ nav ul li:last-child {
     align-items: center;
 }
 
+#out {
+    background-color: white;
+    color: #B70811;
+    border-radius: 5px;
+}
+
+a:not([id="out"]){
+    color: white;
+    text-decoration: none;
+}
+
 .header img {
     width: 320px;
     height: 90px;
-}
-
-a[id="out"]{
-    background-color: white;
-    color: #B70811;
-    padding: 0 10px;
-    border-radius: 5px;
 }
 
 h1{
@@ -191,8 +192,8 @@ h3{
 h2{
     background-color: #B70811;
     color: white;
-    padding: 0 5px;
-    border-radius: 10px;
+    padding: 0 10px;
+    border-radius: 4px;
     width: fit-content;
     font-size: 18px;
     position: relative;

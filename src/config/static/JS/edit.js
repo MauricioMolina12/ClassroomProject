@@ -1,11 +1,12 @@
 function editarValor(elementId, valorCambiar) {
     
     Swal.fire({
-        title: `Ingresa nuevo(a) ${elementId}`,
+        title: `<span style="color: #b70811; font-size:80%;">Ingresa nuevo(a) ${elementId}</span>`,
         input: 'text',
         showCancelButton: true,
         confirmButtonText: 'Confirmar',
-        confirmButtonColor: '#B70811'
+        confirmButtonColor: '#B70811',
+        cancelButtonColor: '#000'
     }).then((result) => {
         if (result.isConfirmed) {
             document.getElementById(valorCambiar).innerText = result.value;

@@ -99,6 +99,7 @@ main {
 h1{
     position: relative;
     bottom: 15px;
+    color: #B70811;
 }
 .header img {
     width: 320px;
@@ -162,14 +163,15 @@ form .items:first-of-type select {
 
 .items:last-of-type button {
     color: white;
-    padding: 5px;
+    padding: 0 10px;
     width: 40%;
-    height: 60%;
+    height: fit-content;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #B70811;
     border: none;
     outline: none;
+    font-size: 100%;
 }
 
 button{
@@ -178,10 +180,10 @@ button{
 
 form .items:first-of-type button {
     width: 7%;
-    background-color: rgb(151, 183, 8);
+    background-color: #B70811;
     color: white;
     border-radius: 4px;
-    height: 40%;
+    height: 50%;
     margin-left: 5px;
     border: none;
 }
@@ -203,6 +205,7 @@ form .items input {
     padding: 0 4px;
     font-family: 'Montserrat';
     width: 30%;
+    font-size: 100%;
 }
 
 
