@@ -138,7 +138,7 @@ main div:first-child section h1 {
     font-family: 'Montserrat';
     font-weight: 800;
     color: #B70811;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 main div:first-child section hr {
@@ -196,7 +196,7 @@ main div:first-child section a:hover {
     }
 
     main div:first-child section h1 {
-        font-size: 16px;
+        font-size: 18px;
         font-family: 'Montserrat';
         font-weight: 800;
         color: #B70811;
@@ -231,7 +231,7 @@ main div:first-child section a:hover {
     }
 
     main div:first-child section h1 {
-        font-size: 16px;
+        font-size: 21px;
     }
 
     main div:first-child section p {

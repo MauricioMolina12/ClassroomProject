@@ -22,7 +22,7 @@ function fun_acti(){
         InputOpcionNew.className = "style-input-3";
         InputOpcionNew.style.marginBottom = "10px";
         InputOpcionNew.placeholder = "Actividad opcional " + (i + 1);
-        InputOpcionNew.id = "actividad opcional" + (i + 1)
+        InputOpcionNew.id = "actividad_opcional" + (i + 1)
         contenedorInputs.appendChild(InputOpcionNew);
     }
 }
@@ -48,16 +48,19 @@ var inputOptions = document.getElementById("activities-opcionales");
 checkbox.addEventListener("change",function(){
     inputOptions.disabled = !checkbox.checked;
 
-    if(!checkbox.checked && inputOptions.value!==""){
-        inputOptions.value="";
+    if(!checkbox.checked && inputOptions.value!=="0"){
+        inputOptions.value="0";
         fun_acti()
+    } else {
+        inputOptions.value="";
     }
 });
 
 document.getElementById("register_act").addEventListener("click", function (event) {
 
     const act_ = document.getElementById('actividad').value;
-    const cant_ = document.getElementById('cantidad').value;
+    const cant_ = parseInt(document.getElementById('cantidad').value);
+    const cant_op = parseInt(document.getElementById("activities-opcionales").value);
     let cont = 0;
     var activi = []
     for (var i = 0; i < cant_; i++) {
@@ -68,8 +71,16 @@ document.getElementById("register_act").addEventListener("click", function (even
             cont++;
         }
     }
+    for (var i = 0; i < cant_op; i++) {
+        const act = "actividad_opcional" + (i + 1)
+        const acts = document.getElementById(act).value;
+        activi.push(acts)
+        if (acts.trim() === ''){
+            cont++;
+        }
+    }
 
-    if (act_.trim() === '' || cant_.trim() === '') {
+    if (!act_|| !cant_ || (!cant_op && checkbox.checked)) {
 
         Swal.fire({
             title: 'Faltan datos',
@@ -116,15 +127,30 @@ document.getElementById("register_act").addEventListener("click", function (even
                 });
             } else {
                 const arrayOfDataToSend2 = [];
-                for (let i = 0; i < cant_; i++) { 
+                const cant_tot = cant_+cant_op;
+                for (let i = 0; i < cant_tot; i++) { 
                     arrayOfDataToSend2.push(i);
+                }
+
+                for (let i = 0; i < activi.length; i++) {
+                    alert(activi[i])
+                    
                 }
         
                 const promises = arrayOfDataToSend2.map(data2 => {
+
+                    let select1 = false;
+                    if (checkbox.checked && data2 >= cant_){
+                        select1 = true
+                        alert(select1)
+                    }
+                    alert(data2)
                     const dataToSend2 = {
                         name: activi[data2],
-                        id_TipodeActividad: data.mensaje
+                        id_TipodeActividad: data.mensaje,
+                        one_select: select1
                     }
+                    
                     return fetch('/api/saveItem', {
                         method: 'POST',
                         headers: {
