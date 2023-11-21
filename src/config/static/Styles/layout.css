@@ -61,9 +61,12 @@ nav ul li {
 }
 
 
+.fa-arrow-right-from-bracket{
+    color: white;
+}
+
 #out {
-    background-color: white;
-    color: #B70811;
+    color: white;
     padding: 0 10px;
     border-radius: 5px;
     width: fit-content !;

@@ -22,11 +22,12 @@ body {
 @keyframes rotateIn {
     from {
         opacity: 0;
-      }
-      to {
+    }
+
+    to {
         opacity: 1;
-      }
-  }
+    }
+}
 
 header {
     width: 100%;
@@ -80,7 +81,7 @@ nav ul li {
     border-radius: 5px;
 }
 
-a:not([id="out"]){
+a:not([id="out"]) {
     color: white;
     text-decoration: none;
 }
@@ -133,18 +134,17 @@ main div:first-child section {
 }
 
 main div:first-child section h1 {
-    font-size: 23px;
+    font-size: 28px;
     font-family: 'Montserrat';
     font-weight: 800;
     color: #B70811;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 main div:first-child section hr {
-    background-color: #A58A12;
+    background-color: #A48912;
     height: 4px;
     border: none;
-    margin-bottom: 10px;
 }
 
 main div:first-child section p {
@@ -270,4 +270,3 @@ main div:first-child section a:hover {
         height: 50%
     }
 }
-
