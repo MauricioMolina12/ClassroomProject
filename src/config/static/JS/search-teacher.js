@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     var docentes = document.querySelectorAll('.view-docentes');
+
+    const input = document.getElementById("search");
+
+    input.addEventListener("input", onSearch);
+
+    function onSearch() {
+        const filter = input.value.toUpperCase();
+        const list = document.querySelectorAll("#list #onList");
+
+        list.forEach((el) => {
+            const text = el.textContent.toUpperCase();
+            el.style.display = text.includes(filter) ? "" : "none";
+        });
+    }
+
     
 
     docentes.forEach(function (docente) {

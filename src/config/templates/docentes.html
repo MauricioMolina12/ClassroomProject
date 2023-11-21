@@ -13,20 +13,17 @@
             <div class="search">
                 <div class="container-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Ingresa el nombre del docente" class="style-input">
+                    <input id="search" type="text" placeholder="Ingresa el nombre del docente" class="style-input">
                 </div>
             </div>
             <div class="docentes" id="docentes-container">
                 {% for docente in docentes %}
                     {% if docente.rol != 1 %}
-                    <div class="general">
-                        <div class="view-docentes" data-nombre="{{ docente.nombre }}" data-id="{{ docente.id }}">
+                    <div class="general" id="list">
+                        <div id="onList" class="view-docentes" data-nombre="{{ docente.nombre }}" data-id="{{ docente.id }}">
                             <span>{{ docente.nombre }}</span>
                             <span>{{ docente.id }}</span>
                         </div>
-                        <button class="trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
                     </div>
                     
                     {% endif %}
