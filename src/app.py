@@ -126,7 +126,11 @@ def revisar():
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("log_in"))   
+    return redirect(url_for("log_in")) 
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'),404  
 
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)
