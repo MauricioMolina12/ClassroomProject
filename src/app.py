@@ -49,7 +49,8 @@ def register():
 @app.route('/info_docentes/<int:id>')
 def info(id):
     if "user" in session:
-        return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'])
+        if "roles" in session and "jornadas" in session:
+            return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'])
     else:
         return redirect(url_for("log_in"))  
     
