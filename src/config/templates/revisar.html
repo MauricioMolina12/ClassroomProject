@@ -136,12 +136,17 @@
                     </div>
                 </details>
             </div>
-            <div class="calificacion">
+            <div class="calificacion">                
+                {% if rol == "Administrador" %}
                 <span>Califica al docente en este espacio!</span>
                 <input id="note" type="number" step="1" class="style-input"></input>
                 <button id="button-c">
                     Calificar docente
                 </button>
+                {% else %}
+                <span>Esta es tu calificación:</span>
+                <h2>5.0</h2>
+                {% endif %}
             </div>
         </div>
     </div>

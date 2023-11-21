@@ -53,7 +53,6 @@ def info(id):
     else:
         return redirect(url_for("log_in"))  
     
-    
 @app.route('/docentes')
 def docentes():
     
@@ -112,12 +111,17 @@ def plan(id):
 
 @app.route("/historial")
 def history():
-    return render_template('historial.html')
-
+    if "user" in session:
+        return render_template('historial.html')
+    else:
+        return redirect(url_for("log_in"))
+    
 @app.route("/revision")
 def revisar():
-    return render_template('revisar.html')
-
+    if "user" in session:
+        return render_template('revisar.html', rol= session["rol"])
+    else:
+        return redirect(url_for("log_in"))
     
 @app.route("/logout")
 def logout():
