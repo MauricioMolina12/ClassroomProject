@@ -26,31 +26,63 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             </div>
             <div class="info-dc">
                 <h3>Identificación</h3>
-                <span>1043584533</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <span>{{ docente.id }}</span>
+                {% endif %}
+                {% endfor %}
             </div>
             <div class="info-dc">
                 <h3 id="jornada">Jornada</h3>
-                <span id="valorj">Tiempo completo</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                {% for jornada in jornads %}
+                {% if docente.jornada == jornada.id %}
+                <span id="valorj">{{ jornada.nombre }}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('jornada', 'valorj')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="formacion">Formación</h3>
-                <span id="valorf">Maestría</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <span id="valorf">{{ docente.nivel_formacion }}</span>
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('formacion', 'valorf')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="rol">Rol</h3>
-                <span id="valord">Docente</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                {% for rol in rols %}
+                {% if docente.rol == rol.id %}
+                <span id="valord">{{ rol.nombre }}</span>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('rol','valord')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="usuario">Usuario</h3>
-                <span id="valoru">AdalbertoA12</span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <span id="valoru">{{ docente.usuario }}</span>
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('usuario','valoru')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="contrasena">Contraseña</h3>
-                <span id="valorc"><input disabled type="password" value="12345678"></span>
+                {% for docente in docentes %}
+                {% if docente.id == id_doc %}
+                <span id="valorc"><input disabled type="password" value="{{docente.contrasena}}"></span>
+                {% endif %}
+                {% endfor %}
                 <button onclick="editarValor('contrasena','valorc')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
         </div>
