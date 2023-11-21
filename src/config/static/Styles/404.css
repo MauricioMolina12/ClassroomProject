@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     animation-name: fadeIn;
     animation-duration: 1.5s;
+
 }
 
 
@@ -131,7 +132,9 @@ main {
 
 main img{
     width: 40%;
-    height: 85vh;
+    height: 65vh;
+    position: relative;
+    left: 25px;
 }
 
 main a{
@@ -146,4 +149,6 @@ main a{
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    position: relative;
+    top: 50px;
 }
