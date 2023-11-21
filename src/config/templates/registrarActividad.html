@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/registrarActividad.css') }}">
 <main>
     <section class="child-recuadro">
-        <form action="" class="recuadro">
+        <form class="recuadro">
             <h1>Crear categoría</h1>
             <div class="input-f">
                 <label class="style-label" for="actividad">Nombre categoría</label>
@@ -18,7 +18,7 @@
                 <input type="number" name="cantidad" class="style-input" id="cantidad" step="1">
             </div>
             <div class="input-c">
-                <label class="style-label" for="activities-opcionales">Opcionales</label>
+                <label class="style-label" for="activities-opcionales">Adicionales</label>
                 <div class="inputs-final">
                     <input disabled type="number" name="activities-opcionales" class="style-input" id="activities-opcionales" step="1">
                     <input type="checkbox" name="check-option" class="style-input-check" id="check-option">
@@ -34,6 +34,7 @@
         <div class="title-activities"><h2>Número de actividades</h2></div>
         <section class="container-inputs-generate" id="generate"></section>
     </section>
+    
 </main>
 {% endblock%}
 
