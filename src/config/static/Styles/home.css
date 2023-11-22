@@ -270,3 +270,10 @@ main div:first-child section a:hover {
         height: 50%
     }
 }
+
+@media only screen and (min-width: 1360px) and (min-height: 680px){
+    main div:last-child img {
+        width: 620px;
+        height: 495px;
+    }
+}

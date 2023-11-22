@@ -131,18 +131,12 @@ document.getElementById("register_act").addEventListener("click", function (even
                 for (let i = 0; i < cant_tot; i++) { 
                     arrayOfDataToSend2.push(i);
                 }
-
-                for (let i = 0; i < activi.length; i++) {
-                    alert(activi[i])
-                    
-                }
         
                 const promises = arrayOfDataToSend2.map(data2 => {
 
                     let select1 = false;
                     if (checkbox.checked && data2 >= cant_){
                         select1 = true
-                        alert(select1)
                     }
                     alert(data2)
                     const dataToSend2 = {

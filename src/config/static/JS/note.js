@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon: 'error',
                 backdrop: false,
                 timer: 7000,
-                confirmButtonColor: '#B70811'
+                confirmButtonColor: '#B70811',
+                confirmButtonClass: 'btn btn-success btn-lg', 
+                cancelButtonClass: 'btn btn-danger btn-lg'
             });
         } else {
             if(calificacionNumero < 3){
