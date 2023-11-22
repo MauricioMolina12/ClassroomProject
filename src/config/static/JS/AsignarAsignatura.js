@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
             input: 'text',
             showCancelButton: true,
             confirmButtonText: 'Agregar',
-            confirmButtonColor: '#B70811'
+            confirmButtonColor: '#B70811',
+            cancelButtonColor: '#000'
         }).then((result) => {
             if (result.isConfirmed && result.value) {
                 var nuevoValor = result.value;

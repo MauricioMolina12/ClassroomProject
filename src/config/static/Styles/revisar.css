@@ -117,15 +117,41 @@ summary {
     justify-content: space-between;
 }
 
-details summary::-webkit-details-marker {
+summary::-webkit-details-marker {
     display: none;
 }
 
-details summary::after {
+details[open] summary:after {
+    content: "-";
+    font-size: 30px;
+    margin-left: 10px;
+    transition: all 2s ease;
+}
+
+details:not([open]) summary:after {
     content: "+";
     font-size: 30px;
     margin-left: 10px;
+    transition: all 2s ease;
 }
+
+
+.hours{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#calificacion{
+    font-size: 20px;
+}
+
+.hours > *{
+    font-size: 20px;
+}
+
+
+
 
 
 .row div {
@@ -146,7 +172,7 @@ details summary::after {
 .style-input-3 {
     border-radius: 2px;
     background-color: white;
-    color: #5e5e5e;
+    color: #B70811;
     border: 1px solid #B70811;
     height: 100%;
     padding: 0 4px;
@@ -297,7 +323,9 @@ h3 {
     color: #B70811;
 }
 
-
+span{
+    color: #B70811;
+}
 
 
 
