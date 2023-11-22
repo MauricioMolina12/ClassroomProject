@@ -82,21 +82,56 @@ def saveuser():
 def updateuser():
     id = request.json['id'] 
     nsubject = Usuario.query.get(id) #Select * from Cliente where id = id
-    nsubject.nombre = request.json['name']
-    nsubject.usuario = request.json['user']
-    nsubject.contrasena = request.json['password']
-    nsubject.rol = request.json['rol']
-    nsubject.nivel_formacion = request.json['level_form']
-
-    result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == request.json['jor'].title()).all()
-    jorn = jornadas_schema.dump(result)
-
-    if len(jorn) > 0:
-        ex_area = jorn[0]
-        nsubject.jornada = ex_area['id']
+    
+    if "name" in request.json:
+        nsubject.nombre = request.json['name']
         db.session.commit()
-        return "Datos Actualizado con exitos"
-
+        users()
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "user" in request.json:
+        nsubject.usuario = request.json['user']
+        db.session.commit()
+        users()
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "password" in request.json:
+        nsubject.contrasena = request.json['password']
+        db.session.commit()
+        users()
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "level_form" in request.json:
+        nsubject.nivel_formacion = request.json['level_form']
+        db.session.commit()
+        users()
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "jor" in request.json:
+        result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == request.json['jor'].title()).all()
+        jorn = jornadas_schema.dump(result) 
+        if len(jorn) > 0:
+            ex_area = jorn[0]
+            nsubject.jornada = ex_area['id']
+            db.session.commit()
+            users()
+            return jsonify("Datos Actualizado con exitos")
+        else:
+            return jsonify({"error": "La jornada proporcionada no existe en la base de datos"}), 400
+    
+    if "rol" in request.json:
+        result = db.session.query(Rol.id, Rol.nombre).filter(Rol.nombre == request.json['rol'].title()).all()
+        rol = roles_schema.dump(result)
+        
+        if len(rol) > 0:
+            ex_area = rol[0]
+            nsubject.rol = ex_area['id']
+            db.session.commit()
+            users()
+            return jsonify("Datos Actualizado con exitos")
+        else:
+            return jsonify({"error": "El rol proporcionada no existe en la base de datos"}), 400
+    
 @ruta_user.route("/deleteuser/<id>", methods=["GET"])
 def deleteuser(id):
     subject = Usuario.query.get(id)

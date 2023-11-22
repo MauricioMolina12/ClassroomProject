@@ -19,10 +19,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 <h3 id="nombre">Nombre</h3>
                 {% for docente in docentes %}
                 {% if docente.id == id_doc %}
-                <span id="valorn">{{ docente.nombre }}</span>
+                <span id="name">{{ docente.nombre }}</span>
+                <button onclick="editarValor('nombre', 'name', '{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('nombre', 'valorn')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3>Identificación</h3>
@@ -38,21 +38,23 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 {% if docente.id == id_doc %}
                 {% for jornada in jornads %}
                 {% if docente.jornada == jornada.id %}
-                <span id="valorj">{{ jornada.nombre }}</span>
+                <span id="jor">{{ jornada.nombre }}</span>
+
+                <button onclick="editarValor('jornada', 'jor', '{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('jornada', 'valorj')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="formacion">Formación</h3>
                 {% for docente in docentes %}
                 {% if docente.id == id_doc %}
-                <span id="valorf">{{ docente.nivel_formacion }}</span>
+                <span id="level_form">{{ docente.nivel_formacion }}</span>
+                
+                <button onclick="editarValor('formacion', 'level_form', '{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('formacion', 'valorf')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="rol">Rol</h3>
@@ -60,30 +62,33 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                 {% if docente.id == id_doc %}
                 {% for rol in rols %}
                 {% if docente.rol == rol.id %}
-                <span id="valord">{{ rol.nombre }}</span>
+                <span id="rol">{{ rol.nombre }}</span>
+                
+                <button onclick="editarValor('rol','rol','{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('rol','valord')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="usuario">Usuario</h3>
                 {% for docente in docentes %}
                 {% if docente.id == id_doc %}
-                <span id="valoru">{{ docente.usuario }}</span>
+                <span id="user">{{ docente.usuario }}</span>
+                
+                <button onclick="editarValor('usuario','user', '{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('usuario','valoru')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
             <div class="info-dc">
                 <h3 id="contrasena">Contraseña</h3>
                 {% for docente in docentes %}
                 {% if docente.id == id_doc %}
-                <span id="valorc"><input disabled type="password" value="{{docente.contrasena}}"></span>
+                <span id="password"><input disabled type="password" value="{{docente.contrasena}}"></span>
+                
+                <button onclick="editarValor('contrasena','password', '{{ docente.id }}')"><i class="fa-solid fa-pen-to-square"></i></button>
                 {% endif %}
                 {% endfor %}
-                <button onclick="editarValor('contrasena','valorc')"><i class="fa-solid fa-pen-to-square"></i></button>
             </div>
         </div>
         <div class="container-50 second">
