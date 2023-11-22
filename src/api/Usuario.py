@@ -109,7 +109,8 @@ def updateuser():
     
     if "jor" in request.json:
         result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == request.json['jor'].title()).all()
-        jorn = jornadas_schema.dump(result) 
+        jorn = jornadas_schema.dump(result)
+        
         if len(jorn) > 0:
             ex_area = jorn[0]
             nsubject.jornada = ex_area['id']
@@ -154,6 +155,7 @@ def signin():
 
         ro = db.session.query(Rol.nombre ).filter(Rol.id == usuario['rol']).all()
         rol_result = roles_schema.dump(ro) 
+        users()
 
         session['id_user'] = usuario['id']
         session['user'] = user
