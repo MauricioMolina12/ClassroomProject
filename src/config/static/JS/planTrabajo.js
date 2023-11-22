@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     hours: hours_tot,
                                     observacion: ""
                                 }
-                                return fetch('/api/savePlant_Item', {
+                                 fetch('/api/savePlant_Item', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json'

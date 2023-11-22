@@ -273,7 +273,35 @@ main div:first-child section a:hover {
 
 @media only screen and (min-width: 1360px) and (min-height: 680px){
     main div:last-child img {
-        width: 400px;
+        width: 440px;
         height: 495px;
+    }
+}
+
+@media only screen and (min-width: 1910px) and (min-height: 950px){
+    main div:last-child img {
+        width: 600px;
+        height: 680px;
+    }
+
+    main div:first-child section h1 {
+        font-size: 40px;
+    }
+
+    nav ul li {
+        font-size: 26px;
+    }
+
+    main div:first-child section p {
+        font-size: 22px;
+    }
+
+    main div:first-child section a {
+        font-size: 25px;
+    }
+
+    .header img {
+        width: 510px;
+        height: 150px;
     }
 }
