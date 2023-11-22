@@ -352,8 +352,26 @@ details:not([open]) summary:after {
     transition: all 2s ease;
 }
 
+#actOpc{
+    color: #B70811;
+    position: relative;
+    left: 15px;
+    font-weight: 700;
+}
+
+#hoursTotal{
+    font-weight: 300;
+    font-size: 150%;
+}
 
 
+.final-input h3{
+    width: 20%;
+}
+
+.final-input span{
+    width: 80%;
+}
 
 @media only screen and (max-width: 768px) {
     nav ul li {

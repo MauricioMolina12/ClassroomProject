@@ -89,6 +89,7 @@ document.getElementById("register_act").addEventListener("click", function (even
             backdrop: false,
             timer: 4500,
             timerProgressBar: true,
+            confirmColorButton: "#B70811"
         })
         
     }
@@ -100,6 +101,7 @@ document.getElementById("register_act").addEventListener("click", function (even
             backdrop: false,
             timer: 4500,
             timerProgressBar: true,
+            confirmColorButton: "#B70811"
         })
     }
     else {
@@ -124,6 +126,7 @@ document.getElementById("register_act").addEventListener("click", function (even
                     backdrop: false,
                     timer: 7000,
                     timerProgressBar: true,
+                    confirmColorButton: "#B70811"
                 });
             } else {
                 const arrayOfDataToSend2 = [];
@@ -138,7 +141,6 @@ document.getElementById("register_act").addEventListener("click", function (even
                     if (checkbox.checked && data2 >= cant_){
                         select1 = true
                     }
-                    alert(data2)
                     const dataToSend2 = {
                         name: activi[data2],
                         id_TipodeActividad: data.mensaje,
@@ -162,6 +164,7 @@ document.getElementById("register_act").addEventListener("click", function (even
                                 backdrop: false,
                                 timer: 7000,
                                 timerProgressBar: true,
+                                confirmColorButton: "#B70811"
                             });
                         }
                     })
@@ -178,6 +181,7 @@ document.getElementById("register_act").addEventListener("click", function (even
                                 backdrop: false,
                                 timer: 7000,
                                 timerProgressBar: true,
+                                confirmColorButton: "#B70811"
                             });
                         }else{
                             Swal.fire({
@@ -186,6 +190,7 @@ document.getElementById("register_act").addEventListener("click", function (even
                                 icon: 'success',
                                 backdrop: false,
                                 timer: 3500,
+                                confirmColorButton: "#B70811"
                             }).then((result) => {
                                 window.location.href = "/actividades";
                             });

@@ -40,7 +40,7 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                         icon: "error",
                         text: data.error,
                         timer: 10000
-                    })
+                    });
                 }else{
                     // Manejar la respuesta exitosa aquí
                     document.getElementById(valorCambiar).innerText = result.value;
@@ -52,7 +52,14 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                     });
                 }
             })
-            .catch(error => console.error(error));
+            .catch((error) => {
+                Swal.fire({
+                    title: 'Error',
+                    icon: "error",
+                    text: `Error al actualizar ${error}`,
+                    timer: 10000
+                });
+            });
         }
     });
 }

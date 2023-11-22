@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             if(calificacionNumero < 3){
                 Swal.fire({
-                    text: 'Que triste por el profe :c',
+                    text: 'Que mal!',
                     icon: 'error',
                     backdrop: false,
                     timer: 7000,

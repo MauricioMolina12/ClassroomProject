@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             });
         } else {
             Swal.fire({
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             }).then((result) => {
                 if (result.isConfirmed) {
                     inputYear.value = "";

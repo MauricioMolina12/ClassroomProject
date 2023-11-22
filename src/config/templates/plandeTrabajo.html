@@ -30,6 +30,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         <h3>Periodo</h3>
                         <input name="semestre" type="number" class="style-input" id="semestre">
                     </div>
+                    <div class="elements-input final-input">
+                        <h3>Horas totales</h3>
+                        <span id="hoursTotal">16</span>
+                    </div>
                     <button class="button" id="btnAsignar">
                         Asignar plan de trabajo
                     </button>
@@ -45,7 +49,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                     {% if not mostrado and item.one_select and actividad.id not in actividades_mostradas %}
                                         {% set mostrado = true %}
                                         {% set _ = actividades_mostradas.append(actividad.id) %}
-                                        <p>Evaluar al menos una de las siguientes actividades:</p>
+                                        <span id="actOpc">Evaluar al menos una de las siguientes actividades:</span>
                                     {% endif %}
 
                                     {% if not item.one_select %}

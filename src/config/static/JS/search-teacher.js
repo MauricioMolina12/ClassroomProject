@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             })
         }
     });
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             })
         }
     });
@@ -70,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             })
         }
     });
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             })
         }
     });
@@ -98,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
             text: "No podrás revertir esto",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
+            confirmButtonColor: '#B70811',
+            cancelButtonColor: '#000',
             confirmButtonText: 'Sí, eliminarlo'
         }).then((result) => {
             if (result.isConfirmed) {
