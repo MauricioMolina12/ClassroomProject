@@ -64,6 +64,7 @@ document.getElementById("new_asig").addEventListener("click", function (event) {
             backdrop: false,
             timer: 4500,
             timerProgressBar: true,
+            confirmButtonColor: '#B70811'
         })
     }
     else {
@@ -91,6 +92,7 @@ document.getElementById("new_asig").addEventListener("click", function (event) {
                         backdrop: false,
                         timer: 7000,
                         timerProgressBar: true,
+                        confirmButtonColor: '#B70811'
                     })
                 } else {
                     Swal.fire({
@@ -99,6 +101,7 @@ document.getElementById("new_asig").addEventListener("click", function (event) {
                         icon: 'success',
                         backdrop: false,
                         timer: 2000,
+                        confirmButtonColor: '#B70811'
                     }).then((result) => {
                         window.location.href = "/asignaturas";
                     });

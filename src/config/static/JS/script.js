@@ -20,10 +20,10 @@ document.getElementById("signin").addEventListener("click", function (event) {
         if (data.error) {
           Swal.fire({
             title: data.error,
-            text: 'Credenciales incorrectas',
-            footer: '<p>Si has <a href="/hidden_pw">olvidado tu contraseña</a>, puedes restablecerla</p>',
+            text: 'Credenciales incorrectas. Vuelve a intertarlo.',
             icon: 'error',
             backdrop: false,
+            confirmButtonColor: "#b70811",
             timer: 7000,
             timerProgressBar: true,
           })
@@ -33,6 +33,7 @@ document.getElementById("signin").addEventListener("click", function (event) {
             text: 'Inicio de sesión exitoso',
             icon: 'success',
             backdrop: false,
+            confirmButtonColor: "#b70811",
             timer: 3500,
             customClass: {
               confirmButton: 'custom-confirm-button-class'

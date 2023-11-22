@@ -63,6 +63,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
             backdrop: false,
             timer: 4500,
             timerProgressBar: true,
+            confirmButtonColor: '#B70811',
         })
     }
     else {
@@ -89,6 +90,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
                         backdrop: false,
                         timer: 7000,
                         timerProgressBar: true,
+                        confirmButtonColor: '#B70811'
                     })
                 } else {
                     Swal.fire({

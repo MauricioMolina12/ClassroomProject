@@ -352,6 +352,12 @@ details:not([open]) summary:after {
     transition: all 2s ease;
 }
 
+#actOpc{
+    color: #B70811;
+    position: relative;
+    left: 15px;
+    font-weight: 700;
+}
 
 
 

@@ -29,7 +29,8 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                         title: 'Error',
                         icon: "error",
                         text: data.error,
-                        timer: 10000
+                        timer: 10000,
+                        confirmButtonColor: '#B70811',
                     });
                 }else{
                     document.getElementById(valorCambiar).innerText = result.value;
@@ -37,7 +38,8 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                         title: 'Éxito',
                         icon: "success",
                         text: `${elementId} actualizado correctamente`,
-                        timer: 10000
+                        timer: 10000,
+                        confirmButtonColor: '#B70811'
                     });
                 }
             })
@@ -46,7 +48,8 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                     title: 'Error',
                     icon: "error",
                     text: `Error al actualizar ${error}`,
-                    timer: 10000
+                    timer: 10000,
+                    confirmButtonColor: '#B70811'
                 });
             });
         }

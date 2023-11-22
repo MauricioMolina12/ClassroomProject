@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmButtonText: 'Agregar',
             cancelButtonText: 'Cancelar',
             confirmButtonColor: '#B70811',
-            cancelButtonTextColor: '#B70811',
-            cancelButtonColor: 'transparent',
-            cancelButtonBorder: '2px solid #B70811'
+            cancelButtonTextColor: '000',
         }).then((result) => {
             if (result.isConfirmed && result.value) {
                 var nuevoValor = result.value;
@@ -58,9 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmButtonText: 'Agregar',
             cancelButtonText: 'Cancelar',
             confirmButtonColor: '#B70811',
-            cancelButtonTextColor: '#B70811',
-            cancelButtonColor: 'transparent',
-            cancelButtonBorder: '2px solid #B70811'
+            cancelButtonTextColor: '#000'
         }).then((result) => {
             if (result.isConfirmed && result.value) {
                 var nuevoValor = result.value;
@@ -114,6 +110,7 @@ document.getElementById("signup").addEventListener("click", function (event) {
             backdrop: false,
             timer: 4500,
             timerProgressBar: true,
+            confirmButtonColor: '#B70811'
         })
         er = true
     } else if (rol_.trim().toLowerCase() !== 'administrador') {
@@ -125,6 +122,7 @@ document.getElementById("signup").addEventListener("click", function (event) {
                 backdrop: false,
                 timer: 4500,
                 timerProgressBar: true,
+                confirmButtonColor: '#B70811'
             })
             er = true
         }
@@ -160,23 +158,16 @@ document.getElementById("signup").addEventListener("click", function (event) {
                         backdrop: false,
                         timer: 7000,
                         timerProgressBar: true,
-
-                        //Animacion personalizada
-
-                        //showClass: {
-                        //  popup: 'animate__animated animate__fadeInDown'
-                        //},
-                        //hideClass: {
-                        //  popup: 'animate__animated animate__fadeOutUp'
-                        //}
+                        confirmButtonColor: '#B70811'
                     })
                 } else {
                     Swal.fire({
                         title: data.mensaje,
-                        text: 'Un gusto tenerte con nosotros',
                         icon: 'success',
                         backdrop: false,
                         timer: 2000,
+                        confirmButtonColor: '#B70811',
+                        cancelButtonColor: '#000'
                     }).then((result) => {
                         window.location.href = "/sign_up";
                     });
