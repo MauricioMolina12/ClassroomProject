@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             confirmColorButton: "#B70811"
                         });
                     } else {
+                        const promises = [];
                         items.forEach(input => {
                             let id_it = input.getAttribute('data-id')
 
@@ -61,44 +62,55 @@ document.addEventListener('DOMContentLoaded', function () {
                                 const dataToSend2 = {
                                     id_plant: data.mensaje,
                                     id_item: id_it,
-                                    hours: hours_tot,
+                                    hours: hor_act,
                                     observacion: ""
                                 }
-                                 fetch('/api/savePlant_Item', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(dataToSend2)
-                                })
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        if (data.error) {
-                                            Swal.fire({
-                                                title: data.error,
-                                                text: 'verifique datos',
-                                                icon: 'error',
-                                                backdrop: false,
-                                                timer: 7000,
-                                                timerProgressBar: true,
-                                                confirmColorButton: "#B70811"
-                                            });
-                                        } else {
-                                            Swal.fire({
-                                                title: "Exito",
-                                                text: 'Creacion de Plan de trabajo exitosa',
-                                                icon: 'success',
-                                                backdrop: false,
-                                                timer: 3500,
-                                            }).then((result) => {
-                                                let id_revi = nomb_doc.getAttribute('data-idoc')
-                                                window.location.href = "/revision/"+ id_revi;
-                                            });
-                                        }
+                                promises.push(
+                                    fetch('/api/savePlant_Item', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify(dataToSend2)
                                     })
-                                    .catch(error => console.error(error));
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.error) {
+                                                // Si hay un error, se puede lanzar una excepción para ser capturada luego
+                                                throw new Error(data.error);
+                                            } else {
+                                                return data; // Pasar los datos al siguiente then
+                                            }
+                                        })
+                                );
                             }
-                        });                        
+                        });
+                        Promise.all(promises)
+                            .then(results => {
+                                // Si todas las promesas se resolvieron correctamente, mostrar la alerta de éxito
+                                Swal.fire({
+                                    title: "Exito",
+                                    text: 'Creacion de Plan de trabajo exitosa',
+                                    icon: 'success',
+                                    backdrop: false,
+                                    timer: 3500,
+                                }).then((result) => {
+                                    window.location.href = "/revision/" + data.mensaje;
+                                });
+                            })
+                            .catch(error => {
+                                // Si alguna promesa falla, mostrar el error
+                                console.error(error);
+                                Swal.fire({
+                                    title: error.message || 'Hubo un error',
+                                    text: 'verifique datos',
+                                    icon: 'error',
+                                    backdrop: false,
+                                    timer: 7000,
+                                    timerProgressBar: true,
+                                    confirmColorButton: "#B70811"
+                                });
+                            });
                     }
                 })
         }

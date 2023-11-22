@@ -13,6 +13,7 @@ plants_schema = PlanTrabajoSchema(many=True)
 def Plan_de_Trabajos():
     resultall =  Plan_de_Trabajo.query.all()
     result = plants_schema.dump(resultall)
+    session['plan_trabajo'] = result
     return jsonify(result)
 
 @ruta_plant.route("/savePlanTrabajo", methods=["POST"])
@@ -40,6 +41,8 @@ def savePlanTrabajo():
         result = plants_schema.dump(activi)
 
         act = result[0]['id']
+
+        Plan_de_Trabajos()
         
         return jsonify({'mensaje': act}) 
     else:

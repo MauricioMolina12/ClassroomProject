@@ -7,9 +7,13 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/revisar.css') }}">
 <main>
     <div class="container-fluid">
+        {% for plant in plantr %}
+        {% if plant.id == id_plant %}
         {% for docente in docentes %}
-        {% if docente.id == id_doc %}
+        {% if docente.id == plant.docente %}
              <h1>{{ docente.nombre }}</h1>
+        {% endif %}
+        {% endfor %}
         {% endif %}
         {% endfor %}
         <div class="accordion">

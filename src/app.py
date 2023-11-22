@@ -28,7 +28,7 @@ app.register_blueprint(ruta_Asig_Usu, url_prefix="/api")
 @app.route("/")
 def index():
     if "user" in session:
-        return render_template('homepage.html')
+        return render_template('homepage.html', rols= session['rol'])
     else:
         return redirect(url_for("log_in"))    
     
@@ -103,12 +103,11 @@ def asignacion(id):
 def plan(id):
     if "user" in session:
         if "actividades" in session and "items" in session:
-            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], exist_opc= True)
+            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'])
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:
         return redirect(url_for("log_in"))
-
 
 @app.route("/historial")
 def history():
@@ -116,14 +115,17 @@ def history():
         return render_template('historial.html')
     else:
         return redirect(url_for("log_in"))
-    
-@app.route("/revision/<int:id>")
-def revisar(id):
+
+@app.route("/revision/<int:id_plant>")
+def revisar(id_plant):
     if "user" in session:
-        return render_template('revisar.html', rol= session["rol"], id_doc = id, docentes= session['usuarios'])
+        if "plan_trabajo" in session:
+            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], items= session['items'])
+        else:
+            return redirect(url_for("ruta_area.areas"))        
     else:
         return redirect(url_for("log_in"))
-    
+
 @app.route("/logout")
 def logout():
     session.clear()
