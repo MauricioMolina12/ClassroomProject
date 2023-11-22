@@ -264,7 +264,7 @@ summary {
     border: none;
     cursor: pointer;
     position: sticky;
-    top: 3px;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
