@@ -105,7 +105,7 @@ def updateuser():
         nsubject.nivel_formacion = request.json['level_form']
         db.session.commit()
         users()
-        return jsonify("Datos Actualizado con exitos")
+        return jsonify("Datos actualizada con exito")
     
     if "jor" in request.json:
         result = db.session.query(Jornada.id, Jornada.nombre).filter(Jornada.nombre == request.json['jor'].title()).all()
