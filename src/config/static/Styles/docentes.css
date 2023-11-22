@@ -334,4 +334,23 @@ button {
     }
 }
 
-;
+@media only screen and (min-width: 1910px) and (min-height: 950px){
+
+
+    nav ul li {
+        font-size: 26px;
+    }
+
+    main div:first-child section p {
+        font-size: 22px;
+    }
+
+    main div:first-child section a {
+        font-size: 25px;
+    }
+
+    .header img {
+        width: 560px;
+        height: 150px;
+    }
+}

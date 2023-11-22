@@ -99,6 +99,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
                         icon: 'success',
                         backdrop: false,
                         timer: 2000,
+                        confirmButtonColor: '#B70811'
                     }).then((result) => {
                         window.location.href = "/asignacion/" + id_doc;
                     });

@@ -12,14 +12,15 @@ function editarValor(elementId, valorCambiar, idUsuario) {
 
             var nuevoValor = result?.value?.trim();
 
-            if (!nuevoValor) { //si el input es null o tiene otro error
+            if (!nuevoValor) { 
                 Swal.fire({
                     title: 'Error',
                     icon: "error",
                     text: 'Debes ingresar un valor para actualizar',
-                    timer: 10000
+                    timer: 10000,
+                    confirmButtonColor: '#B70811'
                 });
-                return;  // No continuar con la actualización si no hay un valor
+                return;  
             }
 
             fetch('/api/updateuser', {
@@ -34,21 +35,22 @@ function editarValor(elementId, valorCambiar, idUsuario) {
             })
             .then(response => response.json())
             .then(data => {
-                if (data.error){  //manejo de errores
+                if (data.error){  
                     Swal.fire({
                         title: 'Error',
                         icon: "error",
                         text: data.error,
-                        timer: 10000
+                        timer: 10000,
+                        confirmButtonColor: '#B70811'
                     });
                 }else{
-                    // Manejar la respuesta exitosa aquí
                     document.getElementById(valorCambiar).innerText = result.value;
                     Swal.fire({
                         title: 'Éxito',
                         icon: "success",
                         text: `${elementId} actualizado correctamente`,
-                        timer: 10000
+                        timer: 10000,
+                        confirmButtonColor: '#B70811'
                     });
                 }
             })
@@ -57,7 +59,8 @@ function editarValor(elementId, valorCambiar, idUsuario) {
                     title: 'Error',
                     icon: "error",
                     text: `Error al actualizar ${error}`,
-                    timer: 10000
+                    timer: 10000,
+                    confirmButtonColor: '#B70811'
                 });
             });
         }

@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     icon: 'success',
                                     backdrop: false,
                                     timer: 3500,
+                                    confirmButtonColor: '#B70811'
                                 }).then((result) => {
                                     window.location.href = "/revision/" + data.mensaje;
                                 });
