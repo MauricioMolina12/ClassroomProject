@@ -18,7 +18,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         <h3>Nombre</h3>
                         {% for docente in docentes %}
                         {% if docente.id == id_doc %}
-                        <input disabled name="name-docente" type="text" class="style-input" value="{{ docente.nombre }}">
+                        <input disabled id="nom_pro" data-idoc="{{ docente.id }}" name="name-docente" type="text" class="style-input" value="{{ docente.nombre }}">
                         {% endif %}
                         {% endfor %}
                     </div>
@@ -32,7 +32,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </div>
                     <div class="elements-input final-input">
                         <h3>Horas totales</h3>
-                        <span id="hoursTotal">16</span>
+                        <span id="hoursTotal">0</span>
                     </div>
                     <button class="button" id="btnAsignar">
                         Asignar plan de trabajo
@@ -55,19 +55,19 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                     {% if not item.one_select %}
                                         <div class="row">
                                             <div class="row-child">
-                                                <span id="{{ item.id }}">{{ item.nombre }}</span>
+                                                <span class="items" data-id="{{ item.id }}">{{ item.nombre }}</span>
                                             </div>
                                             <div class="row-child">
-                                                <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
+                                                <input type="number" class="style-input-3 w-20 inputHr" name="hrs" id="{{ item.id }}nmb">
                                             </div>
                                         </div>
                                     {% else %}
                                         <div class="row">
                                             <div class="row-child opc">
-                                                <span id="{{ item.id }}">{{ item.nombre }}</span>
+                                                <span class="items" data-id="{{ item.id }}">{{ item.nombre }}</span>
                                             </div>
                                             <div class="row-child opc">
-                                                <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
+                                                <input type="number" class="style-input-3 w-20 inputHr" name="hrs" id="{{ item.id }}nmb">
                                             </div>
                                         </div>
                                     {% endif %}

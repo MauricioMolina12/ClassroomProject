@@ -24,8 +24,7 @@ def savePlanTrabajo():
 
     rol = db.session.query(Rol.id).filter(Rol.nombre == "Administrador").all()
     rol_result = roles_schema.dump(rol)
-    plantr = rol_result[0]
-    id_rol = plantr['id']
+    id_rol = rol_result[0]['id']
 
     user = db.session.query(Usuario.id).filter(Usuario.nombre == teacher, Usuario.rol != id_rol).all()
     result = users_schema.dump(user)
@@ -36,9 +35,15 @@ def savePlanTrabajo():
         new_plant = Plan_de_Trabajo(semester, total_hours, year, id_teacher)
         db.session.add(new_plant)
         db.session.commit()
-        return jsonify({'mensaje': 'Registro exitoso'}) 
+
+        activi = db.session.query(Plan_de_Trabajo.id).filter(Plan_de_Trabajo.año == year, Plan_de_Trabajo.docente == id_teacher, Plan_de_Trabajo.semestre == semester).all()
+        result = plants_schema.dump(activi)
+
+        act = result[0]['id']
+        
+        return jsonify({'mensaje': act}) 
     else:
-        return jsonify({'error': 'Opss... Docente no encontrado'}), 401 
+        return jsonify({'error': 'Opss... error'}), 401 
         
 
 @ruta_plant.route("/updatePlanTrabajo", methods=["PUT"])

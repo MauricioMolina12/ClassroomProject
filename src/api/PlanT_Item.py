@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify, request,json
 from config.db import db, app, ma
 from models.PlanT_Item import PlanT_Item, PlanT_ItemSchema
-from models.Plan_de_Trabajo import Plan_de_Trabajo
-from models.Item import Item
+from api.Plan_de_Trabajo import Plan_de_Trabajo, plants_schema
+from api.Item import Item, items_schema
 
 
 ruta_plant_item = Blueprint("ruta_plant_item", __name__)
@@ -19,24 +19,23 @@ def Plant_Item():
 @ruta_plant_item.route("/savePlant_Item", methods=["POST"])
 def savePlant_Item():
     
-    id = request.json['id']
     id_plant = request.json['id_plant']
     id_item = request.json['id_item']
     hours = request.json['hours']
-    observations = request.json['credits']
-    
+    observations = request.json['observacion']
         
-    cod_plat = plant_items_schema(db.session.query(Plan_de_Trabajo.id).filter(Plan_de_Trabajo.id == id_plant).all())
-    cod_item = plant_items_schema(db.session.query(Item.id).filter(Item.id == id_item).all())
+    cod_plat = plants_schema.dump(db.session.query(Plan_de_Trabajo.id).filter(Plan_de_Trabajo.id == id_plant).all())
+    cod_item = items_schema.dump(db.session.query(Item.id).filter(Item.id == id_item).all())    
     existe = [len(cod_plat), len(cod_item)]
     
-    if sum(existe) > 2 :
-        new_p_i = PlanT_Item(id, id_plant, id_item, hours, observations)
+    if sum(existe) > 1 :
+        new_p_i = PlanT_Item( id_item, id_plant, observations, hours)
         db.session.add(new_p_i)
         db.session.commit()
+
         return jsonify({'mensaje': 'Registro exitoso'})
     else:
-        return jsonify({'mensaje': 'codigo de variables dependiente no encontrado'})
+        return jsonify({'error': 'codigo de variables dependiente no encontrado'}), 401
     
 @ruta_plant_item.route("/updatePlant_Item", methods=["POST"])
 def updatePlant_Item():
