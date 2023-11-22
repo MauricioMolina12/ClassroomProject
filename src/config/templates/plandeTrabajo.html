@@ -35,35 +35,41 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     </button>
                 </div>
                 <div class="container-w50">
+                    {% set actividades_mostradas = [] %}
                     {% for actividad in actividades %}
-                    <details class="details">
-                        <summary>{{ actividad.nombre }}</summary>
-                        {% for item in items %}
-                            {% if item.TipodeAct == actividad.id and not item.one_select %}
-                            <div class="row">
-                                <div class="row-child">
-                                    <span id="{{ item.id }}">{{ item.nombre }}</span>
-                                </div>
-                                <div class="row-child">
-                                    <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-                        <p>Evaluar al menos una de las siguientes actividades:</p>
-                        {% for item in items %}
-                            {% if item.TipodeAct == actividad.id and item.one_select %}
-                            <div class="row">
-                                <div class="row-child opc">
-                                    <span id="{{ item.id }}">{{ item.nombre }}</span>
-                                </div>
-                                <div class="row-child opc">
-                                    <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
-                                </div>
-                            </div>
-                            {% endif %}
-                        {% endfor %}  
-                    </details>
+                        {% set mostrado = false %}
+                        <details class="details">
+                            <summary>{{ actividad.nombre }}</summary>
+                            {% for item in items %}
+                                {% if item.TipodeAct == actividad.id %}
+                                    {% if not mostrado and item.one_select and actividad.id not in actividades_mostradas %}
+                                        {% set mostrado = true %}
+                                        {% set _ = actividades_mostradas.append(actividad.id) %}
+                                        <p>Evaluar al menos una de las siguientes actividades:</p>
+                                    {% endif %}
+
+                                    {% if not item.one_select %}
+                                        <div class="row">
+                                            <div class="row-child">
+                                                <span id="{{ item.id }}">{{ item.nombre }}</span>
+                                            </div>
+                                            <div class="row-child">
+                                                <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <div class="row">
+                                            <div class="row-child opc">
+                                                <span id="{{ item.id }}">{{ item.nombre }}</span>
+                                            </div>
+                                            <div class="row-child opc">
+                                                <input type="number" class="style-input-3 w-20" name="hrs" id="{{ item.id }}nmb">
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}  
+                        </details>
                     {% endfor %}
                 </div>
             </article>
