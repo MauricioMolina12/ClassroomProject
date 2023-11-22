@@ -74,6 +74,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    document.getElementById('revi').addEventListener('click', function() {
+        var selectedDocente = document.querySelector('.view-docentes.selected');
+        if (selectedDocente) {
+            var docenteId = selectedDocente.getAttribute('data-id');
+            window.location.href = '/revision/' + docenteId;
+        }else{
+            Swal.fire({
+                text: 'Por favor, escoge un docente.',
+                icon: 'error',
+                backdrop: false,
+                timer: 4500,
+                timerProgressBar: true,
+            })
+        }
+    });
+
     document.querySelectorAll('.trash').addEventListener("click",function(){
         var selectedDocente = document.querySelector('.view-docentes.selected');
         var docenteId = selectedDocente.getAttribute('data-id');

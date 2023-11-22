@@ -120,7 +120,7 @@ def history():
 @app.route("/revision/<int:id>")
 def revisar(id):
     if "user" in session:
-        return render_template('revisar.html', rol= session["rol"], id_doc= id)
+        return render_template('revisar.html', rol= session["rol"], id_doc = id, docentes= session['usuarios'])
     else:
         return redirect(url_for("log_in"))
     
