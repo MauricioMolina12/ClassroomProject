@@ -138,6 +138,7 @@ def deleteuser(id):
     subject = Usuario.query.get(id)
     db.session.delete(subject)
     db.session.commit()
+    users()
     return jsonify(user_schema.dump(subject))
 
 @ruta_user.route("/signin", methods=["POST"])
