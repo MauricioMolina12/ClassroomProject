@@ -15,12 +15,7 @@
         <nav>
          <ul>
              <li><a class="link" href="/" class="link">Inicio</a></li>
-             {% if rol == "Administrador" %}
-             <li><a class="link" href="/docentes" class="link">Docentes</a></li>
-             {% else %}
-             <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Mi informacion</a></li>
-             {% endif %}         
-
+             <li><a class="link {% if active_page == 'docentes' %}activo{% endif %}" href="/docentes" class="link">Docentes</a></li>
              <li><a class="link" href="/historial" class="link">Historial</a></li>
              <div class="line">|</div>
              <a href="/logout"><li id="out">Salir</li></a>
@@ -31,17 +26,7 @@
     {% block body %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ url_for('static', filename='JS/NewsActivities.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/newUser.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/edit.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/InicioOffice.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/new-area.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/AsignarAsignatura.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/note.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/planTrabajo.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/revisar.js') }}"></script>
-
-
-
 </body>
 </html>

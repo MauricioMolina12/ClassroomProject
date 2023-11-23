@@ -25,11 +25,14 @@
                             <span>{{ docente.id }}</span>
                         </div>
                     </div>
-                    
                     {% endif %}
                 {% endfor %}
+                <button id="toSign">
+                    <a href="/sign_up" class="btn">
+                    <i class="fa-solid fa-plus"></i>
+                    </a>
+                </button>
             </div>
-
                 <div class="btns">
                     <button>
                         <div id="edit_doc" class="btn">
@@ -38,15 +41,9 @@
                     </div>
                     </button>
                     <button>
-                        <a href="/sign_up" class="btn">
-                        <i class="fa-solid fa-users-between-lines"></i>
-                        <span>Agregar docentes</span>
-                        </a>
-                    </button>
-                    <button>
                         <div id="asig_plan" class="btn">
                         <i class="fa-solid fa-chart-line"></i>
-                        <span>Asignar plan de trabajo</span>
+                        <span>Asignar plan</span>
                         </div>
                     </button>
                     <button>
@@ -59,6 +56,12 @@
                         <div id="revi" class="btn">
                         <i class="fa-solid fa-file-pen"></i>
                         <span>Hacer revisión</span>
+                        </div>
+                    </button>
+                    <button>
+                        <div id="delete" class="btn">
+                        <i class="fa-solid fa-trash-can"></i>
+                        <span>Eliminar</span>
                         </div>
                     </button>
                 </div>

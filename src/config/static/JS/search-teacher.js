@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedDocente = document.querySelector('.view-docentes.selected');
         if (selectedDocente) {
             var docenteId = selectedDocente.getAttribute('data-id');
-            window.location.href = '/revision/' + docenteId;
+            window.location.href = '/historial/' + docenteId;
         }else{
             Swal.fire({
                 text: 'Por favor, escoge un docente.',
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.querySelectorAll('.trash').addEventListener("click",function(){
+    document.getElementById('delete').addEventListener("click", function () {
         var selectedDocente = document.querySelector('.view-docentes.selected');
         var docenteId = selectedDocente.getAttribute('data-id');
         Swal.fire({
@@ -113,24 +113,26 @@ document.addEventListener('DOMContentLoaded', function () {
                         'Content-Type': 'application/json',
                     },
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        Swal.fire('Error', data.error, 'error');
-                    } else {
-                        docenteElement.classList.add('slide-out');
-                        docenteElement.addEventListener('animationend', function() {
-                            docenteElement.remove();
-                        });
-                        Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al eliminar el usuario:', error);
-                    Swal.fire('Error', 'Ocurrió un error al intentar eliminar el usuario', 'error');
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            Swal.fire('Error', data.error, 'error');
+                        } else {
+                            selectedDocente.classList.add('slide-out');
+                            selectedDocente.addEventListener('animationend', function () {
+                                selectedDocente.remove();
+                            });
+                            Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al eliminar el usuario:', error);
+                        Swal.fire('Error', 'Ocurrió un error al intentar eliminar el usuario', 'error');
+                    });
             }
         });
-    });    
+    });
+    
+      
   
 });
