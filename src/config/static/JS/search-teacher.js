@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmButtonText: 'Sí, eliminarlo'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`/deleteuser/${docenteId}`, {
+                fetch(`/api/deleteuser/${docenteId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -117,12 +117,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(data => {
                         if (data.error) {
                             Swal.fire('Error', data.error, 'error');
-                        } else {
-                            selectedDocente.classList.add('slide-out');
-                            selectedDocente.addEventListener('animationend', function () {
-                                selectedDocente.remove();
-                            });
-                            Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success');
+                        } else {                            
+                            Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success')
+                            .then((result) => {
+                                selectedDocente.classList.add('slide-out');
+                                selectedDocente.addEventListener('animationend', function () {
+                                    selectedDocente.remove();
+                                });
+                            })
+                            
                         }
                     })
                     .catch(error => {
