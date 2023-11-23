@@ -68,9 +68,10 @@ def info(id):
                                     'name': asig['nombre'],
                                     'codigo': asig['codigo'],
                                     'grupo': asig_doc['grupo'],
-                                    'semestre': asig_doc['semestre']
+                                    'semestre': asig_doc['semestre'],
+                                    'ano': asig_doc['ano'],
+                                    'periodo': asig_doc['periodo']
                                 })
-                print("Redirigiendo a view_docentes.html con asignaturas_docente:", asignaturas_docente)
                 return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'], asignaturas_docente=asignaturas_docente)
             else:
                 return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "info"))

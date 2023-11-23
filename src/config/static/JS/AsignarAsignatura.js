@@ -54,8 +54,10 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
     const grupo_ = document.getElementById('grupo').value;
     const semes_ = document.getElementById('semestre').value;
     const id_doc = document.getElementById('id_docente').value;
+    const ano_ = document.getElementById('ano').value;
+    const periodo_ = document.getElementById('periodo').value;
 
-    if (nombre_.trim() === '' || asig_.trim() === '' || grupo_.trim() === '' || semes_.trim() === '') {
+    if (nombre_.trim() === '' || asig_.trim() === '' || grupo_.trim() === '' || semes_.trim() === '' || ano_.trim() ==='' || periodo_.trim() ==='') {
         Swal.fire({
             title: 'Faltan datos',
             text: 'Por favor, completa todos los campos',
@@ -71,7 +73,9 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
             usu: nombre_,
             asig: asig_,
             grupo: grupo_,
-            semes: semes_
+            semes: semes_,
+            ano: ano_,
+            periodo: periodo_
         };
         fetch('/api/saveAsig_usu', {
             method: 'POST',
