@@ -95,16 +95,15 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             {% for asig in asignaturas_docente %}
                 <div id="contenedorMostrar" class="docente-container">
                     <button onclick="eliminarAsignatura('contenedorMostrar','{{ asig.cod_asigusu }}')"><i class="fa-solid fa-trash-can"></i></button> 
-                        <div><h3>Asig_Usu</h3><span>{{ asig.cod_asigusu }}</span></div>
                         <div><h3>Asignatura</h3><span>{{ asig.name }}</span></div>
                         <div><h3>Código asignatura</h3><span>{{ asig.codigo }}</span></div>
+                        <div><h3>Horas</h3><span>{{ asig.horas }}</span></div>
                         <div><h3>Grupo</h3><span>{{ asig.grupo }}</span></div>
                         <div><h3>Semestre</h3><span>{{ asig.semestre }}</span></div>
-                        <div><h3>Horas</h3><span>{{ asig.horas }}</span></div>
+                        <div><h3>Periodo</h3><span>{{asig.ano}}-{{asig.periodo}}</span></div>
                 </div>
             {% endfor %}
         </div>
-
     </section>
 </main>
 <script src="{{ url_for('static', filename='JS/edit.js') }}"></script>

@@ -39,8 +39,10 @@ def saveAsig_usu():
         idgrupo =  grupo[0]['id']
 
         semestre = result["semes"]
+        ano = result["ano"]
+        periodo = result["periodo"]
 
-        db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre))
+        db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre, ano= ano, periodo= periodo))
         db.session.commit()
         resultall = Asig_Usu.query.all()
         result= Asig_Usus_schema.dump(resultall)
@@ -60,6 +62,8 @@ def updateAsig_usu():
     result.codigoasig = data["codigoasig"]
     result.grupo = data["grupo"]
     result.semestre = data["semestre"]
+    result.ano = data["ano"]
+    result.periodo = data["periodo"]
 
     db.session.commit()
     return jsonify(Asig_Usu_schema.dump(result))
@@ -77,4 +81,4 @@ def deleteAsig_usu(id):
         #Asig_Usu_schema.dump(result)
         return jsonify(Asig_Usu_schema.dump(result))
     else:
-        return jsonify({'error': 'El objeto no fue encontrado'}), 404
+        return jsonify({'error': 'El objeto no fue encontrado'})
