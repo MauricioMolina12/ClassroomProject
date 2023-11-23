@@ -56,12 +56,47 @@ def savePlanTrabajo():
 def updatePlanTrabajo():
     id = request.json['id'] 
     nsubject = Plan_de_Trabajo.query.get(id)
-    nsubject.horas_totales = request.json['total_hours']
-    nsubject.año = request.json['year']
-    nsubject.semestre = request.json['semester']
-    nsubject.docente = request.json['teacher']
-    db.session.commit()
-    return "Datos Actualizado con exitos"
+    
+    if "total_hours" in request.json:
+        nsubject.horas_totales = request.json['total_hours']
+        db.session.commit()
+        resultall =  Plan_de_Trabajo.query.all()
+        result = plants_schema.dump(resultall)
+        session['plan_trabajo'] = result
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "year" in request.json:
+        nsubject.año = request.json['year']
+        db.session.commit()
+        resultall =  Plan_de_Trabajo.query.all()
+        result = plants_schema.dump(resultall)
+        session['plan_trabajo'] = result
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "semester" in request.json:
+        nsubject.semestre = request.json['semester']
+        db.session.commit()
+        resultall =  Plan_de_Trabajo.query.all()
+        result = plants_schema.dump(resultall)
+        session['plan_trabajo'] = result
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "qualification" in request.json:
+        nsubject.calificacion = request.json['qualification']
+        db.session.commit()
+        resultall =  Plan_de_Trabajo.query.all()
+        result = plants_schema.dump(resultall)
+        session['plan_trabajo'] = result
+        return jsonify("Datos Actualizado con exitos")
+    
+    if "teacher" in request.json:
+        nsubject.docente = request.json['teacher']
+        db.session.commit()
+        resultall =  Plan_de_Trabajo.query.all()
+        result = plants_schema.dump(resultall)
+        session['plan_trabajo'] = result
+        return jsonify("Datos Actualizado con exitos")
+
 
 @ruta_plant.route("/deletePlanTrabajo/<id>", methods=["GET"])
 def deletePlanTrabajo(id):

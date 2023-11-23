@@ -18,7 +18,7 @@
     <section class="chart-scroll">
         {% for plant in plantr %}
         {% if id_doc == plant.docente %}
-         <div class="scroll-child">         
+         <div class="scroll-child" data-id="{{ plant.id }}">         
             <div class="info">
                 <h3>Año</h3>
                 <span>{{ plant.año }}</span>
@@ -30,11 +30,11 @@
             <div class="info">
                 <h3>Valoración</h3>
                 <span>--</span>
-            </div>                  
+            </div>                 
          </div>    
         {% endif %}
         {% endfor %}     
     </section>
-   
 </main>
+<script src="{{ url_for('static', filename='JS/historial.js') }}"></script>
 {% endblock%}
