@@ -64,9 +64,17 @@ def updateAsig_usu():
     db.session.commit()
     return jsonify(Asig_Usu_schema.dump(result))
 
-@ruta_Asig_Usu.route("/deleteAsig_usu/<id>", methods=["DELETE"])
+@ruta_Asig_Usu.route("/deleteAsig_usu/<id>", methods=["GET"])
 def deleteAsig_usu(id):
     result = Asig_Usu.query.get(id)
-    db.session.delete(result)
-    db.session.commit()
-    return jsonify(Asig_Usu_schema.dump(result))
+    
+    if result is not None:
+        db.session.delete(result)
+        db.session.commit()
+        resultall = Asig_Usu.query.all()
+        result= Asig_Usus_schema.dump(resultall)
+        session['asig_usu'] = result
+        #Asig_Usu_schema.dump(result)
+        return jsonify(Asig_Usu_schema.dump(result))
+    else:
+        return jsonify({'error': 'El objeto no fue encontrado'}), 404
