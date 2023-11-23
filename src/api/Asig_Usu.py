@@ -18,8 +18,10 @@ def Asig_usu(id, tipo):
     resultall =  Asignatura.query.all()
     result = asigs_schema.dump(resultall)
     session['asignaturas'] = result
-    if tipo == "plant0":
-        return redirect(url_for("plan"), id= id)
+    if tipo == "plant":
+        return redirect(url_for("plan", id= id))
+    else:
+        return redirect(url_for("info", id= id))
 
 @ruta_Asig_Usu.route("/saveAsig_usu", methods=["POST"])
 def saveAsig_usu():

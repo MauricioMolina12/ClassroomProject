@@ -33,7 +33,7 @@ def index():
             for plant in session['plan_trabajo'] :
                 if session['id_user'] == plant["docente"] :
                     exist_plan = plant["id"]                       
-            return render_template('homepage.html', id_doc= session['id_user'],rol= session['rol'], exis_pt= exist_plan)
+            return render_template('homepage.html', id_doc= session['id_user'], rol= session['rol'], exis_pt= exist_plan)
         else:
             return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= 0))        
     else:
@@ -80,7 +80,7 @@ def info(id):
                 print("Redirigiendo a view_docentes.html con asignaturas_docente:", asignaturas_docente)
                 return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'], asignaturas_docente=asignaturas_docente)
             else:
-                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
+                return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "info"))
         return redirect(url_for("index"))
     else:
         return redirect(url_for("log_in"))  
@@ -145,9 +145,9 @@ def plan(id):
                             if asig_doc['codigoasig'] == asig['codigo']:
                                 horas += asig['horas']
                 print(horas)
-                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas)
+                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas, jornads= session['jornadas'])
             else:
-                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
+                return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "plant"))
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:
@@ -156,7 +156,7 @@ def plan(id):
 @app.route("/historial/<int:id>")
 def history(id):
     if "user" in session:
-        return render_template('historial.html', id_doc= id, plantr= session['plan_trabajo'], docentes= session['usuarios'])
+        return render_template('historial.html', id_doc= id, plantr= session['plan_trabajo'], docentes= session['usuarios'], rol= session['rol'])
     else:
         return redirect(url_for("log_in"))
 

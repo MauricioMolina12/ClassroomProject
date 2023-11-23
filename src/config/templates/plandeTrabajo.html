@@ -19,6 +19,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         {% for docente in docentes %}
                         {% if docente.id == id_doc %}
                         <input disabled id="nom_pro" data-idoc="{{ docente.id }}" name="name-docente" type="text" class="style-input" value="{{ docente.nombre }}">
+                        {% for jornad in jornads %}
+                        {% if jornad.id == docente.jornada %}
+                        <input hidden id="inputhidden" type="text" value="{{ jornad.nombre }}">
+                        {% endif %}
+                        {% endfor %}
                         {% endif %}
                         {% endfor %}
                     </div>
