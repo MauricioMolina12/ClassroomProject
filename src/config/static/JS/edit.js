@@ -67,7 +67,7 @@ function editarValor(elementId, valorCambiar, idUsuario) {
     });
 }
 
-function eliminarAsignatura(idAsig_Usu) {
+function eliminarAsignatura(elementId, idAsig_Usu) {
     Swal.fire({
         title: 'Confirmar eliminación',
         text: '¿Estás seguro de que deseas eliminar esta asignatura?',
@@ -95,11 +95,13 @@ function eliminarAsignatura(idAsig_Usu) {
                         confirmButtonColor: '#B70811'
                     });
                 } else {
+                    var contenedorAsignatura = document.getElementById(elementId);
+                    contenedorAsignatura.parentNode.removeChild(contenedorAsignatura);
                     // Aquí puedes agregar lógica adicional si es necesario
                     Swal.fire({
                         title: 'Éxito',
                         icon: 'success',
-                        text: 'Asignatura eliminada correctamente',
+                        text:'Asignatura eliminada correctamente',
                         timer: 10000,
                         confirmButtonColor: '#B70811'
                     });
