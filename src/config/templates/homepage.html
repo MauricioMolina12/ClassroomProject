@@ -8,17 +8,15 @@
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/home.css') }}">
    <main>
-    
-    {% if rols != "Administrador" %}
+    {% if rol != "Administrador" %}
     <div>
         <section>
             <h1>BIENVENIDOS AL SISTEMA DE GESTIÓN DE PLAN DE    TRABAJO</h1>
             <hr>
-            <p>Acá podrás ver tus planes de trabajo </p>
-            <a href="/choose">Ver mi plan de trabajo</a>
+            <p>Acá podrás ver tus planes de trabajo </p> 
+            <a href="/revision/{{ exis_pt }}">Ver mi plan de trabajo</a>
         </section>
     </div>
-    
     {% else %}
     <div>
         <section>

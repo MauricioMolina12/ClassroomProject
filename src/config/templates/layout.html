@@ -15,7 +15,12 @@
         <nav>
          <ul>
              <li><a class="link" href="/" class="link">Inicio</a></li>
-             <li><a class="link {% if active_page == 'docentes' %}activo{% endif %}" href="/docentes" class="link">Docentes</a></li>
+             {% if rol == "Administrador" %}
+             <li><a class="link" href="/docentes" class="link">Docentes</a></li>
+             {% else %}
+             <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Mi informacion</a></li>
+             {% endif %}         
+
              <li><a class="link" href="/historial" class="link">Historial</a></li>
              <div class="line">|</div>
              <a href="/logout"><li id="out">Salir</li></a>

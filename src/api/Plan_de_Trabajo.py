@@ -9,12 +9,15 @@ ruta_plant = Blueprint("ruta_plant",__name__)
 plant_schema = PlanTrabajoSchema()
 plants_schema = PlanTrabajoSchema(many=True)
 
-@ruta_plant.route("/Plan_de_Trabajo", methods=["GET"])
-def Plan_de_Trabajos():
+@ruta_plant.route("/Plan_de_Trabajo/<int:id>", methods=["GET"])
+def Plan_de_Trabajos(id):
     resultall =  Plan_de_Trabajo.query.all()
     result = plants_schema.dump(resultall)
     session['plan_trabajo'] = result
-    return jsonify(result)
+    if id == 0:
+        return redirect(url_for("index"))
+    else:
+        return redirect(url_for("revisar", id_plant= id))
 
 @ruta_plant.route("/savePlanTrabajo", methods=["POST"])
 def savePlanTrabajo():
@@ -42,7 +45,7 @@ def savePlanTrabajo():
 
         act = result[0]['id']
 
-        Plan_de_Trabajos()
+        Plan_de_Trabajos(act)
         
         return jsonify({'mensaje': act}) 
     else:

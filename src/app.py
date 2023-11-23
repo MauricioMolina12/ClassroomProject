@@ -28,7 +28,14 @@ app.register_blueprint(ruta_Asig_Usu, url_prefix="/api")
 @app.route("/")
 def index():
     if "user" in session:
-        return render_template('homepage.html', rols= session['rol'])
+        if "plan_trabajo" in session:
+            exist_plan = 0
+            for plant in session['plan_trabajo'] :
+                if session['id_user'] == plant["docente"] :
+                    exist_plan = plant["id"]                       
+            return render_template('homepage.html', rol= session['rol'], exis_pt= exist_plan)
+        else:
+            return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= 0))        
     else:
         return redirect(url_for("log_in"))    
     
@@ -40,7 +47,7 @@ def log_in():
 def register():
     if "user" in session:
         if "roles" in session and "jornadas" in session:
-            return render_template('register.html', rols= session['roles'], jornads= session['jornadas'])
+            return render_template('register.html', rols= session['roles'], jornads= session['jornadas'], rol= session['rol'])
         else:
             return redirect(url_for("ruta_rol.roles"))
     else:
@@ -50,7 +57,7 @@ def register():
 def info(id):
     if "user" in session:
         if "roles" in session and "jornadas" in session:
-            return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'])
+            return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'])
     else:
         return redirect(url_for("log_in"))  
     
@@ -58,17 +65,20 @@ def info(id):
 def docentes():
     
     if "user" in session:
-        if "usuarios" in session:
-            return render_template('docentes.html', docentes= session['usuarios'])
+        if session['rol'] == "Administrador":
+            if "usuarios" in session:
+                return render_template('docentes.html', docentes= session['usuarios'], rol= session['rol'], id_doc= session['id_user'])
+            else:
+                return redirect(url_for("ruta_user.users"))
         else:
-            return redirect(url_for("ruta_user.users"))
+            return redirect(url_for("index"))
     else:
         return redirect(url_for("log_in"))   
     
 @app.route('/actividades')
 def activity(): 
     if "user" in session:
-        return render_template('registrarActividad.html')
+        return render_template('registrarActividad.html', rol= session['rol'], id_doc= session['id_user'])
     else:
         return redirect(url_for("log_in"))
     
@@ -76,7 +86,7 @@ def activity():
 def asignaturas():
     if "user" in session:
         if "areas" in session:
-            return render_template('asignaturas.html', areas = session['areas'])
+            return render_template('asignaturas.html', areas = session['areas'], rol= session['rol'], id_doc= session['id_user'])
         else:
             return redirect(url_for("ruta_area.areas"))
     else:
@@ -85,7 +95,7 @@ def asignaturas():
 @app.route('/choose')
 def choose():
     if "user" in session:
-        return render_template('choose.html')
+        return render_template('choose.html', rol= session['rol'], id_doc= session['id_user'])
     else:
         return redirect(url_for("log_in"))
     
@@ -93,7 +103,7 @@ def choose():
 def asignacion(id):
     if "user" in session:
         if "asignaturas" in session and "grupos" in session:
-            return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'], id_doc= id, docentes= session['usuarios'])
+            return render_template('asignarAsignatura.html', subjects = session['asignaturas'], groups = session['grupos'], id_doc= id, docentes= session['usuarios'], rol= session['rol'])
         else:
             return redirect(url_for("ruta_asig.asignaturas", id= id))
     else:
@@ -103,7 +113,7 @@ def asignacion(id):
 def plan(id):
     if "user" in session:
         if "actividades" in session and "items" in session:
-            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'])
+            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'])
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:
@@ -120,9 +130,9 @@ def history():
 def revisar(id_plant):
     if "user" in session:
         if "plan_trabajo" in session:
-            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], items= session['items'])
+            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'])
         else:
-            return redirect(url_for("ruta_area.areas"))        
+            return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= id_plant))        
     else:
         return redirect(url_for("log_in"))
 
