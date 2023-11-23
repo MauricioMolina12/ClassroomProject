@@ -8,93 +8,32 @@
 <main> 
     <div class="title">
         <h1>Historial de plan de trabajo de:</h1>
-        <h2>Mauricio de Jesús Molina Peña</h2>
+        {% for docente in docentes %}
+        {% if docente.id == id_doc %}
+        <h2>{{ docente.nombre }}</h2>
+        {% endif %}
+        {% endfor %}
+        
     </div>
     <section class="chart-scroll">
-         <div class="scroll-child">
+        {% for plant in plantr %}
+        {% if id_doc == plant.docente %}
+         <div class="scroll-child">         
             <div class="info">
                 <h3>Año</h3>
-                <span>2023</span>
+                <span>{{ plant.año }}</span>
             </div>
             <div class="info">
                 <h3>Periodo</h3>
-                <span>2</span>
+                <span>{{ plant.semestre }}</span>
             </div>
             <div class="info">
                 <h3>Valoración</h3>
                 <span>--</span>
-            </div>
-         </div>
-         <div class="scroll-child">
-            <div class="info">
-                <h3>Año</h3>
-                <span>2023</span>
-            </div>
-            <div class="info">
-                <h3>Periodo</h3>
-                <span>2</span>
-            </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span>5.0</span>
-            </div>
-         </div>
-         <div class="scroll-child">
-            <div class="info">
-                <h3>Año</h3>
-                <span>2023</span>
-            </div>
-            <div class="info">
-                <h3>Periodo</h3>
-                <span>2</span>
-            </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span>5.0</span>
-            </div>
-         </div>
-         <div class="scroll-child">
-            <div class="info">
-                <h3>Año</h3>
-                <span>2023</span>
-            </div>
-            <div class="info">
-                <h3>Periodo</h3>
-                <span>2</span>
-            </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span>5.0</span>
-            </div>
-         </div>
-         <div class="scroll-child">
-            <div class="info">
-                <h3>Año</h3>
-                <span>2023</span>
-            </div>
-            <div class="info">
-                <h3>Periodo</h3>
-                <span>2</span>
-            </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span>5.0</span>
-            </div>
-         </div>
-         <div class="scroll-child">
-            <div class="info">
-                <h3>Año</h3>
-                <span>2023</span>
-            </div>
-            <div class="info">
-                <h3>Periodo</h3>
-                <span>2</span>
-            </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span>5.0</span>
-            </div>
-         </div>
+            </div>                  
+         </div>    
+        {% endif %}
+        {% endfor %}     
     </section>
    
 </main>

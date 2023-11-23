@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session 
+from flask import Flask, render_template, request, redirect, url_for, session, make_response
 from config.db import app, db
 
 from api.Area import ruta_area
@@ -33,7 +33,7 @@ def index():
             for plant in session['plan_trabajo'] :
                 if session['id_user'] == plant["docente"] :
                     exist_plan = plant["id"]                       
-            return render_template('homepage.html', rol= session['rol'], exis_pt= exist_plan)
+            return render_template('homepage.html', id_doc= session['id_user'],rol= session['rol'], exis_pt= exist_plan)
         else:
             return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= 0))        
     else:
@@ -56,8 +56,9 @@ def register():
 @app.route('/info_docentes/<int:id>')
 def info(id):
     if "user" in session:
-        if "roles" in session and "jornadas" in session:
+        if session['rol'] == "Administrador" or session['id_user'] == id:
             return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'])
+        return redirect(url_for("index"))
     else:
         return redirect(url_for("log_in"))  
     
@@ -119,10 +120,10 @@ def plan(id):
     else:
         return redirect(url_for("log_in"))
 
-@app.route("/historial")
-def history():
+@app.route("/historial/<int:id>")
+def history(id):
     if "user" in session:
-        return render_template('historial.html')
+        return render_template('historial.html', id_doc= id, plantr= session['plan_trabajo'], docentes= session['usuarios'])
     else:
         return redirect(url_for("log_in"))
 
@@ -139,7 +140,11 @@ def revisar(id_plant):
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("log_in")) 
+
+    response = make_response(render_template('login.html'))
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+
+    return response
 
 @app.errorhandler(404)
 def not_found_error(error):
