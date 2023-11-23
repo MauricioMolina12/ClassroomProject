@@ -56,8 +56,31 @@ def register():
 @app.route('/info_docentes/<int:id>')
 def info(id):
     if "user" in session:
+
         if session['rol'] == "Administrador" or session['id_user'] == id:
-            return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'])
+
+            if 'asig_usu' in session and 'asignaturas' in session:
+                
+                asignaturas_docente = []
+                
+                for asig_doc in session['asig_usu']:
+                    
+                    if id == asig_doc['codigousu']:
+                        
+                        for asig in session['asignaturas']:
+                            
+                            if asig_doc['codigoasig'] == asig['codigo']:
+                                
+                                asignaturas_docente.append({
+                                    'name': asig['nombre'],
+                                    'codigo': asig['codigo'],
+                                    'grupo': asig_doc['grupo'],
+                                    'semestre': asig_doc['semestre']
+                                })
+                print("Redirigiendo a view_docentes.html con asignaturas_docente:", asignaturas_docente)
+                return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'], asignaturas_docente=asignaturas_docente)
+            else:
+                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
         return redirect(url_for("index"))
     else:
         return redirect(url_for("log_in"))  
