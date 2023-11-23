@@ -135,7 +135,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-    
-      
   
 });
