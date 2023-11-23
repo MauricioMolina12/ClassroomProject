@@ -1,7 +1,7 @@
 {% extends './layout.html' %}
 {% block title %}Universidad Libre{% endblock %}
 {% block header %}
-    {{ super() }}
+{{ super() }}
 {% endblock%}
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='Styles/revisar.css') }}">
@@ -11,68 +11,81 @@
         {% if plant.id == id_plant %}
         {% for docente in docentes %}
         {% if docente.id == plant.docente %}
-             <h1>{{ docente.nombre }}</h1>
+        <h1>{{ docente.nombre }}</h1>
         {% endif %}
         {% endfor %}
         {% endif %}
         {% endfor %}
         <div class="accordion">
             <div class="categories">
-                {% if rol == "Docente" %}
+                {% if rol != "Administrador" %}
+
+                {% set actividades_mostradas = [] %}
+                {% for key, value in plan_dic.items() %}
+                {% set mostrado = false %}
                 <details class="details detalles">
-                    <summary>Proyección social</summary>
+                    <summary>{{ key }}</summary>
+                    {% for item in value %}
+                    {% if not mostrado and item.one_select and key not in actividades_mostradas %}
+                        {% set mostrado = true %}
+                        {% set _ = actividades_mostradas.append(key) %}
+                        <span id="actOpc">Evaluar al menos una de las siguientes actividades:</span>
+                    {% endif %}
                     <div class="row">
                         <div class="row-child">
-                            <span>Formación de recurso humano en investigación</span>
+                            <span>{{ item.nombre_ite }}</span>
                         </div>
                         <div class="row-child">
-                            <input checked disabled type="checkbox" class="style-input-3 w-20" name="check">
+                            {% if item.check%}
+                            <input disabled type="checkbox" class="style-input-3 w-20" name="check" checked>
+                            {% else %}
+                            <input disabled type="checkbox" class="style-input-3 w-20" name="check">
+                            {% endif %}
                         </div>
                         <div class="row-child">
-                            <input disabled type="number" class="style-input-3 w-20" name="hrs">
+                            <input disabled type="number" class="style-input-3 w-20" name="hrs"
+                                value="{{ item.horas }}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="row-child">
-                            <span>Formación de recurso humano en investigación</span>
-                        </div>
-                        <div class="row-child">
-                            <input checked disabled type="checkbox" class="style-input-3 w-20" name="check">
-                        </div>
-                        <div class="row-child">
-                            <input disabled type="number" class="style-input-3 w-20" name="hrs">
-                        </div>
-                    </div>
+                    {% endfor %}
                 </details>
+                {% endfor %}
+
                 {% else %}
+
+                {% set actividades_mostradas = [] %}
+                {% for key, value in plan_dic.items() %}
+                {% set mostrado = false %}
                 <details class="details detalles">
-                    <summary>Proyección social</summary>
+                    <summary>{{ key }}</summary>
+                    {% for item in value %}
+                    {% if not mostrado and item.one_select and key not in actividades_mostradas %}
+                        {% set mostrado = true %}
+                        {% set _ = actividades_mostradas.append(key) %}
+                        <span id="actOpc">Evaluar al menos una de las siguientes actividades:</span>
+                    {% endif %}
                     <div class="row">
                         <div class="row-child">
-                            <span>Formación de recurso humano en investigación</span>
+                            <span>{{ item.nombre_ite }}</span>
                         </div>
                         <div class="row-child">
+                            {% if item.check%}
+                            <input type="checkbox" class="style-input-3 w-20" name="check" checked>
+                            {% else %}
                             <input type="checkbox" class="style-input-3 w-20" name="check">
+                            {% endif %}
                         </div>
                         <div class="row-child">
-                            <input type="number" class="style-input-3 w-20" name="hrs">
+                            <input disabled type="number" class="style-input-3 w-20" name="hrs"
+                                value="{{ item.horas }}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="row-child">
-                            <span>Formación de recurso humano en investigación</span>
-                        </div>
-                        <div class="row-child">
-                            <input type="checkbox" class="style-input-3 w-20" name="check">
-                        </div>
-                        <div class="row-child">
-                            <input type="number" class="style-input-3 w-20" name="hrs">
-                        </div>
-                    </div>
+                    {% endfor %}
                 </details>
+                {% endfor %}
                 {% endif %}
             </div>
-            <div class="calificacion">                
+            <div class="calificacion">
                 {% if rol == "Administrador" %}
                 <span>Califica al docente en este espacio!</span>
                 <input id="note" type="number" step="0.1" min="0" max="5" class="style-input"></input>

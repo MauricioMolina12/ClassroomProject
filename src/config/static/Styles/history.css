@@ -30,14 +30,15 @@ main {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(-20px);
+        opacity: 0;
+        transform: translateY(-20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
 header {
     width: 100%;
@@ -111,7 +112,7 @@ nav ul li:last-of-type a {
     cursor: pointer;
 }
 
-main .title{
+main .title {
     position: relative;
     top: 28px;
     height: fit-content;
@@ -120,7 +121,7 @@ main .title{
     flex-direction: column;
 }
 
-.chart-scroll{
+.chart-scroll {
     border-radius: 10px;
     width: 50%;
     height: 60%;
@@ -132,7 +133,7 @@ main .title{
     overflow-x: hidden;
 }
 
-.scroll-child{
+.scroll-child {
     width: 100%;
     padding: 10px;
     margin: 10px;
@@ -145,11 +146,12 @@ main .title{
     border-radius: 10px;
 }
 
-.scroll-child .info{
+.scroll-child .info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 nav ul div {
     color: white;
     font-size: 20px;
@@ -170,7 +172,7 @@ nav ul li:last-child {
     border-radius: 5px;
 }
 
-a:not([id="out"]){
+a:not([id="out"]) {
     color: white;
     text-decoration: none;
 }
@@ -180,16 +182,16 @@ a:not([id="out"]){
     height: 90px;
 }
 
-h1{
+h1 {
     font-size: 20px;
     color: #B70811;
 }
 
-h3{
+h3 {
     color: #B70811;
 }
 
-h2{
+h2 {
     background-color: #B70811;
     color: white;
     padding: 0 10px;
@@ -200,14 +202,18 @@ h2{
     top: 6px;
 }
 
-.scroll-child .info:last-of-type span{
+.scroll-child .info:last-of-type span {
     font-weight: 700;
 }
 
 .scroll-child:hover {
     border: 3px solid red;
     transition: 0.1s;
-    transform: scale(0.97);
+    transform: scale(1);
+}
+
+.scroll-child .info>* {
+    user-select: none;
 }
 
 
@@ -307,9 +313,9 @@ h2{
     nav {
         height: 50%
     }
-}   
+}
 
-@media only screen and (min-width: 1910px) and (min-height: 950px){
+@media only screen and (min-width: 1910px) and (min-height: 950px) {
 
 
     nav ul li {

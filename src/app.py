@@ -33,7 +33,7 @@ def index():
             for plant in session['plan_trabajo'] :
                 if session['id_user'] == plant["docente"] :
                     exist_plan = plant["id"]                       
-            return render_template('homepage.html', id_doc= session['id_user'],rol= session['rol'], exis_pt= exist_plan)
+            return render_template('homepage.html', id_doc= session['id_user'], rol= session['rol'], exis_pt= exist_plan)
         else:
             return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= 0))        
     else:
@@ -56,21 +56,13 @@ def register():
 @app.route('/info_docentes/<int:id>')
 def info(id):
     if "user" in session:
-
         if session['rol'] == "Administrador" or session['id_user'] == id:
-
             if 'asig_usu' in session and 'asignaturas' in session:
-                
                 asignaturas_docente = []
-                
                 for asig_doc in session['asig_usu']:
-                    
                     if id == asig_doc['codigousu']:
-                        
                         for asig in session['asignaturas']:
-                            
                             if asig_doc['codigoasig'] == asig['codigo']:
-                                
                                 asignaturas_docente.append({
                                     'cod_asigusu':asig_doc['id'],
                                     'name': asig['nombre'],
@@ -81,7 +73,7 @@ def info(id):
                 print("Redirigiendo a view_docentes.html con asignaturas_docente:", asignaturas_docente)
                 return render_template('view_docentes.html', id_doc= id, docentes= session['usuarios'], rols= session['roles'], jornads= session['jornadas'], rol= session['rol'], asignaturas_docente=asignaturas_docente)
             else:
-                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
+                return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "info"))
         return redirect(url_for("index"))
     else:
         return redirect(url_for("log_in"))  
@@ -146,28 +138,48 @@ def plan(id):
                             if asig_doc['codigoasig'] == asig['codigo']:
                                 horas += asig['horas']
                 print(horas)
-                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas)
+                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas, jornads= session['jornadas'])
             else:
-                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
+                return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "plant"))
         else:
-            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
+            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "asig_planes"))
     else:
         return redirect(url_for("log_in"))
 
 @app.route("/historial/<int:id>")
 def history(id):
     if "user" in session:
-        return render_template('historial.html', id_doc= id, plantr= session['plan_trabajo'], docentes= session['usuarios'])
+        return render_template('historial.html', id_doc= id, plantr= session['plan_trabajo'], docentes= session['usuarios'], rol= session['rol'])
     else:
         return redirect(url_for("log_in"))
 
 @app.route("/revision/<int:id_plant>")
 def revisar(id_plant):
     if "user" in session:
-        if "plan_trabajo" in session:
-            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'])
+        if "items" in session and "plant_item" in session and "actividades" in session: 
+            planes_docente = {}
+            for plan in session['plan_trabajo']:#ver ssi se puede eliminar
+                if plan['id'] == id_plant:#ver ssi se puede eliminar
+                    for ite in session['items']:
+                        for plan_it in session['plant_item']:
+                            if plan_it['id_item'] == ite['id'] and plan_it['id_plant'] == id_plant:
+                                for act in session['actividades']:
+                                    if ite['TipodeAct'] == act['id']:
+
+                                        dictionary = {'id' : plan_it['id'], 
+                                                    'nombre_ite' : ite['nombre'],
+                                                    'horas' : plan_it['horas'],
+                                                    'check' : plan_it['verificadores'],
+                                                    'one_select': ite['one_select']}
+                                        
+                                        if act['nombre'] in planes_docente:
+                                            planes_docente[act['nombre']].append(dictionary)
+                                        else:
+                                            planes_docente[act['nombre']] = [dictionary]
+                    break
+            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], plan_dic = planes_docente)
         else:
-            return redirect(url_for("ruta_plant.Plan_de_Trabajos", id= id_plant))        
+            return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id_plant, tipo="revisar"))    
     else:
         return redirect(url_for("log_in"))
 

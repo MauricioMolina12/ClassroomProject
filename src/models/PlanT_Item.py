@@ -9,9 +9,9 @@ class PlanT_Item(db.Model):
     id_plant = db.Column(db. Integer, db.ForeignKey('Planes_de_Trabajos.id'))
     observaciones = db.Column(db.String(100))
     horas = db.Column(db.Integer)
-    verificadores = db.Column(db.Integer)
+    verificadores = db.Column(db.Boolean)
     
-    def __init__(self, id_item, id_plant, observations, hours, checkers=None): #checkers: Verificadores de actividades
+    def __init__(self, id_item, id_plant, observations, hours, checkers=False): #checkers: Verificadores de actividades
         self.id_item =id_item
         self.id_plant = id_plant
         self.observaciones = observations
