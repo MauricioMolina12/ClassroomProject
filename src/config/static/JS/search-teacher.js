@@ -120,9 +120,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         } else {                            
                             Swal.fire('Eliminado', 'Usuario eliminado correctamente', 'success')
                             .then((result) => {
+                                document.getElementById('deleteSound').play();
                                 selectedDocente.classList.add('slide-out');
-                                selectedDocente.addEventListener('animationend', function () {
-                                    selectedDocente.remove();
+                                selectedDocente.addEventListener('animationend', function () {                                    
+                                    selectedDocente.remove();                                    
                                 });
                             })
                             
