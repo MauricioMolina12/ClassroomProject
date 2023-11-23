@@ -12,29 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var yearValue = inputYear.value;
         var semesterValue = inputSemester.value;
 
-
         if (!yearValue || !semesterValue) {
-            if (jorn_doc == "Media Jornada" && hours_tot != 20){
-                Swal.fire({
-                    title: 'Faltan horas',
-                    text: 'Los docentes de Media Jornada tienen que tener 20 horas.',
-                    icon: 'error',
-                    backdrop: false,
-                    timer: 4500,
-                    timerProgressBar: true,
-                    confirmButtonColor: '#B70811'
-                });
-            } else if (jorn_doc == "Jornada Completa" && hours_tot != 40){
-                Swal.fire({
-                    title: 'Faltan horas',
-                    text: 'Los docentes de Jornada Completa tienen que tener 40 horas.',
-                    icon: 'error',
-                    backdrop: false,
-                    timer: 4500,
-                    timerProgressBar: true,
-                    confirmButtonColor: '#B70811'
-                });
-            } else {
+            
                 Swal.fire({
                     title: 'Faltan datos',
                     text: 'Ingreselos, por favor.',
@@ -44,8 +23,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     timerProgressBar: true,
                     confirmButtonColor: '#B70811'
                 });
-            }
             
+            
+        } else if (jorn_doc === "Media Jornada" && hours_tot != 20){
+            Swal.fire({
+                title: 'Faltan horas',
+                text: 'Los docentes de Media Jornada tienen que tener 20 horas.',
+                icon: 'error',
+                backdrop: false,
+                timer: 4500,
+                timerProgressBar: true,
+                confirmButtonColor: '#B70811'
+            });
+        } else if (jorn_doc === "Jornada Completa" && hours_tot != 40){
+            Swal.fire({
+                title: 'Faltan horas',
+                text: 'Los docentes de Jornada Completa tienen que tener 40 horas.',
+                icon: 'error',
+                backdrop: false,
+                timer: 4500,
+                timerProgressBar: true,
+                confirmButtonColor: '#B70811'
+            });
         } else {
 
             const dataToSend = {
