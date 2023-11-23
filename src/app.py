@@ -72,6 +72,7 @@ def info(id):
                             if asig_doc['codigoasig'] == asig['codigo']:
                                 
                                 asignaturas_docente.append({
+                                    'cod_asigusu':asig_doc['id'],
                                     'name': asig['nombre'],
                                     'codigo': asig['codigo'],
                                     'grupo': asig_doc['grupo'],

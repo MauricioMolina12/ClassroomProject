@@ -94,7 +94,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div class="container-50 second">
             {% for asig in asignaturas_docente %}
                 <div class="docente-container">
-                    <button><i class="fa-solid fa-trash-can"></i></button>
+                    <button onclick="eliminarAsignatura('{{asig.cod_asigusu}}')"><i class="fa-solid fa-trash-can"></i></button>
                         <div><h3>Asignatura</h3><span>{{ asig.name }}</span></div>
                         <div><h3>Código asignatura</h3><span>{{ asig.codigo }}</span></div>
                         <div><h3>Grupo</h3><span>{{ asig.grupo }}</span></div>

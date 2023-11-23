@@ -66,3 +66,54 @@ function editarValor(elementId, valorCambiar, idUsuario) {
         }
     });
 }
+
+function eliminarAsignatura(idAsig_Usu) {
+    Swal.fire({
+        title: 'Confirmar eliminación',
+        text: '¿Estás seguro de que deseas eliminar esta asignatura?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#B70811',
+        cancelButtonColor: '#000',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch(`/api/deleteAsig_usu/${idAsig_Usu}`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    Swal.fire({
+                        title: 'Error',
+                        icon: 'error',
+                        text: data.error,
+                        timer: 10000,
+                        confirmButtonColor: '#B70811'
+                    });
+                } else {
+                    // Aquí puedes agregar lógica adicional si es necesario
+                    Swal.fire({
+                        title: 'Éxito',
+                        icon: 'success',
+                        text: 'Asignatura eliminada correctamente',
+                        timer: 10000,
+                        confirmButtonColor: '#B70811'
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    title: 'Error',
+                    icon: 'error',
+                    text: `Error al eliminar la asignatura: ${error}`,
+                    timer: 10000,
+                    confirmButtonColor: '#B70811'
+                });
+            });
+        }
+    });
+}

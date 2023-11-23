@@ -62,7 +62,7 @@ def updateAsig_usu():
     db.session.commit()
     return jsonify(Asig_Usu_schema.dump(result))
 
-@ruta_Asig_Usu.route("/deleteAsig_usu/<id>", methods=["DELETE"])
+@ruta_Asig_Usu.route("/deleteAsig_usu/<id>", methods=["GET"])
 def deleteAsig_usu(id):
     result = Asig_Usu.query.get(id)
     db.session.delete(result)
