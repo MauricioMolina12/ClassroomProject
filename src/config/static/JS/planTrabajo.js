@@ -144,7 +144,7 @@ const totalSpan = document.getElementById('hoursTotal');
 
 inputNumbers.forEach(input => {
     input.addEventListener('input', function () {
-        let suma = 0;
+        let suma = parseInt(totalSpan.getAttribute('data-horasig'));
         inputNumbers.forEach(input => {
             // Convertir el valor del campo a un número y sumarlo
             suma += parseFloat(input.value) || 0;

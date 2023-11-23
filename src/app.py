@@ -114,7 +114,17 @@ def asignacion(id):
 def plan(id):
     if "user" in session:
         if "actividades" in session and "items" in session:
-            return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'])
+            if 'asig_usu' in session and 'asignaturas' in session: 
+                horas = 0
+                for asig_doc in session['asig_usu']:
+                    if id == asig_doc['codigousu']:
+                        for asig in session['asignaturas'] :
+                            if asig_doc['codigoasig'] == asig['codigo']:
+                                horas += asig['horas']
+                print(horas)
+                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas)
+            else:
+                return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id, tipo= "plant"))
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id))
     else:

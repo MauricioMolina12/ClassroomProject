@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     .catch(error => {
                         console.error('Error al eliminar el usuario:', error);
-                        Swal.fire('Error', 'Ocurrió un error al intentar eliminar el usuario', 'error');
+                        Swal.fire('Error b', error.message, 'error');
                     });
             }
         });

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request,json
+from flask import Blueprint, jsonify, request, json, session, redirect, url_for
 from config.db import db, app, ma
 from models.Asig_Usu import Asig_Usu, Asig_UsuSchema
 from api.Usuario import Usuario, users_schema
@@ -10,11 +10,16 @@ ruta_Asig_Usu = Blueprint("ruta_Asig_Usu", __name__)
 Asig_Usu_schema = Asig_UsuSchema()
 Asig_Usus_schema = Asig_UsuSchema(many=True)
 
-@ruta_Asig_Usu.route("/Asig_usu", methods=["GET"])
-def Asig_usu():
+@ruta_Asig_Usu.route("/Asig_usu/<int:id>/<tipo>", methods=["GET"])
+def Asig_usu(id, tipo):
     resultall = Asig_Usu.query.all()
     result= Asig_Usus_schema.dump(resultall)
-    return jsonify(result)
+    session['asig_usu'] = result
+    resultall =  Asignatura.query.all()
+    result = asigs_schema.dump(resultall)
+    session['asignaturas'] = result
+    if tipo == "plant0":
+        return redirect(url_for("plan"), id= id)
 
 @ruta_Asig_Usu.route("/saveAsig_usu", methods=["POST"])
 def saveAsig_usu():
@@ -35,6 +40,9 @@ def saveAsig_usu():
 
         db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre))
         db.session.commit()
+        resultall = Asig_Usu.query.all()
+        result= Asig_Usus_schema.dump(resultall)
+        session['asig_usu'] = result
         return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... Docente no existente'})
