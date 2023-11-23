@@ -209,12 +209,21 @@ h2 {
 .scroll-child:hover {
     border: 3px solid red;
     transition: 0.1s;
-    transform: scale(1);
+    transform: scale(1.03);
 }
 
 .scroll-child .info>* {
     user-select: none;
 }
+
+.bg-red{
+    font-weight: normal;
+    background-color: #B70811;
+    color: white;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
 
 
 @media only screen and (max-width: 768px) {

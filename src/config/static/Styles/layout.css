@@ -84,7 +84,7 @@ a {
     font-size: 18px;
 }
 
-nav ul li .link::before {
+nav ul li a.link::before {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -95,80 +95,18 @@ nav ul li .link::before {
     transition: width 0.9s ease;
 }
 
-nav ul li .link:hover::before {
+nav ul li a.link:hover::before {
     width: 100%;
+}
+
+nav ul li a.active {
+    border-bottom: 2px solid white;
 }
 
 i {
     color: #B70811;
 }
 
-
-/* nav {
-    width: 50%;
-    height: 70%;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    display: flex;
-    align-items: center;
-    border: none;
-    background: linear-gradient(#B70811, #890209);
-    position: absolute;
-    right: 0;
-    box-shadow: 10px 15px 10px rgb(38, 38, 38);
-}
-
-nav ul li a:focus:not(#out),
-nav ul li a:active:not(#out) {
-    background-color: white;
-    padding: 6px 10px;
-    border-radius: 10px;
-    color: #B70811;
-}
-
-nav ul {
-    width: 100%;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-}
-
-nav li {
-    color: white;
-    font-size: 17px;
-    font-family: 'Montserrat';
-    font-weight: 500;
-}
-
-nav li .link {
-    text-decoration: none;
-    cursor: pointer;
-    color: white;
-    position: relative;
-}
-
-
-
-nav ul li:last-of-type a {
-    color: #B70811;
-    cursor: pointer;
-}
-
-nav ul div {
-    color: white;
-    font-size: 20px;
-}
-
-
-
-nav ul li:last-child {
-    background-color: white;
-    color: #B70811;
-    padding: 0 18px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-} */
 
 @media only screen and (max-width: 768px) {
     nav ul li {

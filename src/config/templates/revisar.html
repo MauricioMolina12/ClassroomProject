@@ -11,7 +11,11 @@
         {% if plant.id == id_plant %}
         {% for docente in docentes %}
         {% if docente.id == plant.docente %}
-        <h1>{{ docente.nombre }}</h1>
+        <div class="head">
+            <h1>{{ docente.nombre }}</h1>
+            <span>|</span>
+            <h2 class="inf">{{ plant.año }}-{{ plant.semestre }}</h2>
+        </div>
         {% endif %}
         {% endfor %}
         {% endif %}
@@ -19,7 +23,6 @@
         <div class="accordion">
             <div class="categories">
                 {% if rol != "Administrador" %}
-
                 {% set actividades_mostradas = [] %}
                 {% for key, value in plan_dic.items() %}
                 {% set mostrado = false %}

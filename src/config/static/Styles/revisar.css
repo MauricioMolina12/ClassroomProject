@@ -42,6 +42,7 @@ h1 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .accordion {
@@ -108,7 +109,7 @@ summary {
     cursor: pointer;
     position: sticky;
     top: 3px;
-    width: 30%;
+    width: 82%;
     padding: 0 10px;
     border-radius: 10px;
     height: 50px;
@@ -327,6 +328,45 @@ span{
     color: #B70811;
 }
 
+#actOpc{
+    color: #B70811;
+    font-weight: 800;
+    position: relative;
+    left: 10px;
+}
+
+
+.head{
+    display: flex;
+    width: 60%;
+    align-items: center;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    margin-bottom: 70px;
+}
+
+.head h1{
+    width: fit-content;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.head span{
+    margin-right: 20px;
+    font-size: 30px;
+}
+
+.head h2{
+    font-weight: normal;
+}
+
+.categories{
+    margin-top: 5px;
+    position: relative;
+    left: 20px;
+    height: 98%;
+}
 
 
 @media only screen and (max-width: 768px) {

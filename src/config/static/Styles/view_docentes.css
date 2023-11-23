@@ -20,14 +20,15 @@ body {
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(-20px);
+        opacity: 0;
+        transform: translateY(-20px);
     }
+
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
+}
 
 header {
     width: 100%;
@@ -60,13 +61,6 @@ nav {
     border: none;
 }
 
-nav ul li a:focus:not(#out),
-nav ul li a:active:not(#out) {
-    background-color: white;
-    padding: 6px 10px;
-    border-radius: 10px;
-    color: #B70811;
-}
 
 nav ul {
     width: 100%;
@@ -158,15 +152,16 @@ section:first-of-type h1 {
 }
 
 section:first-of-type a {
-    height: 50%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 10%;
+    width: fit-content;
     background-color: #B70811;
     color: white;
     text-decoration: none;
     border-radius: 10px;
+    padding: 10px;
 }
 
 section:last-of-type {
@@ -178,12 +173,13 @@ section:last-of-type {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    width: 75% !important;
 }
 
 .second {
     overflow-y: auto;
     height: 100%;
-    width: 50%;
+    width: 25%;
 }
 
 .docente-container {
@@ -229,7 +225,7 @@ span {
     width: 40.3%;
 }
 
-.info-dc h3{
+.info-dc h3 {
     display: flex;
     justify-content: flex-start;
     user-select: none;
@@ -272,6 +268,7 @@ span {
 
 .info-dc {
     margin: 4px;
+    width: 80%;
 }
 
 .title a {
@@ -290,11 +287,11 @@ h4 {
 }
 
 .first-container h3 {
-    font-size: 1.7vw;
+    font-size: 1.5vw;
 }
 
 span {
-    font-size: 13px;
+    font-size: 1.3vw;
     color: #890209;
     user-select: none;
 }
@@ -395,7 +392,7 @@ span {
     }
 }
 
-@media only screen and (min-width: 1910px) and (min-height: 950px){
+@media only screen and (min-width: 1910px) and (min-height: 950px) {
 
 
     nav ul li {
@@ -414,4 +411,13 @@ span {
         width: 560px;
         height: 150px;
     }
+}
+
+@media only screen and (min-width: 1360px) and (min-height: 680px) {
+
+    .first-container {
+        position: relative;
+        bottom: 15px;
+    }
+
 }

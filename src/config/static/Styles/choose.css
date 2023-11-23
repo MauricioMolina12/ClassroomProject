@@ -150,12 +150,34 @@ section a {
     align-items: center;
     border-radius:20px;
     width: 20%;
-    height: 40%;
+    height: 60%;
     box-shadow: .3rem .3rem .6rem black;
     cursor: pointer;
     text-decoration: none;
     color: #B70811;
+    transition: background-color 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+
 }
+
+section a div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+section a:hover {
+    background-color: #B70811;
+    color: white;
+    transform: scale(1.1);
+    width: 20%;
+}
+
+section a:hover i{
+    color: white;
+}
+
 
 h3 {
     font-weight: normal;
