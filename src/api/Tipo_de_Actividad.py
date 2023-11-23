@@ -7,13 +7,12 @@ ruta_TipoA = Blueprint("ruta_Tipo_de_Actividad",__name__)
 tipodea_schema = TipodeActividadSchema()
 tipodeas_Schema = TipodeActividadSchema(many=True)
 
-@ruta_TipoA.route("/Tipo_de_Actividades/<int:id>", methods=["GET"])
-def tipo_de_actividades(id):
+@ruta_TipoA.route("/Tipo_de_Actividades/<int:id>/<tipo>", methods=["GET"])
+def tipo_de_actividades(id, tipo):
     resultall = Tipo_de_Actividad.query.all()
     result = tipodeas_Schema.dump(resultall)
     session['actividades'] = result
-    return redirect(url_for("ruta_item.items", id= id))
-
+    return redirect(url_for("ruta_item.items", id= id, tipo= tipo))
 @ruta_TipoA.route("/saveTipodeActividad", methods = ["POST"])
 def saveTipodeActividad():
     

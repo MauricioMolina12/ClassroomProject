@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request,json
+from flask import Blueprint, jsonify, request,json, redirect, url_for, session
 from config.db import db, app, ma
 from models.PlanT_Item import PlanT_Item, PlanT_ItemSchema
 from api.Plan_de_Trabajo import Plan_de_Trabajo, plants_schema
@@ -10,11 +10,12 @@ ruta_plant_item = Blueprint("ruta_plant_item", __name__)
 plant_item_schema = PlanT_ItemSchema()
 plant_items_schema = PlanT_ItemSchema(many=True)
 
-@ruta_plant_item.route("/Plant_Item", methods=["GET"])
-def Plant_Item():
-    resultall = PlanT_Item.query.all
+@ruta_plant_item.route("/Plant_Item/<int:id>", methods=["GET"])
+def Plant_Item(id):
+    resultall = PlanT_Item.query.all()
     result = plant_items_schema.dump(resultall)
-    return jsonify(result)
+    session['plant_item'] = result
+    return redirect(url_for("revisar", id_plant= id))
 
 @ruta_plant_item.route("/savePlant_Item", methods=["POST"])
 def savePlant_Item():
@@ -32,6 +33,9 @@ def savePlant_Item():
         new_p_i = PlanT_Item( id_item, id_plant, observations, hours)
         db.session.add(new_p_i)
         db.session.commit()
+        resultall = PlanT_Item.query.all()
+        result = plant_items_schema.dump(resultall)
+        session['plant_item'] = result
 
         return jsonify({'mensaje': 'Registro exitoso'})
     else:
