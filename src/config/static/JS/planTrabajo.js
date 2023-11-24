@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
         allowOutsideClick: false,
         allowEscapeKey: false,
         html:
-          '<input type="number" id="swal-input1" class="swal2-input" placeholder="Campo 1">' +
-          '<input type="number" id="swal-input2" class="swal2-input" placeholder="Campo 2">',
+          '<input type="number" id="swal-input1" class="swal2-input" placeholder="Año">' +
+          '<input type="number" id="swal-input2" class="swal2-input" placeholder="Periodo">',
         focusConfirm: false,
         preConfirm: () => {
           const campo1 = document.getElementById('swal-input1').value;
@@ -27,13 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
       
           if (valorCampo1 && valorCampo2) {
             // Haz algo con los valores ingresados
-            document.getElementById('año').value = valorCampo1
-            document.getElementById('semestre').value = valorCampo2
-            buscarhor(valorCampo1, valorCampo2)
-          } else {
-            // El usuario cerró el modal sin ingresar datos válidos
-            console.log('No se ingresaron datos válidos');
-          }
+            buscarhor(valorCampo1, valorCampo2)           
+            
+          } 
         }
       });
       
@@ -203,16 +199,31 @@ document.addEventListener('DOMContentLoaded', function () {
 //Busque horas de las materias dependiendo del año y periodo
 function buscarhor(anho, period){
     var id = document.getElementById('nom_pro').getAttribute("data-idoc")
-    alert(id)
     fetch('/api/asig_perio/' + anho + '/' + period + '/' + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         }
     })
-        .then(response => response.text())
+        .then(response => response.json())
         .then(data => {
-            totalSpan.textContent = data;
+            if (data == 0){                
+                Swal.fire({
+                    title: "Sin asignaturas",
+                    text: 'Necesita tener asignaturas para el periodo ' + anho + '-' + period ,
+                    icon: 'error',
+                    timer: 3500,
+                    confirmButtonColor: '#B70811'
+                }).then((result) => {
+                    window.location.href = "/asignacion/" + id;
+                });
+            } else{
+                document.getElementById('año').value = anho
+                document.getElementById('semestre').value = period
+                totalSpan.textContent = data[0];
+                totalSpan.setAttribute('data-horasig', data[0]);
+            }
+            
         })
 }
 

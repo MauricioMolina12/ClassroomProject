@@ -49,6 +49,7 @@ def updatePlant_Item():
     nplant_item.id_item = request.json['id_item']
     nplant_item.hours = request.json['hours']
     nplant_item.observations = request.json['observations']
+    nplant_item.verificadores = request.json['check']
     db.session.commit()
     return "Datos Actualizado con exitos"
 

@@ -12,9 +12,9 @@
         {% for docente in docentes %}
         {% if docente.id == plant.docente %}
         <div class="head">
-            <h1>{{ docente.nombre }}</h1>
+            <h1 id="nom_pro" data-idoc="{{ docente.id }}">{{ docente.nombre }}</h1>
             <span>|</span>
-            <h2 class="inf">{{ plant.año }}-{{ plant.semestre }}</h2>
+            <h2 class="inf" id="perio" data-ano="{{ plant.año }}" data-per="{{ plant.semestre }}">{{ plant.año }}-{{ plant.semestre }}</h2>
         </div>
         {% endif %}
         {% endfor %}
@@ -40,7 +40,7 @@
                         </div>
                         <div class="row-child">
                             {% if item.check%}
-                            <input disabled type="checkbox" class="style-input-3 w-20" name="check" checked>
+                            <input disabled  type="checkbox" class="style-input-3 w-20" name="check" checked>
                             {% else %}
                             <input disabled type="checkbox" class="style-input-3 w-20" name="check">
                             {% endif %}
@@ -53,6 +53,9 @@
                     {% endfor %}
                 </details>
                 {% endfor %}
+
+                <details id="asig" class="details detalles">                    
+                </details>
 
                 {% else %}
 
@@ -69,23 +72,23 @@
                     {% endif %}
                     <div class="row">
                         <div class="row-child">
-                            <span>{{ item.nombre_ite }}</span>
+                            <span class="items" data-id="{{ item.id_it }}">{{ item.nombre_ite }}</span>
+                        </div>
+                        <div class="row-child">                            
+                            <input type="checkbox" class="style-input-3 w-20 inputHr" name="check" id="{{ item.id_it }}chk">                            
                         </div>
                         <div class="row-child">
-                            {% if item.check%}
-                            <input type="checkbox" class="style-input-3 w-20" name="check" checked>
-                            {% else %}
-                            <input type="checkbox" class="style-input-3 w-20" name="check">
-                            {% endif %}
-                        </div>
-                        <div class="row-child">
-                            <input disabled type="number" class="style-input-3 w-20" name="hrs"
-                                value="{{ item.horas }}">
+                            <input disabled type="number" class="style-input-3 w-20" name="hrs" value="{{ item.horas }}">
                         </div>
                     </div>
                     {% endfor %}
                 </details>
                 {% endfor %}
+
+
+                <details id="asig" class="details detalles">                    
+                </details>
+
                 {% endif %}
             </div>
             <div class="calificacion">
