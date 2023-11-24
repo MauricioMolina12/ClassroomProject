@@ -41,13 +41,25 @@ def saveAsig_usu():
         semestre = result["semes"]
         ano = result["ano"]
         periodo = result["periodo"]
-
-        db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre, ano= ano, periodo= periodo))
-        db.session.commit()
-        resultall = Asig_Usu.query.all()
-        result= Asig_Usus_schema.dump(resultall)
-        session['asig_usu'] = result
-        return jsonify({'mensaje': 'Registro exitoso'}) 
+        
+        asignacion_existente = db.session.query(Asig_Usu).filter(
+            Asig_Usu.codigousu == codigousu,
+            Asig_Usu.codigoasig == codigoasig,
+            Asig_Usu.grupo == idgrupo,
+            Asig_Usu.semestre == semestre,
+            Asig_Usu.ano == ano,
+            Asig_Usu.periodo == periodo
+        ).first()
+        
+        if  asignacion_existente is not None:
+            return jsonify({'error': 'Esta asignación ya existe para el docente con el mismo grupo, año y periodo'})
+        else:
+            db.session.add(Asig_Usu(codigousu= codigousu, codigoasig= codigoasig, grupo= idgrupo, semestre= semestre, ano= ano, periodo= periodo))
+            db.session.commit()
+            resultall = Asig_Usu.query.all()
+            result= Asig_Usus_schema.dump(resultall)
+            session['asig_usu'] = result
+            return jsonify({'mensaje': 'Registro exitoso'}) 
     else:
         return jsonify({'error': 'Opss... Docente no existente'})
 
@@ -86,9 +98,13 @@ def deleteAsig_usu(id):
 @ruta_Asig_Usu.route("/asig_perio/<int:ano>/<int:period>/<int:id_usu>", methods=["GET"])
 def asig_perio(ano, period, id_usu):
     suma = 0
+    asigns = []
     result = Asig_Usus_schema.dump(db.session.query(Asig_Usu.codigoasig).filter(Asig_Usu.ano == ano, Asig_Usu.periodo == period, Asig_Usu.codigousu == id_usu).all())
     for asig in result:
-        resul = asigs_schema.dump(db.session.query(Asignatura.horas).filter(Asignatura.codigo == asig['codigoasig']).all())
+        resul = asigs_schema.dump(db.session.query(Asignatura.horas, Asignatura.nombre).filter(Asignatura.codigo == asig['codigoasig']).all())
+        
         if len(resul) > 0:
+            asigns.append(resul[0])
             suma += resul[0]['horas']
-    return jsonify(suma)
+    print(asigns)
+    return jsonify([suma, asigns])

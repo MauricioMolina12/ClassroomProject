@@ -88,7 +88,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
                 if (data.error) {
                     Swal.fire({
                         title: data.error,
-                        text: 'Ingresa otro valido',
+                        text: 'Ingrese una materia que no haya asignado',
                         icon: 'error',
                         backdrop: false,
                         timer: 7000,
@@ -112,3 +112,39 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
     }
     event.preventDefault();
 }); 
+
+$(document).ready(function() {
+    $("#asig_usu").on("click", function() {
+        // Obtén los valores de los campos
+        var usu = $("#usu").val();  // Asegúrate de tener el ID correcto del campo de usuario
+        var asig = $("#asig").val();  // Asegúrate de tener el ID correcto del campo de asignatura
+        var grupo = $("#grupo").val();
+        var semestre = $("#semestre").val();
+        var ano = $("#ano").val();
+        var periodo = $("#periodo").val();
+
+        // Verifica si ya existe una asignación con los mismos valores
+        $.ajax({
+            url: "/verificar_asignacion",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                usu: usu,
+                asig: asig,
+                grupo: grupo,
+                semestre: semestre,
+                ano: ano,
+                periodo: periodo
+            }),
+            success: function(response) {
+                if (response.error) {
+                    // Ya existe una asignación, muestra un mensaje de error o toma la acción necesaria
+                    alert(response.error);
+                }
+            },
+            error: function(error) {
+                console.error("Error al verificar asignación:", error);
+            }
+        });
+    });
+});
