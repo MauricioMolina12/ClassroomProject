@@ -81,8 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(editedData)
         }).then(response => {
             if (response.ok) {
-                alert(NombreAsig)
-                alert(AreaId)
                 Swal.fire({ 
                     icon: 'success',
                     title: 'Éxito!',

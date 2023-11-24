@@ -96,14 +96,20 @@ function eliminarAsignatura(elementId, idAsig_Usu) {
                     });
                 } else {
                     var contenedorAsignatura = document.getElementById(elementId);
-                    contenedorAsignatura.parentNode.removeChild(contenedorAsignatura);
-                    // Aquí puedes agregar lógica adicional si es necesario
-                    Swal.fire({
-                        title: 'Éxito',
-                        icon: 'success',
-                        text:'Asignatura eliminada correctamente',
-                        timer: 10000,
-                        confirmButtonColor: '#B70811'
+                    contenedorAsignatura.classList.add('slide-out');
+
+                    var deleteSound = document.getElementById('deleteSound');
+                    deleteSound.play();
+
+                    contenedorAsignatura.addEventListener('animationend', function () {
+                        contenedorAsignatura.remove();
+                        Swal.fire({
+                            title: 'Éxito',
+                            icon: 'success',
+                            text: 'Asignatura eliminada correctamente',
+                            timer: 10000,
+                            confirmButtonColor: '#B70811'
+                        });
                     });
                 }
             })
