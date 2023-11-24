@@ -107,6 +107,10 @@ i {
     color: #B70811;
 }
 
+.link.web-this{
+    border-bottom: 2px solid white;
+}
+
 
 @media only screen and (max-width: 768px) {
     nav ul li {

@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             codigoInput.value = "";
             hrsInput.value = "";
             creditoInput.value = "";
+            areaDropdown.innerHTML = "";
         } else {
             buttonEdit.style.opacity = "1";
             buttonEdit.disabled = false;
@@ -35,26 +36,66 @@ document.addEventListener("DOMContentLoaded", function () {
                     hrsInput.value = data.horas;
                     creditoInput.value = data.creditos;
 
-                    alert(data.areas[0].nombre)
-
                     const select = document.getElementById('areas')
+                    areaDropdown.innerHTML = "";
 
-                    for (let i in data.areas) {
-                        const newOption = document.createElement('option');
-                        newOption.value = data.areas[i].id;
-                        newOption.text = data.areas[i].nombre; 
-                        
-                        select.appendChild(newOption);
-                    }
-
-                    var areaCodigo = data.id_area;
-                    var areaOption = Array.from(areaDropdown.options).find(option => option.value === areaCodigo);
-                    if (areaOption) {
-                        areaOption.selected = true;
-                    }
+                    const Optionfl = document.createElement('option');
+                    Optionfl.value = "";
+                    Optionfl.text = "Elige una opción";
+                    
+                    if (data.areas.length > 0) {
+                        for (let i in data.areas) {
+                            const newOption = document.createElement('option');
+                            newOption.value = data.areas[i].codigo;
+                            newOption.text = data.areas[i].nombre;
+                            select.appendChild(newOption);
+                        }
+                        areaDropdown.value = data.areas[0].codigo;
+                    } else {
+                        alert("No se encontraron áreas asociadas a la asignatura.");
+                    }            
                 })
                 .catch(error => console.error('Error:', error));
         }
+    });
+    buttonEdit.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var NombreAsig = document.getElementById(codigoInput.value).getAttribute("data-name");
+        var AreaId = areaDropdown.options[areaDropdown.selectedIndex].value;
+
+        var editedData = {
+            code: codigoInput.value,
+            name: NombreAsig,
+            hours: hrsInput.value,
+            credits: creditoInput.value,
+            area: AreaId
+        };
+    
+    
+        fetch("/api/updateasignatura", {  
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(editedData)
+        }).then(response => {
+            if (response.ok) {
+                alert(NombreAsig)
+                alert(AreaId)
+                Swal.fire({ 
+                    icon: 'success',
+                    title: 'Éxito!',
+                    text: 'Datos actualizados con éxito.'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al actualizar los datos.'
+                });
+            }
+        }).catch(error => console.error('Error:', error));
     });
 });
 

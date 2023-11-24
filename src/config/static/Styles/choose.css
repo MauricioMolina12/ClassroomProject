@@ -160,11 +160,9 @@ section a {
 
 }
 
-section a div{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
+section a div h3{
+    position: relative;
+    top: 30px;
 }
 
 section a:hover {

@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Styles/layout.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='multimedia/logoo.png') }}">
-    
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='multimedia/logoo.png') }}">      
 </head>
 <body>
     {% block header %}
@@ -17,9 +16,9 @@
                 <li><a class="link" href="/" class="link">Inicio</a></li>
                 {% if rol == "Administrador" %}
                 <li><a class="link" href="/docentes" class="link">Docentes</a></li>
-                <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Mi informacion</a></li>
+                <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Acerca de mi</a></li>
                 {% else %}
-                <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Mi informacion</a></li>
+                <li><a class="link" href="/info_docentes/{{ id_doc }}" class="link">Acerca de mi</a></li>
                 <li><a class="link" href="/historial/{{ id_doc }}" class="link">Historial</a></li>
                 {% endif %}         
                 <div class="line">|</div>
@@ -31,7 +30,6 @@
     {% block body %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ url_for('static', filename='JS/InicioOffice.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/note.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/layout.js') }}"></script>
 </body>
 </html>

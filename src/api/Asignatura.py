@@ -4,11 +4,12 @@ from config.db import db, app, ma
 from models.Asignatura import Asignatura, AsignaturaSchema
 from api.Area import Area, areas_schema
 
+
 ruta_asig = Blueprint("ruta_asig",__name__)
 
 asig_schema = AsignaturaSchema()
 asigs_schema = AsignaturaSchema(many=True)
-
+from api.Asig_Usu import Asig_Usu, Asig_Usus_schema
 @ruta_asig.route("/asignaturas/<int:id>", methods=["GET"])
 def asignaturas(id):
     resultall =  Asignatura.query.all()
@@ -62,14 +63,19 @@ def updateasignaturas():
     nsubject.nombre = request.json['name'].title()
     nsubject.horas = request.json['hours']
     nsubject.creditos = request.json['credits']
-    id_area = request.json['area']
+    nsubject.id_area = request.json['area']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
 @ruta_asig.route("/deleteasignatura/<id>", methods=["GET"])
 def deleteasignaturas(id):
+    result = Asig_Usus_schema.dump(db.session.query(Asig_Usu.id).filter(Asig_Usu.codigoasig == id).all())
+    for id_asigusu in result:
+        asigusu = Asig_Usu.query.get(id_asigusu['id'])
+        db.session.delete(asigusu)
     subject = Asignatura.query.get(id)
     db.session.delete(subject)
+
     db.session.commit()
     return jsonify(asig_schema.dump(subject))
 

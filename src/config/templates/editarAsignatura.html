@@ -14,7 +14,7 @@
                 <select id="asignaturas">
                     <option value="" selected>Elige una opción</option>
                     {% for subject in subjects %}
-                    <option class="id-asi" value="{{ subject.codigo }}">{{ subject.nombre }}</option>
+                    <option id="{{ subject.codigo }}" class="id-asi" data-name="{{ subject.nombre }}" value="{{ subject.codigo }}">{{ subject.nombre }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -22,14 +22,12 @@
                 <label class="style-label" for="areas">Áreas</label>
                 <select id="areas">
                     <option value="" selected>Elige una opción</option>
-                    {% for area in areas %}
-                    <option class="id-area" value="{{ area.codigo }}">{{ area.nombre }}</option>
-                    {% endfor %}
+                    <option class="id-area"></option>
                 </select>
             </div>
             <div class="items">
                 <label class="style-label" for="codigo">Código</label>
-                <input type="number" id="codigo" class="style-input" name="codigo">
+                <input disabled style="user-select:none; color: grey" type="number" id="codigo" class="style-input" name="codigo">
             </div>
             <div class="items">
                 <label class="style-label" for="hrs">Horas</label>

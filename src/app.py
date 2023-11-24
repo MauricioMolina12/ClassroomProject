@@ -47,10 +47,10 @@ def log_in():
 @app.route('/EditarAsignatura')
 def editar():
     if "user" in session:
-        if "asignaturas" in session and "grupos" in session:
-            return render_template('editarAsignatura.html', subjects = session['asignaturas'])
+        if "asignaturas" in session:
+            return render_template('editarAsignatura.html', id_doc= session['id_user'],subjects = session['asignaturas'],jornads= session['jornadas'], rol= session['rol'])
         else:
-            return redirect(url_for("ruta_asig.asignaturas", id= id))
+            return redirect(url_for("ruta_asig.asignaturas", id = 0))
     else:
         return redirect(url_for("log_in"))
     
