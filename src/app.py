@@ -42,6 +42,17 @@ def index():
 @app.route('/login')
 def log_in():
     return render_template('login.html')
+
+
+@app.route('/EditarAsignatura')
+def editar():
+    if "user" in session:
+        if "asignaturas" in session and "grupos" in session:
+            return render_template('editarAsignatura.html', subjects = session['asignaturas'])
+        else:
+            return redirect(url_for("ruta_asig.asignaturas", id= id))
+    else:
+        return redirect(url_for("log_in"))
     
 @app.route('/sign_up')
 def register():

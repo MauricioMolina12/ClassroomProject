@@ -1,0 +1,55 @@
+{% extends './layout.html'%}
+{% block title %}Universidad Libre{% endblock %}
+{% block header %}
+    {{ super() }}
+{% endblock%}
+{% block body %}
+<link rel="stylesheet" href="{{ url_for('static', filename='Styles/editarAsignatura.css') }}">
+<main>
+    <section class="container-input">
+        <h1>Editar asignaturas</h1>
+        <form action="">
+            <div class="items">
+                <label class="style-label" for="asignaturas">Asignatura</label>
+                <select id="asignaturas">
+                    <option value="" selected>Elige una opción</option>
+                    {% for subject in subjects %}
+                    <option class="id-asi" value="{{ subject.codigo }}">{{ subject.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="items">
+                <label class="style-label" for="areas">Áreas</label>
+                <select id="areas">
+                    <option value="" selected>Elige una opción</option>
+                    {% for area in areas %}
+                    <option class="id-area" value="{{ area.codigo }}">{{ area.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="items">
+                <label class="style-label" for="codigo">Código</label>
+                <input type="number" id="codigo" class="style-input" name="codigo">
+            </div>
+            <div class="items">
+                <label class="style-label" for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="style-input" name="name">
+            </div>
+            <div class="items">
+                <label class="style-label" for="hrs">Horas</label>
+                <input type="number" step="1" id="hrs" class="style-input" name="horas">
+            </div>
+            <div class="items">
+                <label class="style-label" for="credito">Créditos</label>
+                <input type="number" step="1" id="credito" class="style-input" name="creditos">
+            </div>
+            <div class="items">
+                <button id="edit_asig">Editar asignatura</button>
+                <button id="delete_asig">Borrar asignatura</button>
+            </div>
+        </form>
+    </section>
+</main>
+<script src="{{ url_for('static', filename='js/EditarAsignatura.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}

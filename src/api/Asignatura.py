@@ -14,7 +14,13 @@ def asignaturas(id):
     resultall =  Asignatura.query.all()
     result = asigs_schema.dump(resultall)
     session['asignaturas'] = result
-    return redirect(url_for("ruta_grupos.grupos", id= id))
+    if id==0:
+        return redirect(url_for("editar"))
+    else:
+        return redirect(url_for("ruta_grupos.grupos", id= id))
+    
+    
+    
 
 @ruta_asig.route("/saveasignatura", methods=["POST"])
 def saveasignatura():
@@ -56,7 +62,7 @@ def updateasignaturas():
     nsubject.nombre = request.json['name'].title()
     nsubject.horas = request.json['hours']
     nsubject.creditos = request.json['credits']
-    nsubject.area = request.json['area'].title()
+    id_area = request.json['area']
     db.session.commit()
     return "Datos Actualizado con exitos"
 
@@ -66,3 +72,20 @@ def deleteasignaturas(id):
     db.session.delete(subject)
     db.session.commit()
     return jsonify(asig_schema.dump(subject))
+
+
+@ruta_asig.route("/asignatura/<id>", methods=["GET"])
+def asig(id):
+    result = Asignatura.query.get(id)
+    subject = asig_schema.dump(result)
+    result = db.session.query(Area.nombre).filter(Area.codigo == subject['id_area']).all()
+    area = areas_schema.dump(result)    
+    areas = areas_schema.dump(db.session.query(Area.nombre, Area.codigo).all())
+    subject['area'] = area[0]['nombre']
+    subject['areas'] = areas
+    return jsonify(subject)
+
+
+    
+    
+    
