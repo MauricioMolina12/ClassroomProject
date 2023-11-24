@@ -12,6 +12,7 @@
         {% for docente in docentes %}
         {% if docente.id == plant.docente %}
         <div class="head">
+            <span hidden id="id_plant">{{ plant.id }}</span>
             <h1 id="nom_pro" data-idoc="{{ docente.id }}">{{ docente.nombre }}</h1>
             <span>|</span>
             <h2 class="inf" id="perio" data-ano="{{ plant.año }}" data-per="{{ plant.semestre }}">{{ plant.año }}-{{ plant.semestre }}</h2>
@@ -22,7 +23,7 @@
         {% endfor %}
         <div class="accordion">
             <div class="categories">
-                {% if rol != "Administrador" %}
+                {% if rol != "Administrador" or calificado %}
                 {% set actividades_mostradas = [] %}
                 {% for key, value in plan_dic.items() %}
                 {% set mostrado = false %}
@@ -72,10 +73,10 @@
                     {% endif %}
                     <div class="row">
                         <div class="row-child">
-                            <span class="items" data-id="{{ item.id_it }}">{{ item.nombre_ite }}</span>
+                            <span class="items" data-id="{{ item.id_ite }}">{{ item.nombre_ite }}</span>
                         </div>
                         <div class="row-child">                            
-                            <input type="checkbox" class="style-input-3 w-20 inputHr" name="check" id="{{ item.id_it }}chk">                            
+                            <input type="checkbox" class="style-input-3 w-20 inputHr" name="check" id="{{ item.id_ite }}chk">                            
                         </div>
                         <div class="row-child">
                             <input disabled type="number" class="style-input-3 w-20" name="hrs" value="{{ item.horas }}">
@@ -92,19 +93,20 @@
                 {% endif %}
             </div>
             <div class="calificacion">
-                {% if rol == "Administrador" %}
-                <span>Califica al docente en este espacio!</span>
-                <input id="note" type="number" step="0.1" min="0" max="5" class="style-input"></input>
-                <button id="button-c">
-                    Calificar docente
-                </button>
-                {% else %}
+                {% if rol != "Administrador" or calificado %}
                 <span id="calificacion">Esta es tu calificación:</span>
                 <h2>5,0</h2>
                 <div class="hours">
                     <span>Horas totales:</span>
                     <h4>40</h4>
                 </div>
+                
+                {% else %}
+                <span>Califica al docente en este espacio!</span>
+                <input id="note" type="number" step="0.1" min="0" max="5" class="style-input"></input>
+                <button id="button-c">
+                    Calificar docente
+                </button>
                 {% endif %}
             </div>
         </div>

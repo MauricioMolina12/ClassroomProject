@@ -45,13 +45,10 @@ def savePlant_Item():
 def updatePlant_Item():
     id = request.json['id'] 
     nplant_item = PlanT_Item.query.get(id) #Select * from Cliente where id = id
-    nplant_item.id_plant = request.json['id_plant']
-    nplant_item.id_item = request.json['id_item']
-    nplant_item.hours = request.json['hours']
-    nplant_item.observations = request.json['observations']
-    nplant_item.verificadores = request.json['check']
-    db.session.commit()
-    return "Datos Actualizado con exitos"
+    if nplant_item is not None:
+        nplant_item.verificadores = request.json['check']
+        db.session.commit()
+    return jsonify("Datos Actualizado con exitos")
 
 @ruta_plant_item.route("/deletePlant_Item/<id>", methods=["GET"])
 def deletePlant_Item(id):

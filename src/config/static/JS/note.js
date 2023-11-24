@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
     buttonCalificacion.addEventListener("click", function () {
         var calificacion = document.getElementById('note').value;
         var items = document.querySelectorAll('.items');
+        var plan = document.getElementById('id_plant').textContent;
+        alert(plan)
 
         var calificacionNumero = parseFloat(calificacion);
 
@@ -94,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
 
             const dataToSend = {
+                id: plan,
                 qualification: calificacionNumero
             };
 
@@ -117,22 +120,21 @@ document.addEventListener('DOMContentLoaded', function () {
                             confirmColorButton: "#B70811"
                         });
                     } else {
+                        alert("llego")
                         const promises = [];
                         items.forEach(input => {
-                            let id_it = input.getAttribute('data-id')
+                            
+                            let id_it = input.getAttribute('data-id');
 
                             let id_chk = id_it + "chk"
                             let check_act = document.getElementById(id_chk).checked;
-
-                            if (hor_act) {
+                            if (check_act) {
                                 const dataToSend2 = {
-                                    id_plant: data.mensaje,
-                                    id_item: id_it,
-                                    hours: hor_act,
-                                    observacion: ""
+                                    id: id_it,
+                                    check: check_act
                                 }
-                                promises.push(
-                                    fetch('/api/savePlant_Item', {
+                                promises.push(                                    
+                                    fetch('/api/updatePlant_Item', {
                                         method: 'POST',
                                         headers: {
                                             'Content-Type': 'application/json'
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     timer: 3500,
                                     confirmButtonColor: '#B70811'
                                 }).then((result) => {
-                                    window.location.href = "/revision/" + data.mensaje;
+                                    window.location.href = "/revision/" + plan;
                                 });
                             })
                             .catch(error => {

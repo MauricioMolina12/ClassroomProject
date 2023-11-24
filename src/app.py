@@ -150,8 +150,7 @@ def plan(id):
                         for asig in session['asignaturas'] :
                             if asig_doc['codigoasig'] == asig['codigo']:
                                 horas += asig['horas']
-                print(horas)
-                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas, jornads= session['jornadas'])
+                return render_template('plandeTrabajo.html', actividades= session['actividades'], items= session['items'], id_doc= id, docentes= session['usuarios'], rol= session['rol'], hor= horas, jornads= session['jornadas'], )
             else:
                 return redirect(url_for("ruta_Asig_Usu.Asig_usu", id= id, tipo= "plant"))
         else:
@@ -171,8 +170,10 @@ def revisar(id_plant):
     if "user" in session:
         if "items" in session and "plant_item" in session and "actividades" in session: 
             planes_docente = {}
+            revisado = False
             for plan in session['plan_trabajo']:#ver ssi se puede eliminar
                 if plan['id'] == id_plant:#ver ssi se puede eliminar
+                    revisado = True
                     for ite in session['items']:
                         for plan_it in session['plant_item']:
                             if plan_it['id_item'] == ite['id'] and plan_it['id_plant'] == id_plant:
@@ -190,7 +191,7 @@ def revisar(id_plant):
                                         else:
                                             planes_docente[act['nombre']] = [dictionary]
                     break
-            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], plan_dic = planes_docente, id_doc= session['id_user'])
+            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], plan_dic = planes_docente, id_doc= session['id_user'], calificado= revisado)
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id_plant, tipo="revisar"))    
     else:
