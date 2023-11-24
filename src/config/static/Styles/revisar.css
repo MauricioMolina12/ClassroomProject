@@ -191,6 +191,7 @@ details:not([open]) summary:after {
     font-family: 'Montserrat';
     width: 70%;
     font-size: 17px;
+    text-align: center;
 }
 
 button {

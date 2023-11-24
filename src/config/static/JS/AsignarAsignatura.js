@@ -83,8 +83,7 @@ document.getElementById("asig_usu").addEventListener("click", function (event) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(dataToSend)
-        })
-            .then(response => response.json())
+        }).then(response => response.json())
             .then(data => {
                 if (data.error) {
                     Swal.fire({
