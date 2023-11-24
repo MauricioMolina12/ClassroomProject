@@ -168,7 +168,7 @@ def revisar(id_plant):
                                 for act in session['actividades']:
                                     if ite['TipodeAct'] == act['id']:
 
-                                        dictionary = {'id' : plan_it['id'], 
+                                        dictionary = {'id_ite' : ite['id'], 
                                                     'nombre_ite' : ite['nombre'],
                                                     'horas' : plan_it['horas'],
                                                     'check' : plan_it['verificadores'],
@@ -179,7 +179,7 @@ def revisar(id_plant):
                                         else:
                                             planes_docente[act['nombre']] = [dictionary]
                     break
-            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], plan_dic = planes_docente)
+            return render_template('revisar.html', rol= session["rol"], id_plant= id_plant, plantr= session['plan_trabajo'], docentes= session['usuarios'], actividades= session['actividades'], plan_dic = planes_docente, id_doc= session['id_user'])
         else:
             return redirect(url_for("ruta_Tipo_de_Actividad.tipo_de_actividades", id= id_plant, tipo="revisar"))    
     else:

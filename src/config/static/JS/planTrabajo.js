@@ -158,9 +158,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-
 });
+
+//Busque horas de las materias dependiendo del año y periodo
+/*const input_able = document.querySelectorAll(".input-able");
+input_able.forEach(input => {
+    input.addEventListener('input', function () {
+        let suma = parseInt(totalSpan.getAttribute('data-horasig'));
+        fetch('/api/savePlanTrabajo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        })
+            .then(response => response.json())
+            .then(data => {
+            })
+    });
+});*/
+
 //HAGA SUMA DE HORAS
 const inputNumbers = document.querySelectorAll('.inputHr');
 const totalSpan = document.getElementById('hoursTotal');
