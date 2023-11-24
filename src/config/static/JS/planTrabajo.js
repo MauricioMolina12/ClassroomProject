@@ -1,4 +1,44 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
+    Swal.fire({
+        title: '<h3 color="#B70811">Ingresa el año y el periodo</h3>',
+        confirmButtonColor: '#B70811',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        html:
+          '<input type="number" id="swal-input1" class="swal2-input" placeholder="Campo 1">' +
+          '<input type="number" id="swal-input2" class="swal2-input" placeholder="Campo 2">',
+        focusConfirm: false,
+        preConfirm: () => {
+          const campo1 = document.getElementById('swal-input1').value;
+          const campo2 = document.getElementById('swal-input2').value;
+      
+          if (!campo1 || !campo2) {
+            Swal.showValidationMessage('Por favor, completa ambos campos');
+          }
+      
+          return [campo1, campo2];
+        }
+      }).then(result => {
+        if (result.isConfirmed) {
+          const values = result.value;
+          const valorCampo1 = values[0];
+          const valorCampo2 = values[1];
+      
+          if (valorCampo1 && valorCampo2) {
+            // Haz algo con los valores ingresados
+            document.getElementById('año').value = valorCampo1
+            document.getElementById('semestre').value = valorCampo2
+            buscarhor(valorCampo1, valorCampo2)
+          } else {
+            // El usuario cerró el modal sin ingresar datos válidos
+            console.log('No se ingresaron datos válidos');
+          }
+        }
+      });
+      
+
+
     var button = document.getElementById('btnAsignar');
 
     button.addEventListener("click", function (event) {
@@ -13,19 +53,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var semesterValue = inputSemester.value;
 
         if (!yearValue || !semesterValue) {
-            
-                Swal.fire({
-                    title: 'Faltan datos',
-                    text: 'Ingreselos, por favor.',
-                    icon: 'error',
-                    backdrop: false,
-                    timer: 4500,
-                    timerProgressBar: true,
-                    confirmButtonColor: '#B70811'
-                });
-            
-            
-        } else if (jorn_doc === "Media Jornada" && hours_tot != 20){
+
+            Swal.fire({
+                title: 'Faltan datos',
+                text: 'Ingreselos, por favor.',
+                icon: 'error',
+                backdrop: false,
+                timer: 4500,
+                timerProgressBar: true,
+                confirmButtonColor: '#B70811'
+            });
+
+
+        } else if (jorn_doc === "Media Jornada" && hours_tot != 20) {
             Swal.fire({
                 title: 'Faltan horas',
                 text: 'Los docentes de Media Jornada tienen que tener 20 horas.',
@@ -35,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 timerProgressBar: true,
                 confirmButtonColor: '#B70811'
             });
-        } else if (jorn_doc === "Jornada Completa" && hours_tot != 40){
+        } else if (jorn_doc === "Jornada Completa" && hours_tot != 40) {
             Swal.fire({
                 title: 'Faltan horas',
                 text: 'Los docentes de Jornada Completa tienen que tener 40 horas.',
@@ -161,22 +201,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Busque horas de las materias dependiendo del año y periodo
-/*const input_able = document.querySelectorAll(".input-able");
-input_able.forEach(input => {
-    input.addEventListener('input', function () {
-        let suma = parseInt(totalSpan.getAttribute('data-horasig'));
-        fetch('/api/savePlanTrabajo', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
+function buscarhor(anho, period){
+    var id = document.getElementById('nom_pro').getAttribute("data-idoc")
+    alert(id)
+    fetch('/api/asig_perio/' + anho + '/' + period + '/' + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.text())
+        .then(data => {
+            totalSpan.textContent = data;
         })
-            .then(response => response.json())
-            .then(data => {
-            })
-    });
-});*/
+}
 
 //HAGA SUMA DE HORAS
 const inputNumbers = document.querySelectorAll('.inputHr');
