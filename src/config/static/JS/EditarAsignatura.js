@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     var buttonEdit = document.getElementById("edit_asig");
+    var buttonDelete = document.getElementById("delete_asig");
     var asignaturaDropdown = document.getElementById("asignaturas");
     var areaDropdown = document.getElementById("areas");
     var codigoInput = document.getElementById("codigo");
