@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var asignaturaDropdown = document.getElementById("asignaturas");
     var areaDropdown = document.getElementById("areas");
     var codigoInput = document.getElementById("codigo");
-    var nombreInput = document.getElementById("nombre");
     var hrsInput = document.getElementById("hrs");
     var creditoInput = document.getElementById("credito");
 
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
             buttonEdit.style.opacity = "0.5";
             buttonEdit.style.cursor = "not-allowed";
             codigoInput.value = "";
-            nombreInput.value = "";
             hrsInput.value = "";
             creditoInput.value = "";
         } else {
@@ -25,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             var AsignaturaId = seleccion;
 
-            fetch(`/asignatura/${AsignaturaId}`, {
+            fetch(`/api/asignatura/${AsignaturaId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }).then(response => response.json())
                 .then(data => {
                     codigoInput.value = data.codigo;
-                    nombreInput.value = data.nombre;
                     hrsInput.value = data.horas;
                     creditoInput.value = data.creditos;
 
