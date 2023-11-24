@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var buttonEdit = document.getElementById("edit_asig");
     var asignaturaDropdown = document.getElementById("asignaturas");
     var areaDropdown = document.getElementById("areas");
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var hrsInput = document.getElementById("hrs");
     var creditoInput = document.getElementById("credito");
 
-    asignaturaDropdown.addEventListener("change", function() {
+    asignaturaDropdown.addEventListener("change", function () {
         var seleccion = asignaturaDropdown.value;
 
         if (seleccion === "") {
@@ -33,6 +33,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     codigoInput.value = data.codigo;
                     hrsInput.value = data.horas;
                     creditoInput.value = data.creditos;
+
+                    alert(data.areas[0].nombre)
+
+                    const select = document.getElementById('areas')
+
+                    for (let i in data.areas) {
+                        const newOption = document.createElement('option');
+                        newOption.value = data.areas[i].id;
+                        newOption.text = data.areas[i].nombre; 
+                        
+                        select.appendChild(newOption);
+                    }
 
                     var areaCodigo = data.id_area;
                     var areaOption = Array.from(areaDropdown.options).find(option => option.value === areaCodigo);

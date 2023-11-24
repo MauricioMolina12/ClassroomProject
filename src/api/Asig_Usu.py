@@ -82,3 +82,13 @@ def deleteAsig_usu(id):
         return jsonify(Asig_Usu_schema.dump(result))
     else:
         return jsonify({'error': 'El objeto no fue encontrado'})
+    
+@ruta_Asig_Usu.route("/asig_perio/<int:ano>/<int:period>/<int:id_usu>", methods=["GET"])
+def asig_perio(ano, period, id_usu):
+    suma = 0
+    result = Asig_Usus_schema.dump(db.session.query(Asig_Usu.codigoasig).filter(Asig_Usu.ano == ano, Asig_Usu.periodo == period, Asig_Usu.codigousu == id_usu).all())
+    for asig in result:
+        resul = asigs_schema.dump(db.session.query(Asignatura.horas).filter(Asignatura.codigo == asig['codigoasig']).all())
+        if len(resul) > 0:
+            suma += resul[0]['horas']
+    return jsonify(suma)
