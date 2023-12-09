@@ -27,10 +27,18 @@
                 <h3>Periodo</h3>
                 <span>{{ plant.semestre }}</span>
             </div>
-            <div class="info">
-                <h3>Valoración</h3>
-                <span class="bg-red">Pendiente</span>
-            </div>                 
+            {% if plant.calificacion %}                
+                <div class="info">
+                    <h3>Valoración</h3>
+                    <span>{{ plant.calificacion }}</span>
+                </div>  
+                {% else %}
+                <div class="info">
+                    <h3>Valoración</h3>
+                    <span class="bg-red">PENDIENTE</span>
+                </div>
+                {% endif %}
+                           
          </div>    
         {% endif %}
         {% endfor %}     

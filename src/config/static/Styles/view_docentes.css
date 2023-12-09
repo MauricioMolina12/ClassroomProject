@@ -173,7 +173,7 @@ section:last-of-type {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 75% !important;
+    width: 60% !important;
 }
 
 .second {

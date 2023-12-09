@@ -2,11 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, session, m
 from config.db import app, db
 
 from api.Area import ruta_area
+from api.Usuario import ruta_user
 from api.Asignatura import ruta_asig
 from api.Grupo import ruta_grupos
 from api.Rol import ruta_rol
 from api.Jornada import ruta_jornada
-from api.Usuario import ruta_user
+
 from api.Asig_Usu import ruta_Asig_Usu
 from api.Tipo_de_Actividad import ruta_TipoA
 from api.Item import ruta_item
@@ -173,7 +174,8 @@ def revisar(id_plant):
             revisado = False
             for plan in session['plan_trabajo']:#ver ssi se puede eliminar
                 if plan['id'] == id_plant:#ver ssi se puede eliminar
-                    revisado = True
+                    if plan['calificacion']:
+                        revisado = True
                     for ite in session['items']:
                         for plan_it in session['plant_item']:
                             if plan_it['id_item'] == ite['id'] and plan_it['id_plant'] == id_plant:

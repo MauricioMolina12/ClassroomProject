@@ -44,10 +44,15 @@ def savePlant_Item():
 @ruta_plant_item.route("/updatePlant_Item", methods=["POST"])
 def updatePlant_Item():
     id = request.json['id'] 
-    nplant_item = PlanT_Item.query.get(id) #Select * from Cliente where id = id
+    id_plant = request.json['id_plant']
+    nplant_item = PlanT_Item.query.filter_by(id_item= id, id_plant= id_plant).first() #Select * from Cliente where id = id
+    print(plant_item_schema.dump(nplant_item))
     if nplant_item is not None:
         nplant_item.verificadores = request.json['check']
         db.session.commit()
+        resultall = PlanT_Item.query.all()
+        result = plant_items_schema.dump(resultall)
+        session['plant_item'] = result
     return jsonify("Datos Actualizado con exitos")
 
 @ruta_plant_item.route("/deletePlant_Item/<id>", methods=["GET"])

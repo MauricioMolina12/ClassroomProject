@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     
-    const id = document.getElementById('nom_pro').getAttribute("data-idoc")
-    const anho = document.getElementById('perio').getAttribute("data-ano")
-    const period = document.getElementById('perio').getAttribute("data-per")
+    var id = document.getElementById('nom_pro').getAttribute("data-idoc")
+    var anho = document.getElementById('perio').getAttribute("data-ano")
+    var period = document.getElementById('perio').getAttribute("data-per")
     
     fetch(`/api/asig_perio/${anho}/${period}/${id}`, {
         method: 'GET',
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var calificacion = document.getElementById('note').value;
         var items = document.querySelectorAll('.items');
         var plan = document.getElementById('id_plant').textContent;
-        alert(plan)
+        
 
         var calificacionNumero = parseFloat(calificacion);
 
@@ -120,17 +120,18 @@ document.addEventListener('DOMContentLoaded', function () {
                             confirmColorButton: "#B70811"
                         });
                     } else {
-                        alert("llego")
+                        
                         const promises = [];
                         items.forEach(input => {
                             
                             let id_it = input.getAttribute('data-id');
-
+                            
                             let id_chk = id_it + "chk"
                             let check_act = document.getElementById(id_chk).checked;
                             if (check_act) {
                                 const dataToSend2 = {
                                     id: id_it,
+                                    id_plant: plan,
                                     check: check_act
                                 }
                                 promises.push(                                    

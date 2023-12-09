@@ -207,7 +207,7 @@ function buscarhor(anho, period){
     })
         .then(response => response.json())
         .then(data => {
-            if (data == 0){                
+            if (data[1] == 0){                
                 Swal.fire({
                     title: "Sin asignaturas",
                     text: 'Necesita tener asignaturas para el periodo ' + anho + '-' + period ,

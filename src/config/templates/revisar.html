@@ -95,11 +95,28 @@
             <div class="calificacion">
                 {% if rol != "Administrador" or calificado %}
                 <span id="calificacion">Esta es tu calificación:</span>
-                <h2>5,0</h2>
+                {% for plant in plantr %}
+                {% if plant.id == id_plant %}
+                {% for docente in docentes %}
+                {% if docente.id == plant.docente %}
+                {% if plant.calificacion %}
+                <h2>{{ plant.calificacion }}</h2>
                 <div class="hours">
                     <span>Horas totales:</span>
-                    <h4>40</h4>
+                    <h4>{{ plant.horas_totales }}</h4>
                 </div>
+                {% else %}
+                <h5>PENDIENTE</h5>
+                <div class="hours">
+                    <span>Horas totales:</span>
+                    <h4>{{ plant.horas_totales }}</h4>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                
                 
                 {% else %}
                 <span>Califica al docente en este espacio!</span>
