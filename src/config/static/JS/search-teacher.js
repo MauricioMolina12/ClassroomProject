@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     .catch(error => {
                         console.error('Error al eliminar el usuario:', error);
-                        Swal.fire('Error b', error.message, 'error');
+                        Swal.fire('No se puede', 'Elimine materias o planes de trabajo', 'error');
                     });
             }
         });

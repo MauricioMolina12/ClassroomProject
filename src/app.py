@@ -2,11 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for, session, m
 from config.db import app, db
 
 from api.Area import ruta_area
-from api.Usuario import ruta_user
-from api.Asignatura import ruta_asig
-from api.Grupo import ruta_grupos
 from api.Rol import ruta_rol
 from api.Jornada import ruta_jornada
+from api.Usuario import ruta_user
+from api.Grupo import ruta_grupos
+from api.Asignatura import ruta_asig
+
 
 from api.Asig_Usu import ruta_Asig_Usu
 from api.Tipo_de_Actividad import ruta_TipoA
